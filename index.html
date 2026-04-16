@@ -1,0 +1,4812 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Openclaw Docs Final</title>
+<style>body{margin:0;font-family:Inter,Arial,"Noto Sans Thai",sans-serif;background:#f6f8fc;color:#1f2937}a{color:#0f766e;text-decoration:none}.layout{display:grid;grid-template-columns:300px 1fr;min-height:100vh}.sidebar{background:#0f172a;color:#e2e8f0;padding:24px 18px;position:sticky;top:0;height:100vh;overflow:auto}.brand{font-size:24px;font-weight:800;margin-bottom:8px}.sub{font-size:14px;color:#94a3b8;margin-bottom:18px}.search{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #334155;background:#111827;color:#fff;box-sizing:border-box;margin-bottom:18px}.nav-group{margin:16px 0}.nav-group h4{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#93c5fd;margin:0 0 8px}.nav-group a{display:block;padding:8px 10px;border-radius:10px;color:#e2e8f0;font-size:14px}.nav-group a:hover{background:#1e293b;text-decoration:none}.content{padding:32px 36px 80px;max-width:1100px}.hero{background:linear-gradient(135deg,#ffffff,#eef6ff);border:1px solid #dbeafe;border-radius:22px;padding:28px 30px;margin-bottom:26px}.hero h1{margin:0 0 8px;font-size:36px}.hero p{margin:0;color:#475569}.article{background:#fff;border:1px solid #e5e7eb;border-radius:20px;padding:28px;margin:24px 0;box-shadow:0 10px 30px rgba(2,6,23,.05)}.meta{font-size:13px;color:#64748b;margin:8px 0 18px}.badge{display:inline-block;font-size:12px;font-weight:700;color:#155e75;background:#ecfeff;border:1px solid #a5f3fc;border-radius:999px;padding:4px 10px;margin-right:8px}.article h2{margin:0;font-size:30px;color:#0f172a}.article h3{margin-top:24px;font-size:20px}.article p,.article li{line-height:1.75;margin:10px 0}.article ul{padding-left:22px}.topnote{background:#fffbeb;border:1px solid #fde68a;border-radius:14px;padding:14px 16px;color:#92400e;margin-bottom:22px}.section-title{margin:30px 0 12px;font-size:24px}.hidden{display:none}@media (max-width: 960px){.layout{grid-template-columns:1fr}.sidebar{position:relative;height:auto}.content{padding:20px}}</style></head><body><div class="layout">
+<aside class="sidebar"><div class="brand">Openclaw Docs</div><div class="sub">by Steanpong Suksakorn</div><input id="search" class="search" placeholder="ค้นหาหัวข้อ..." />
+<div class="nav-group"><h4>Setup</h4>
+<a class="nav-link" data-search="สิ่งที่ต้องเตรียม สิ่งที่ต้องเตรียมก่อนเริ่ม workshop เตรียมของพร้อมก่อนเริ่ม จะได้ลื่นไหลไม่ต้องรอ!
+
+✅ hostinger vps — แนะนำ kvm2 ขึ้นไป (ram 8gb)
+
+✅ chatgpt plus subscription ($20/เดือน) — ใช้ oauth login
+
+✅ ssh client — terminal บน mac หรือ browser terminal ของ hostinger
+
+✅ telegram app — ติดตั้งบนมือถือ + คอมพิวเ" href="#setup-checklist">สิ่งที่ต้องเตรียม </a>
+<a class="nav-link" data-search="ซื้อ vps + deploy openclaw part 1 — ซื้อ vps + deploy openclaw
+
+ขั้นตอนนี้ใช้เวลาประมาณ 5-10 นาที รวมรอ provision
+
+step 1: ซื้อ hostinger vps
+
+1. เปิดลิงก์ hostinger.com/vps/openclaw-hosting
+
+เลือกแพลน kvm2 ขึ้นไป (ram 8gb แนะนำ) สร้างบัญชี / login
+
+1. ชำระเงิน
+
+⚠️
+
+⚠️ ไม่ต้องซื้อ nexos ai credits — ข้ามไปได้เลย
+
+⚠️ ไม่ต้องใส" href="#setup-vps-deploy">ซื้อ VPS + Deploy OpenClaw </a>
+<a class="nav-link" data-search="ตั้งค่า auth ด้วย chatgpt chatgpt oauth
+
+ssh 2
+
+part 2 — ตั้งค่า auth ด้วย chatgpt subscription
+
+ขั้นตอนนี้เชื่อม openclaw กับ chatgpt account ของคุณผ่าน oauth login
+
+step 3: ssh เข้า vps
+
+เปิด terminal (mac) หรือ browser terminal ของ hostinger: terminal
+
+copy ssh root@your_server_ip
+
+แทน your_server_ip ด้วย ip จริงของ vps (" href="#setup-auth-chatgpt">ตั้งค่า Auth ด้วย ChatGPT </a>
+<a class="nav-link" data-search="เข้า dashboard ssh-tunnel 3
+
+part 3 — เข้า dashboard ผ่าน ssh tunnel
+
+dashboard คือหน้าควบคุม openclaw ทั้งหมด — ดู agents, ตั้งค่า, จัดการ models
+
+step 7: สร้าง ssh tunnel
+
+เปิด terminal ใหม่ บนคอมของตัวเอง (ไม่ใช่ vps): terminal
+
+copy ssh -l 3000:localhost:gateway_port root@your_server_ip
+
+แทนค่า: •
+
+gateway_por" href="#setup-dashboard">เข้า Dashboard </a>
+<a class="nav-link" data-search="troubleshooting &amp; useful commands 3 steps troubleshooting
+
+commands docker
+
+อ่านแบบปกติ ทำทีละ step
+
+สารบัญ 2
+
+ปัญหาที่เจอบ่อย 3
+
+คำสั่งที่ใช้บ่อย รวมปัญหาที่เจอบ่อย + วิธีแก้ + คำสั่งที่ใช้บ่อย
+
+2 ปัญหาที่เจอบ่อย
+
+permission denied (อ่าน config ไม่ได้) terminal
+
+copy docker exec -it openclaw-j9zz-openclaw-1 chown -r 1000:1000 /data" href="#troubleshooting">Troubleshooting &amp; Useful Commands </a>
+</div>
+<div class="nav-group"><h4>Agent</h4>
+<a class="nav-link" data-search="ตั้งค่า ai ให้เป็นแบรนด์ของคุณ มี.ค. 2569 2 steps
+
+agent brand-brief
+
+อ่านแบบปกติ ทำทีละ step
+
+step 7 — ตั้งชื่อ ai
+
+ให้ ai มีตัวตน มีชื่อ — ทีมจะรู้สึกเหมือนมีเพื่อนร่วมงานคนใหม่
+
+ตัวอย่างชื่อ: 🤖 &quot;น้องเอ&quot; — เลขาเก่ง 🦊 &quot;น้องจิ้&quot; — ผู้ช่วยคล่องแคล่ว 🐱 &quot;มิ้นท์&quot; — ai สายครีเอทีฟ ⚡ &quot;สปาร์ค&quot; — ai สาย tech
+
+💡 💡 ชื่ออะไรก็ได้ที่ทีมจดจำ " href="#brand-setup">ตั้งค่า AI ให้เป็นแบรนด์ของคุณ </a>
+</div>
+<div class="nav-group"><h4>Use Case</h4>
+<a class="nav-link" data-search="สั่งทำ content ครบชุด มี.ค. 2569 4 steps
+
+use-case content
+
+อ่านแบบปกติ ทำทีละ step
+
+⚠️
+
+⚠️ ก่อนใช้งาน ต้องตั้งค่า api ก่อน → ดูวิธีที่หมวด ตั้งค่า api &amp; tools
+
+สารบัญ 9
+
+step 9 — ติดตั้ง content toolkit
+
+step 10 — สั่งทำรูปโพสต์ + caption ครบชุด
+
+step 11 — สั่งเขียน caption อย่างเดียว
+
+step 12 — สั่งทำรูปอย่างเดียว
+
+ste" href="#content-creation">สั่งทำ Content ครบชุด </a>
+<a class="nav-link" data-search="งานเลขา ai มี.ค. 2569 5 steps
+
+use-case productivity
+
+อ่านแบบปกติ ทำทีละ step
+
+⚠️
+
+⚠️ ก่อนใช้งาน ต้องตั้งค่า api ก่อน → ดูวิธีที่หมวด ตั้งค่า api &amp; tools
+
+สารบัญ ai ช่วยได้มากกว่าแค่ content!
+
+2 ค้นหา / สรุปข้อมูล
+
+3 brainstorm / วางแผน
+
+4 reminder / จัดการ task
+
+5 จำข้อมูลสำคัญ
+
+ai ช่วยได้มากกว่าแค่ content! " href="#ai-secretary">งานเลขา AI </a>
+</div>
+<div class="nav-group"><h4>Skill</h4>
+<a class="nav-link" data-search="prompt cheat sheet มี.ค. 2569 skill
+
+prompt prompt สำเร็จรูป — copy แล้ววางได้เลย!
+
+รวม prompt ที่ใช้บ่อยทั้งหมด แก้ข้อมูลในวงเล็บ [ ] แล้วส่งให้ ai ใน telegram
+
+🎨 ทำ content ครบชุด markdown
+
+copy ทำ content ครบชุดเรื่อง &quot;[x]&quot; กลุ่มเป้าหมาย [y]
+
+✍️ เขียน caption markdown
+
+copy เขียน caption fb เรื่อง [x] แบบ storytell" href="#prompt-cheat-sheet">Prompt Cheat Sheet </a>
+</div>
+<div class="nav-group"><h4>API &amp; Tools</h4>
+<a class="nav-link" data-search="ตั้งค่า kie.ai (สร้างรูป ai) ตั้งค่า api &amp; tools มี.ค. 2569
+
+2 steps image
+
+อ่านแบบปกติ ทำทีละ step
+
+kie.ai คืออะไร? kie.ai เป็นบริการสร้างรูปด้วย ai ที่ openclaw ใช้สำหรับ gen รูปโพสต์ รูปข่าว และ background ต่างๆ ราคาถูกกว่าใช้ api ตรง 30-50% เพราะเป็นระบบ credit-based จ่ายตามใช้
+
+2 ขั้นตอนตั้งค่า
+
+1. สมัครบัญชี เปิด https://" href="#setup-kie-ai">ตั้งค่า Kie.ai (สร้างรูป AI) </a>
+<a class="nav-link" data-search="ตั้งค่า brave search (ค้นหาข่าว) ตั้งค่า api &amp; tools มี.ค. 2569
+
+2 steps search
+
+อ่านแบบปกติ ทำทีละ step
+
+brave search api คืออะไร? brave search api ให้ ai ค้นหาข้อมูลบนอินเทอร์เน็ตได้แบบ real-time — หาข่าวล่าสุด ค้นหาข้อมูลคู่แข่ง เช็คเทรนด์ ฯลฯ มี free tier ให้ใช้ฟรี
+
+2 ขั้นตอนตั้งค่า
+
+1. สมัครบัญชี เปิด https://brave.com/search/" href="#setup-brave-search">ตั้งค่า Brave Search (ค้นหาข่าว) </a>
+<a class="nav-link" data-search="ตั้งค่า meta api (โพส facebook/ig) ตั้งค่า api &amp; tools มี.ค. 2569
+
+2 steps facebook
+
+instagram อ่านแบบปกติ
+
+ทำทีละ step meta api ทำอะไรได้?
+
+เชื่อม meta api แล้ว ai จะสามารถ: • โพส content ลง facebook page อัตโนมัติ • โพสลง instagram business • ตั้งเวลาโพสล่วงหน้า • ดึงข้อมูล insights
+
+⚠️
+
+⚠️ ขั้นตอนซับซ้อนกว่า api อื่น — แนะนำทำเป็น" href="#setup-meta-api">ตั้งค่า Meta API (โพส Facebook/IG) </a>
+<a class="nav-link" data-search="ตั้งค่า youtube api ตั้งค่า api &amp; tools มี.ค. 2569
+
+2 steps youtube
+
+google อ่านแบบปกติ
+
+ทำทีละ step youtube api ทำอะไรได้?
+
+เชื่อม youtube api แล้ว ai จะสามารถ: • ค้นหาวิดีโอ youtube • ดึงข้อมูล channel / video analytics • สร้าง script สำหรับ youtube content
+
+⚠️
+
+⚠️ ต้องมี google cloud account ก่อน — ถ้ายังไม่มีสมัครฟ" href="#setup-youtube-api">ตั้งค่า YouTube API </a>
+<a class="nav-link" data-search="tiktok — หมายเหตุ ตั้งค่า api &amp; tools มี.ค. 2569
+
+2 steps tiktok
+
+note อ่านแบบปกติ
+
+ทำทีละ step tiktok api — ยังไม่รองรับ
+
+ℹ️ ℹ️ openclaw ยังไม่รองรับ tiktok api โดยตรง ณ ตอนนี้ — อาจรองรับในอนาคต
+
+2 วิธีใช้งาน tiktok กับ ai ตอนนี้
+
+ให้ ai สร้าง content แล้ว copy ไปโพสเอง: สร้าง caption tiktok
+
+markdown copy
+
+เขียน c" href="#tiktok-note">TikTok — หมายเหตุ </a>
+</div>
+<div class="nav-group"><h4>Prompt Templates</h4>
+<a class="nav-link" data-search="📣 marketing — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป marketing
+
+prompt สำเร็จรูป
+
+รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+วางแผน content calendar วางแผน content 1 เดือน แบ่งตาม" href="#prompt-marketing">📣 Marketing — คำสั่งสำเร็จรูป </a>
+<a class="nav-link" data-search="💰 sales — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป sales
+
+prompt สำเร็จรูป
+
+รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+เขียน sales pitch สร้าง pitch ที่โน้มน้าวใจใน 2 นาที
+
+prom" href="#prompt-sales">💰 Sales — คำสั่งสำเร็จรูป </a>
+<a class="nav-link" data-search="📝 admin — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป admin
+
+prompt สำเร็จรูป
+
+รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+สรุปประชุม สรุป meeting notes จาก transcript หรือจดเอง
+
+pr" href="#prompt-admin">📝 Admin — คำสั่งสำเร็จรูป </a>
+<a class="nav-link" data-search="🎨 content creator — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป content-creator
+
+prompt สำเร็จรูป
+
+รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+เขียน script วิดีโอ เขียน script สำหรับ reels/ti" href="#prompt-creator">🎨 Content Creator — คำสั่งสำเร็จรูป </a>
+<a class="nav-link" data-search="🛒 affiliate — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป affiliate
+
+prompt สำเร็จรูป
+
+รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+เขียนรีวิวสินค้า รีวิวสินค้าแบบน่าเชื่อถือ ชวนซื้อ
+
+pr" href="#prompt-affiliate">🛒 Affiliate — คำสั่งสำเร็จรูป </a>
+<a class="nav-link" data-search="🎵 tiktoker — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป tiktok
+
+prompt สำเร็จรูป
+
+รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+hook 3 วินาที สร้าง opening hook ที่หยุด scroll ได้
+
+prom" href="#prompt-tiktoker">🎵 TikToker — คำสั่งสำเร็จรูป </a>
+<a class="nav-link" data-search="💼 freelancer — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป freelancer
+
+prompt สำเร็จรูป
+
+รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+เขียน proposal ส่งลูกค้า proposal ที่ดูมืออาชีพ ปิดงา" href="#prompt-freelancer">💼 Freelancer — คำสั่งสำเร็จรูป </a>
+<a class="nav-link" data-search="📢 ads optimizer — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป ads
+
+prompt สำเร็จรูป
+
+รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+เขียน ad copy fb/ig เขียน ad copy 5 ตัว สำหรับ a/b test
+
+pro" href="#prompt-ads">📢 Ads Optimizer — คำสั่งสำเร็จรูป </a>
+<a class="nav-link" data-search="⚡ ai automation — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป automation
+
+ai prompt
+
+สำเร็จรูป รวม 7 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+ออกแบบ workflow automation ออกแบบระบบ automation ส" href="#prompt-automation">⚡ AI Automation — คำสั่งสำเร็จรูป </a>
+<a class="nav-link" data-search="💻 web/app builder — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป web
+
+app prompt
+
+สำเร็จรูป รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+เขียน wireframe spec อธิบาย wireframe ให้ designer/dev เ" href="#prompt-web">💻 Web/App Builder — คำสั่งสำเร็จรูป </a>
+<a class="nav-link" data-search="📚 e-book / digital product — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป ebook
+
+digital-product prompt
+
+สำเร็จรูป รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+เขียน outline หนังสือ สร้าง outline หนังสื" href="#prompt-ebook">📚 E-book / Digital Product — คำสั่งสำเร็จรูป </a>
+<a class="nav-link" data-search="🤖 ai tools builder — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป ai-tools
+
+builder prompt
+
+สำเร็จรูป รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+ออกแบบ ai tool concept conceptualize ai tool ตั" href="#prompt-aitools">🤖 AI Tools Builder — คำสั่งสำเร็จรูป </a>
+</div>
+</aside><main class="content">
+<section class="hero"><h1>Openclaw Knowledge Export</h1><p>เอกสารรวมเนื้อหา Openclaw ที่จัดระเบียบใหม่ให้อ่านง่าย ใช้งานสะดวก และพร้อมเปิดอ่านหรือส่งต่อได้ทันที</p></section>
+<div class="topnote">เรียบเรียงใหม่เป็นหมวดหมู่ ลดความซ้ำซ้อน และปรับรูปแบบให้อ่านต่อเนื่องได้ง่าย</div>
+<h2 class="section-title">Setup</h2>
+<article class="article article-card" id="setup-checklist" data-search="สิ่งที่ต้องเตรียม สิ่งที่ต้องเตรียมก่อนเริ่ม workshop เตรียมของพร้อมก่อนเริ่ม จะได้ลื่นไหลไม่ต้องรอ!
+
+✅ hostinger vps — แนะนำ kvm2 ขึ้นไป (ram 8gb)
+
+✅ chatgpt plus subscription ($20/เดือน) — ใช้ oauth login
+
+✅ ssh client — terminal บน mac หรือ browser terminal ของ hostinger
+
+✅ telegram app — ติดตั้งบนมือถือ + คอมพิวเตอร์
+
+✅ บัตรเครดิต/debit — สำหรับสมัคร hostinger vps
+
+⚠️ ไม่ต้องซื้อ nexos ai credits ตอน checkout — ข้ามไปได้เลย
+
+ไม่ต้องใส่ api key ตอน checkout — ข้ามไปได้เลย
+
+ทำไมต้อง chatgpt subscription?
+
+openclaw ใช้ chatgpt ผ่าน oauth login ซึ่งต้องมี subscription ถึงจะใช้ model ดีๆ ได้ ราคา $20/เดือน (~700 บาท) ใช้ได้ทั้งทีม!
+
+ทางเลือกอื่น
+
+ถ้าไม่อยากจ่าย subscription รายเดือน สามารถใช้ openai api key แทนได้ (จ่ายตามใช้ ~$5-15/เดือน) หรือใช้ openrouter
+
+ซื้อ vps + deploy openclaw">
+<div><span class="badge">Setup</span><span class="badge">Openclaw</span></div>
+<h2>สิ่งที่ต้องเตรียม </h2>
+<p>สิ่งที่ต้องเตรียมก่อนเริ่ม Workshop เตรียมของพร้อมก่อนเริ่ม จะได้ลื่นไหลไม่ต้องรอ!</p>
+<ul>
+<li>✅ Hostinger VPS — แนะนำ KVM2 ขึ้นไป (RAM 8GB)</li>
+<li>✅ ChatGPT Plus Subscription ($20/เดือน) — ใช้ OAuth Login</li>
+<li>✅ SSH Client — Terminal บน Mac หรือ Browser Terminal ของ Hostinger</li>
+<li>✅ Telegram App — ติดตั้งบนมือถือ + คอมพิวเตอร์</li>
+<li>✅ บัตรเครดิต/Debit — สำหรับสมัคร Hostinger VPS</li>
+<li>⚠️ ไม่ต้องซื้อ Nexos AI Credits ตอน checkout — ข้ามไปได้เลย</li>
+</ul>
+<p><strong>ไม่ต้องใส่ API Key ตอน checkout — ข้ามไปได้เลย</strong></p>
+<h3>ทำไมต้อง ChatGPT Subscription?</h3>
+<p>OpenClaw ใช้ ChatGPT ผ่าน OAuth Login ซึ่งต้องมี subscription ถึงจะใช้ model ดีๆ ได้ ราคา $20/เดือน (~700 บาท) ใช้ได้ทั้งทีม!</p>
+<h3>ทางเลือกอื่น</h3>
+<p>ถ้าไม่อยากจ่าย subscription รายเดือน สามารถใช้ OpenAI API key แทนได้ (จ่ายตามใช้ ~$5-15/เดือน) หรือใช้ OpenRouter</p>
+<p><strong>ซื้อ VPS + Deploy OpenClaw</strong></p>
+</article>
+<article class="article article-card" id="setup-vps-deploy" data-search="ซื้อ vps + deploy openclaw part 1 — ซื้อ vps + deploy openclaw
+
+ขั้นตอนนี้ใช้เวลาประมาณ 5-10 นาที รวมรอ provision
+
+step 1: ซื้อ hostinger vps
+
+1. เปิดลิงก์ hostinger.com/vps/openclaw-hosting
+
+เลือกแพลน kvm2 ขึ้นไป (ram 8gb แนะนำ) สร้างบัญชี / login
+
+1. ชำระเงิน
+
+⚠️
+
+⚠️ ไม่ต้องซื้อ nexos ai credits — ข้ามไปได้เลย
+
+⚠️ ไม่ต้องใส่ api key ตอน checkout — ข้ามไปได้เลย
+
+💡 เลือกแพลนยาวกว่าจะถูกกว่ารายเดือน
+
+step 2: จดข้อมูล server
+
+หลัง deploy เสร็จ เข้าที่ hpanel → vps → overview จดไว้: •
+
+server ip (เช่น 187.127.98.204) root password
+
+container name (ดูจาก docker manager เช่น openclaw-j9zz-openclaw-1)
+
+• gateway token (ดูจาก docker manager → manage → environment → openclaw_gateway_token)
+
+⚠️ gateway token = กุญแจเข้าระบบ — ห้ามทำหาย!
+
+step 3: ตั้ง vps password + deploy
+
+1. ตั้ง vps password
+
+กด deploy รอ hostinger provision (~2-3 นาที)
+
+1. สถานะเปลี่ยนเป็น &#x27;running&#x27; = สำเร็จ!
+
+ตั้งค่า auth ด้วย chatgpt">
+<div><span class="badge">Setup</span><span class="badge">Openclaw</span></div>
+<h2>ซื้อ VPS + Deploy OpenClaw </h2>
+<h3>Part 1 — ซื้อ VPS + Deploy OpenClaw</h3>
+<h3>ขั้นตอนนี้ใช้เวลาประมาณ 5-10 นาที รวมรอ provision</h3>
+<h3>Step 1: ซื้อ Hostinger VPS</h3>
+<ul>
+<li>เปิดลิงก์ hostinger.com/vps/openclaw-hosting</li>
+</ul>
+<p><strong>เลือกแพลน KVM2 ขึ้นไป (RAM 8GB แนะนำ) สร้างบัญชี / login</strong></p>
+<ul>
+<li>ชำระเงิน</li>
+<li>⚠️</li>
+<li>⚠️ ไม่ต้องซื้อ Nexos AI Credits — ข้ามไปได้เลย</li>
+<li>⚠️ ไม่ต้องใส่ API Key ตอน checkout — ข้ามไปได้เลย</li>
+</ul>
+<p><strong>💡 เลือกแพลนยาวกว่าจะถูกกว่ารายเดือน</strong></p>
+<h3>Step 2: จดข้อมูล Server</h3>
+<p><strong>หลัง deploy เสร็จ เข้าที่ hPanel → VPS → Overview จดไว้: •</strong></p>
+<p><strong>Server IP (เช่น 187.127.98.204) Root Password</strong></p>
+<p>Container Name (ดูจาก Docker Manager เช่น openclaw-j9zz-openclaw-1)</p>
+<ul>
+<li>Gateway Token (ดูจาก Docker Manager → Manage → Environment → OPENCLAW_GATEWAY_TOKEN)</li>
+<li>⚠️ Gateway Token = กุญแจเข้าระบบ — ห้ามทำหาย!</li>
+</ul>
+<h3>Step 3: ตั้ง VPS Password + Deploy</h3>
+<ul>
+<li>ตั้ง VPS Password</li>
+</ul>
+<p><strong>กด Deploy รอ Hostinger provision (~2-3 นาที)</strong></p>
+<ul>
+<li>สถานะเปลี่ยนเป็น &#x27;Running&#x27; = สำเร็จ!</li>
+</ul>
+<p><strong>ตั้งค่า Auth ด้วย ChatGPT</strong></p>
+</article>
+<article class="article article-card" id="setup-auth-chatgpt" data-search="ตั้งค่า auth ด้วย chatgpt chatgpt oauth
+
+ssh 2
+
+part 2 — ตั้งค่า auth ด้วย chatgpt subscription
+
+ขั้นตอนนี้เชื่อม openclaw กับ chatgpt account ของคุณผ่าน oauth login
+
+step 3: ssh เข้า vps
+
+เปิด terminal (mac) หรือ browser terminal ของ hostinger: terminal
+
+copy ssh root@your_server_ip
+
+แทน your_server_ip ด้วย ip จริงของ vps (เช่น 187.127.98.204)
+
+💡 หรือใช้ browser terminal ของ hostinger ได้เลย → hpanel → vps → browser terminal
+
+step 4: เข้าไปใน container
+
+terminal copy
+
+docker exec -it openclaw-j9zz-openclaw-1 sh ℹ️
+
+ชื่อ container อาจต่างกัน — ดูจาก docker ps ก่อนก็ได้
+
+ถ้าไม่แน่ใจชื่อ container: terminal
+
+copy docker ps
+
+ดูคอลัมน์ names จะเห็นชื่อเช่น openclaw-j9zz-openclaw-1
+
+step 5: รัน configure + oauth login
+
+terminal copy
+
+openclaw configure 1.
+
+เลือก openai เป็น provider เลือก auth login (oauth)
+
+จะได้ url แบบนี้: terminal
+
+copy 1.
+
+copy url นี้ → เปิดใน browser บนคอมพิวเตอร์ของตัวเอง (ไม่ใช่บน vps)
+
+login ด้วย chatgpt account ปกติ หลัง login จะ redirect ไปหน้า localhost:1455/auth/callback?code=...
+
+⚠️
+
+⚠️ หน้าจะ error — ไม่เป็นไร! copy url ทั้งหมดจาก address bar
+
+ตัวอย่าง url ที่ต้อง copy:
+
+terminal copy
+
+1. วาง url ทั้งหมด ลงใน terminal ที่ขึ้น &#x27;paste the redirect url&#x27;
+
+กด enter → เลือก models ที่ต้องการ → สำเร็จ!
+
+step 6: ออกจาก container + restart
+
+terminal copy
+
+exit docker restart openclaw-j9zz-openclaw-1
+
+💡 หลัง restart รอ 10-20 วินาทีก่อนใช้งาน
+
+เข้า dashboard">
+<div><span class="badge">Setup</span><span class="badge">Openclaw</span></div>
+<h2>ตั้งค่า Auth ด้วย ChatGPT </h2>
+<p><strong>chatgpt oauth</strong></p>
+<p><strong>ssh 2</strong></p>
+<h3>Part 2 — ตั้งค่า Auth ด้วย ChatGPT Subscription</h3>
+<h3>ขั้นตอนนี้เชื่อม OpenClaw กับ ChatGPT account ของคุณผ่าน OAuth Login</h3>
+<h3>Step 3: SSH เข้า VPS</h3>
+<p>เปิด Terminal (Mac) หรือ Browser Terminal ของ Hostinger: TERMINAL</p>
+<p><strong>Copy ssh root@YOUR_SERVER_IP</strong></p>
+<p><strong>แทน YOUR_SERVER_IP ด้วย IP จริงของ VPS (เช่น 187.127.98.204)</strong></p>
+<p>💡 หรือใช้ Browser Terminal ของ Hostinger ได้เลย → hPanel → VPS → Browser terminal</p>
+<h3>Step 4: เข้าไปใน Container</h3>
+<p><strong>TERMINAL Copy</strong></p>
+<p><strong>docker exec -it openclaw-j9zz-openclaw-1 sh ℹ️</strong></p>
+<p><strong>ชื่อ container อาจต่างกัน — ดูจาก docker ps ก่อนก็ได้</strong></p>
+<p><strong>ถ้าไม่แน่ใจชื่อ container: TERMINAL</strong></p>
+<p><strong>Copy docker ps</strong></p>
+<p><strong>ดูคอลัมน์ NAMES จะเห็นชื่อเช่น openclaw-j9zz-openclaw-1</strong></p>
+<h3>Step 5: รัน Configure + OAuth Login</h3>
+<p><strong>TERMINAL Copy</strong></p>
+<p>openclaw configure 1.</p>
+<p><strong>เลือก OpenAI เป็น provider เลือก Auth Login (OAuth)</strong></p>
+<p><strong>จะได้ URL แบบนี้: TERMINAL</strong></p>
+<p>Copy 1.</p>
+<p>Copy URL นี้ → เปิดใน browser บนคอมพิวเตอร์ของตัวเอง (ไม่ใช่บน VPS)</p>
+<p>Login ด้วย ChatGPT account ปกติ หลัง login จะ redirect ไปหน้า localhost:1455/auth/callback?code=...</p>
+<ul>
+<li>⚠️</li>
+<li>⚠️ หน้าจะ error — ไม่เป็นไร! Copy URL ทั้งหมดจาก address bar</li>
+</ul>
+<h3>ตัวอย่าง URL ที่ต้อง copy:</h3>
+<p><strong>TERMINAL Copy</strong></p>
+<ul>
+<li>วาง URL ทั้งหมด ลงใน terminal ที่ขึ้น &#x27;Paste the redirect URL&#x27;</li>
+</ul>
+<p>กด Enter → เลือก Models ที่ต้องการ → สำเร็จ!</p>
+<h3>Step 6: ออกจาก Container + Restart</h3>
+<p><strong>TERMINAL Copy</strong></p>
+<p><strong>exit docker restart openclaw-j9zz-openclaw-1</strong></p>
+<p><strong>💡 หลัง restart รอ 10-20 วินาทีก่อนใช้งาน</strong></p>
+<p><strong>เข้า Dashboard</strong></p>
+</article>
+<article class="article article-card" id="setup-dashboard" data-search="เข้า dashboard ssh-tunnel 3
+
+part 3 — เข้า dashboard ผ่าน ssh tunnel
+
+dashboard คือหน้าควบคุม openclaw ทั้งหมด — ดู agents, ตั้งค่า, จัดการ models
+
+step 7: สร้าง ssh tunnel
+
+เปิด terminal ใหม่ บนคอมของตัวเอง (ไม่ใช่ vps): terminal
+
+copy ssh -l 3000:localhost:gateway_port root@your_server_ip
+
+แทนค่า: •
+
+gateway_port → port จาก docker manager (เช่น 54091)
+
+your_server_ip → ip ของ vps ตัวอย่างจริง:
+
+terminal copy
+
+ssh -l 3000:localhost:54091 root@187.127.98.204
+
+step 8: เปิด dashboard
+
+เปิด browser แล้วไปที่: terminal
+
+copy 1.
+
+ใส่ gateway token กด connect
+
+เข้า dashboard ได้แล้ว! 🎉
+
+⚠️
+
+⚠️ ต้องเข้าผ่าน localhost เท่านั้น — เปิดผ่าน http://ip:port ตรงไม่ได้ (จะขึ้น &#x27;control ui requires device identity&#x27;)
+
+หา gateway token ไม่เจอ? ไปที่ hpanel → docker manager → กด manage ที่ project → ดู environment → openclaw_gateway_token
+
+troubleshooting &amp; useful commands">
+<div><span class="badge">Setup</span><span class="badge">Openclaw</span></div>
+<h2>เข้า Dashboard </h2>
+<p><strong>ssh-tunnel 3</strong></p>
+<h3>Part 3 — เข้า Dashboard ผ่าน SSH Tunnel</h3>
+<p>Dashboard คือหน้าควบคุม OpenClaw ทั้งหมด — ดู agents, ตั้งค่า, จัดการ models</p>
+<h3>Step 7: สร้าง SSH Tunnel</h3>
+<p><strong>เปิด Terminal ใหม่ บนคอมของตัวเอง (ไม่ใช่ VPS): TERMINAL</strong></p>
+<p><strong>Copy ssh -L 3000:localhost:GATEWAY_PORT root@YOUR_SERVER_IP</strong></p>
+<p><strong>แทนค่า: •</strong></p>
+<p><strong>GATEWAY_PORT → port จาก Docker Manager (เช่น 54091)</strong></p>
+<p>YOUR_SERVER_IP → IP ของ VPS ตัวอย่างจริง:</p>
+<p><strong>TERMINAL Copy</strong></p>
+<p><strong>ssh -L 3000:localhost:54091 root@187.127.98.204</strong></p>
+<h3>Step 8: เปิด Dashboard</h3>
+<p><strong>เปิด browser แล้วไปที่: TERMINAL</strong></p>
+<p>Copy 1.</p>
+<p><strong>ใส่ Gateway Token กด Connect</strong></p>
+<p><strong>เข้า Dashboard ได้แล้ว! 🎉</strong></p>
+<ul>
+<li>⚠️</li>
+<li>⚠️ ต้องเข้าผ่าน localhost เท่านั้น — เปิดผ่าน http://IP:PORT ตรงไม่ได้ (จะขึ้น &#x27;control ui requires device identity&#x27;)</li>
+</ul>
+<p>หา Gateway Token ไม่เจอ? ไปที่ hPanel → Docker Manager → กด Manage ที่ project → ดู Environment → OPENCLAW_GATEWAY_TOKEN</p>
+<p><strong>Troubleshooting &amp; Useful Commands</strong></p>
+</article>
+<article class="article article-card" id="troubleshooting" data-search="troubleshooting &amp; useful commands 3 steps troubleshooting
+
+commands docker
+
+อ่านแบบปกติ ทำทีละ step
+
+สารบัญ 2
+
+ปัญหาที่เจอบ่อย 3
+
+คำสั่งที่ใช้บ่อย รวมปัญหาที่เจอบ่อย + วิธีแก้ + คำสั่งที่ใช้บ่อย
+
+2 ปัญหาที่เจอบ่อย
+
+permission denied (อ่าน config ไม่ได้) terminal
+
+copy docker exec -it openclaw-j9zz-openclaw-1 chown -r 1000:1000 /data/.openclaw
+
+docker restart openclaw-j9zz-openclaw-1 &#x27;no api key found for provider&#x27;
+
+แปลว่า oauth ยังไม่สำเร็จ — ทำ step 4-6 ในบทความ &#x27;ตั้งค่า auth ด้วย chatgpt&#x27; ใหม่
+
+&#x27;control ui requires device identity&#x27; เข้า dashboard ผ่าน http://ip:port ตรงไม่ได้ — ต้องใช้ ssh tunnel (ดูบทความ &#x27;เข้า dashboard&#x27;)
+
+&#x27;docker: command not found&#x27; คุณอยู่ข้างใน container อยู่ — พิมพ์ exit ออกมาก่อน แล้วค่อยรัน docker command
+
+ลืม gateway token hpanel → docker manager → กด manage ที่ project → ดู openclaw_gateway_token ใน environment
+
+ไม่รู้ชื่อ container terminal
+
+copy docker ps
+
+ดูคอลัมน์ names จะเห็นชื่อเช่น openclaw-j9zz-openclaw-1
+
+token หมดอายุ oauth token อาจหมดอายุ ต้องทำ oauth login ใหม่ (step 4-6)
+
+ทางเลือก: ใช้ openai api key (pay-per-use ~$5-15/เดือน) หรือ openrouter
+
+3 คำสั่งที่ใช้บ่อย
+
+• ดู container ที่รัน: docker ps
+
+เข้าใน container: docker exec -it container_name sh
+
+ดู logs: docker logs container_name -f
+
+• restart: docker restart container_name
+
+ดู config: docker exec -it container_name cat /data/.openclaw/openclaw.json
+
+เปลี่ยน model: docker exec -it container_name openclaw models set model_name
+
+• ดู models ที่ใช้ได้: docker exec -it container_name openclaw models list
+
+ตั้งค่า ai ให้เป็นแบรนด์ของคุณ">
+<div><span class="badge">Setup</span><span class="badge">Openclaw</span></div>
+<h2>Troubleshooting &amp; Useful Commands </h2>
+<p><strong>3 steps troubleshooting</strong></p>
+<p><strong>commands docker</strong></p>
+<p><strong>อ่านแบบปกติ ทำทีละ Step</strong></p>
+<p><strong>สารบัญ 2</strong></p>
+<p><strong>ปัญหาที่เจอบ่อย 3</strong></p>
+<p><strong>คำสั่งที่ใช้บ่อย รวมปัญหาที่เจอบ่อย + วิธีแก้ + คำสั่งที่ใช้บ่อย</strong></p>
+<p><strong>2 ปัญหาที่เจอบ่อย</strong></p>
+<p><strong>Permission Denied (อ่าน config ไม่ได้) TERMINAL</strong></p>
+<p>Copy docker exec -it openclaw-j9zz-openclaw-1 chown -R 1000:1000 /data/.openclaw</p>
+<p>docker restart openclaw-j9zz-openclaw-1 &#x27;No API key found for provider&#x27;</p>
+<p>แปลว่า OAuth ยังไม่สำเร็จ — ทำ Step 4-6 ในบทความ &#x27;ตั้งค่า Auth ด้วย ChatGPT&#x27; ใหม่</p>
+<p>&#x27;control ui requires device identity&#x27; เข้า Dashboard ผ่าน http://IP:PORT ตรงไม่ได้ — ต้องใช้ SSH Tunnel (ดูบทความ &#x27;เข้า Dashboard&#x27;)</p>
+<p>&#x27;docker: command not found&#x27; คุณอยู่ข้างใน container อยู่ — พิมพ์ exit ออกมาก่อน แล้วค่อยรัน docker command</p>
+<p>ลืม Gateway Token hPanel → Docker Manager → กด Manage ที่ project → ดู OPENCLAW_GATEWAY_TOKEN ใน Environment</p>
+<p><strong>ไม่รู้ชื่อ Container TERMINAL</strong></p>
+<p><strong>Copy docker ps</strong></p>
+<p><strong>ดูคอลัมน์ NAMES จะเห็นชื่อเช่น openclaw-j9zz-openclaw-1</strong></p>
+<p>Token หมดอายุ OAuth token อาจหมดอายุ ต้องทำ OAuth login ใหม่ (Step 4-6)</p>
+<p>ทางเลือก: ใช้ OpenAI API key (pay-per-use ~$5-15/เดือน) หรือ OpenRouter</p>
+<p><strong>3 คำสั่งที่ใช้บ่อย</strong></p>
+<ul>
+<li>ดู container ที่รัน: docker ps</li>
+</ul>
+<p><strong>เข้าใน container: docker exec -it CONTAINER_NAME sh</strong></p>
+<p><strong>ดู logs: docker logs CONTAINER_NAME -f</strong></p>
+<ul>
+<li>Restart: docker restart CONTAINER_NAME</li>
+</ul>
+<p>ดู config: docker exec -it CONTAINER_NAME cat /data/.openclaw/openclaw.json</p>
+<p>เปลี่ยน model: docker exec -it CONTAINER_NAME openclaw models set MODEL_NAME</p>
+<ul>
+<li>ดู models ที่ใช้ได้: docker exec -it CONTAINER_NAME openclaw models list</li>
+</ul>
+<p><strong>ตั้งค่า AI ให้เป็นแบรนด์ของคุณ</strong></p>
+</article>
+<h2 class="section-title">Agent</h2>
+<article class="article article-card" id="brand-setup" data-search="ตั้งค่า ai ให้เป็นแบรนด์ของคุณ มี.ค. 2569 2 steps
+
+agent brand-brief
+
+อ่านแบบปกติ ทำทีละ step
+
+step 7 — ตั้งชื่อ ai
+
+ให้ ai มีตัวตน มีชื่อ — ทีมจะรู้สึกเหมือนมีเพื่อนร่วมงานคนใหม่
+
+ตัวอย่างชื่อ: 🤖 &quot;น้องเอ&quot; — เลขาเก่ง 🦊 &quot;น้องจิ้&quot; — ผู้ช่วยคล่องแคล่ว 🐱 &quot;มิ้นท์&quot; — ai สายครีเอทีฟ ⚡ &quot;สปาร์ค&quot; — ai สาย tech
+
+💡 💡 ชื่ออะไรก็ได้ที่ทีมจดจำ — ai จะเรียกตัวเองด้วยชื่อนี้!
+
+step 8 — setup ai ด้วย brand brief
+
+นี่คือขั้นตอนสำคัญที่สุด — ส่ง prompt นี้ให้ ai ใน telegram เพื่อสร้าง &quot;สมอง&quot; ให้รู้จักแบรนด์คุณ
+
+copy prompt ด้านล่าง แก้ข้อมูลใน [ ] ตาม brand brief แล้ววางใน telegram: markdown
+
+copy ตั้งค่าระบบให้ตามข้อมูลด้านล่างนี้
+
+ชื่อ ai: [ชื่อที่ตั้งไว้] emoji: [เลือก emoji 1 ตัว]
+
+สร้างไฟล์ 3 ไฟล์ให้ทั้ง: 📄 ไฟล์ที่ 1: soul.md — บุคลิกของ ai
+
+- ใช้ชื่อกำหนด เรียกตัวเองด้วยชื่อนี้เสมอ
+
+- เรียกผู้ใช้ว่า [ชื่อเล่น หรือ &quot;หัวหน้า&quot;]
+
+- โทนเสียง: [professional / friendly / สนุกสนาน / อบอุ่น]
+
+- ภาษาหลัก: [ไทย / อังกฤษ / ทั้งสอง]
+
+- ตอบประเด็น ตรงประเด็น ไม่เวิ่นเว้อ
+
+- กล้ามีความเห็น ไม่ตอบว่า &quot;แล้วแต่&quot; หรือ &quot;ขึ้นอยู่กับ&quot;
+
+- กฎ: - ห้ามส่ง email/ข้อความออกภายนอกโดยไม่ถาม
+
+- ห้ามลงไฟล์โดยไม่ถาม
+
+- ห้ามเปิดเผยข้อมูลบริษัท / api key / password
+
+- ทำได้: สรุปข้อมูล, เขียน content, ค้นหาข่าว, brainstorm, จัดการ task, ตั้ง reminder
+
+📄 ไฟล์ที่ 2: user.md — ข้อมูลเจ้าของ
+
+- ชื่อ: [ชื่อ-นามสกุล]
+
+- ตำแหน่ง: [ตำแหน่ง]
+
+- บริษัท: [ชื่อบริษัท]
+
+- อุตสาหกรรม: [ประเภทอุตสาหกรรม]
+
+- สินค้า/บริการหลัก: [ระบุ]
+
+- กลุ่มเป้าหมาย: [ระบุ]
+
+- timezone: asia/bangkok 📄 ไฟล์ที่ 3: memory.md — ความจำเริ่มต้น
+
+- ข้อมูลเพิ่มเติมจาก brand brief
+
+- usp / จุดเด่น: [ระบุ]
+
+- เว็บไซต์: [url]
+
+- social media: [fb / ig / line / etc.]
+
+- ข้อมูลสำคัญอื่นๆ: [ระบุ] --- brand brief ---
+
+[วาง brand brief ตรงนี้] ℹ️
+
+ℹ️ ai จะสร้าง 3 ไฟล์ให้อัตโนมัติ — ทดสอบโดยส่ง &quot;แนะนำตัวหน่อย&quot; แล้ว ai จะตอบด้วยชื่อที่ตั้ง + รู้จักแบรนด์!
+
+💡 💡 อยากเปลี่ยนบุคลิก ai ทีหลัง? ส่ง &quot;แก้ soul.md ให้โทนเสียง [ใหม่]&quot;
+
+สั่งทำ content ครบชุด">
+<div><span class="badge">Agent</span><span class="badge">Openclaw</span></div>
+<h2>ตั้งค่า AI ให้เป็นแบรนด์ของคุณ </h2>
+<p><strong>มี.ค. 2569 2 steps</strong></p>
+<p><strong>agent brand-brief</strong></p>
+<p><strong>อ่านแบบปกติ ทำทีละ Step</strong></p>
+<h3>Step 7 — ตั้งชื่อ AI</h3>
+<p><strong>ให้ AI มีตัวตน มีชื่อ — ทีมจะรู้สึกเหมือนมีเพื่อนร่วมงานคนใหม่</strong></p>
+<h3>ตัวอย่างชื่อ: 🤖 &quot;น้องเอ&quot; — เลขาเก่ง 🦊 &quot;น้องจิ้&quot; — ผู้ช่วยคล่องแคล่ว 🐱 &quot;มิ้นท์&quot; — AI สายครีเอทีฟ ⚡ &quot;สปาร์ค&quot; — AI สาย tech</h3>
+<p>💡 💡 ชื่ออะไรก็ได้ที่ทีมจดจำ — AI จะเรียกตัวเองด้วยชื่อนี้!</p>
+<h3>Step 8 — Setup AI ด้วย Brand Brief</h3>
+<p>นี่คือขั้นตอนสำคัญที่สุด — ส่ง prompt นี้ให้ AI ใน Telegram เพื่อสร้าง &quot;สมอง&quot; ให้รู้จักแบรนด์คุณ</p>
+<p>Copy prompt ด้านล่าง แก้ข้อมูลใน [ ] ตาม Brand Brief แล้ววางใน Telegram: MARKDOWN</p>
+<p><strong>Copy ตั้งค่าระบบให้ตามข้อมูลด้านล่างนี้</strong></p>
+<p><strong>ชื่อ AI: [ชื่อที่ตั้งไว้] Emoji: [เลือก emoji 1 ตัว]</strong></p>
+<p><strong>สร้างไฟล์ 3 ไฟล์ให้ทั้ง: 📄 ไฟล์ที่ 1: SOUL.md — บุคลิกของ AI</strong></p>
+<ul>
+<li>- ใช้ชื่อกำหนด เรียกตัวเองด้วยชื่อนี้เสมอ</li>
+<li>- เรียกผู้ใช้ว่า [ชื่อเล่น หรือ &quot;หัวหน้า&quot;]</li>
+<li>- โทนเสียง: [professional / friendly / สนุกสนาน / อบอุ่น]</li>
+<li>- ภาษาหลัก: [ไทย / อังกฤษ / ทั้งสอง]</li>
+<li>- ตอบประเด็น ตรงประเด็น ไม่เวิ่นเว้อ</li>
+<li>- กล้ามีความเห็น ไม่ตอบว่า &quot;แล้วแต่&quot; หรือ &quot;ขึ้นอยู่กับ&quot;</li>
+<li>- กฎ: - ห้ามส่ง email/ข้อความออกภายนอกโดยไม่ถาม</li>
+<li>- ห้ามลงไฟล์โดยไม่ถาม</li>
+<li>- ห้ามเปิดเผยข้อมูลบริษัท / API key / password</li>
+<li>- ทำได้: สรุปข้อมูล, เขียน content, ค้นหาข่าว, brainstorm, จัดการ task, ตั้ง reminder</li>
+</ul>
+<p><strong>📄 ไฟล์ที่ 2: USER.md — ข้อมูลเจ้าของ</strong></p>
+<ul>
+<li>- ชื่อ: [ชื่อ-นามสกุล]</li>
+<li>- ตำแหน่ง: [ตำแหน่ง]</li>
+<li>- บริษัท: [ชื่อบริษัท]</li>
+<li>- อุตสาหกรรม: [ประเภทอุตสาหกรรม]</li>
+<li>- สินค้า/บริการหลัก: [ระบุ]</li>
+<li>- กลุ่มเป้าหมาย: [ระบุ]</li>
+<li>- Timezone: Asia/Bangkok 📄 ไฟล์ที่ 3: MEMORY.md — ความจำเริ่มต้น</li>
+<li>- ข้อมูลเพิ่มเติมจาก Brand Brief</li>
+<li>- USP / จุดเด่น: [ระบุ]</li>
+<li>- เว็บไซต์: [URL]</li>
+<li>- Social Media: [FB / IG / LINE / etc.]</li>
+<li>- ข้อมูลสำคัญอื่นๆ: [ระบุ] --- Brand Brief ---</li>
+</ul>
+<p><strong>[วาง Brand Brief ตรงนี้] ℹ️</strong></p>
+<p>ℹ️ AI จะสร้าง 3 ไฟล์ให้อัตโนมัติ — ทดสอบโดยส่ง &quot;แนะนำตัวหน่อย&quot; แล้ว AI จะตอบด้วยชื่อที่ตั้ง + รู้จักแบรนด์!</p>
+<p>💡 💡 อยากเปลี่ยนบุคลิก AI ทีหลัง? ส่ง &quot;แก้ SOUL.md ให้โทนเสียง [ใหม่]&quot;</p>
+<p><strong>สั่งทำ Content ครบชุด</strong></p>
+</article>
+<h2 class="section-title">Use Case</h2>
+<article class="article article-card" id="content-creation" data-search="สั่งทำ content ครบชุด มี.ค. 2569 4 steps
+
+use-case content
+
+อ่านแบบปกติ ทำทีละ step
+
+⚠️
+
+⚠️ ก่อนใช้งาน ต้องตั้งค่า api ก่อน → ดูวิธีที่หมวด ตั้งค่า api &amp; tools
+
+สารบัญ 9
+
+step 9 — ติดตั้ง content toolkit
+
+step 10 — สั่งทำรูปโพสต์ + caption ครบชุด
+
+step 11 — สั่งเขียน caption อย่างเดียว
+
+step 12 — สั่งทำรูปอย่างเดียว
+
+step 9 — ติดตั้ง content toolkit
+
+ให้ ai มีความสามารถทำ content ครบ: รูปโพสต์ + caption + hashtag
+
+มี 2 วิธี เลือกวิธีไหนก็ได้ ผลเหมือนกัน: วิธีที่ 1: ติดตั้งผ่าน clawhub (แนะนำ)
+
+ส่งข้อความนี้ให้ ai ใน telegram: terminal
+
+copy รันคำสั่ง 2 อันนี้ให้หน่อย:
+
+1. clawhub install content-news-thai
+
+2. bash skills/content-news-thai/scripts/setup.sh
+
+⚠️ ถ้าติด rate limit → ใช้วิธีที่ 2 แทน
+
+วิธีที่ 2: ติดตั้งเอง (ถ้า clawhub ติด rate limit)
+
+ส่งคำสั่งด้านล่างนี้เข้าไปที่ openclaw chat ได้เลย: terminal
+
+copy curl -l &quot;https://drive.google.com/uc?export=download&amp;id=1ujv420_i1ozervkrms3hf83ibp8mwf2h&quot; -o content-news-thai.zip
+
+unzip content-news-thai.zip -d ~/.openclaw/workspace/skills/
+
+cd ~/.openclaw/workspace/skills/content-news-thai/scripts
+
+bash setup.sh ติดตั้งเสร็จจะได้อะไร?
+
+• template รูปข่าวสไตล์ magazine
+
+ฟอนต์ไทย (kanit, prompt, sarabun) ระบบ gen รูป + ซ้อนข้อความไทย
+
+💡 รอ 2-3 นาที หลังติดตั้ง — พร้อมใช้!
+
+step 10 — สั่งทำรูปโพสต์ + caption ครบชุด
+
+prompt หลัก — copy แล้วแก้ในวงเล็บ: markdown
+
+copy ทำ content ครบชุดเรื่อง &quot;[หัวข้อข่าว]&quot;
+
+ต้องการ: 1. รูปโพสต์ 1080x1350 — มี headline ภาษาไทยบนรูป
+
+2. caption แบบ storytelling กระชับสั้น
+
+3. hashtag ที่เกี่ยวข้อง กลุ่มเป้าหมาย: [ระบุ]
+
+ตัวอย่าง:
+
+markdown copy
+
+ทำ content ครบชุดเรื่อง &quot;ai กำลังเปลี่ยนวงการค้าปลีก ยอดขายพุ่ง 40%&quot;
+
+กลุ่มเป้าหมาย: เจ้าของธุรกิจค้าปลีก sme ai จะทำให้: ✅ gen background image ✅ ใส่ headline ภาษาไทย — ฟอนต์สวย ไม่เพี้ยน ไม่เบลอ ✅ เขียน caption storytelling ✅ ใส่ hashtag
+
+step 11 — สั่งเขียน caption อย่างเดียว
+
+markdown copy
+
+เขียน caption สำหรับโพสต์ facebook เรื่อง [หัวข้อ]
+
+สไตล์: - เล่าเรื่องแบบ storytelling กระชับสั้น
+
+- เปิดด้วย hook ที่ทำให้หยุด scroll
+
+- สรุปเนื้อหาตรงจุดไม่ยืดเยื้อ
+
+- ปิดท้ายด้วยความเห็นสร้างสรรค์
+
+- ชวนให้คนอยากส่งความคิดเห็น
+
+- hashtag 3-5 ตัว กลุ่มเป้าหมาย: [ระบุ]
+
+step 12 — สั่งทำรูปอย่างเดียว
+
+markdown copy
+
+ทำรูปโพสต์ facebook ให้หน่อย หัวข้อ: [หัวข้อโพสต์]
+
+headline บนรูป: [ข้อความสั้นๆ] sub-headline: [ข้อความรอง]
+
+ขนาด: 1080x1350 สไตล์: magazine cover
+
+งานเลขา ai">
+<div><span class="badge">Use Case</span><span class="badge">Openclaw</span></div>
+<h2>สั่งทำ Content ครบชุด </h2>
+<p><strong>มี.ค. 2569 4 steps</strong></p>
+<p><strong>use-case content</strong></p>
+<p><strong>อ่านแบบปกติ ทำทีละ Step</strong></p>
+<ul>
+<li>⚠️</li>
+<li>⚠️ ก่อนใช้งาน ต้องตั้งค่า API ก่อน → ดูวิธีที่หมวด ตั้งค่า API &amp; Tools</li>
+</ul>
+<p><strong>สารบัญ 9</strong></p>
+<h3>Step 9 — ติดตั้ง Content Toolkit</h3>
+<h3>Step 10 — สั่งทำรูปโพสต์ + Caption ครบชุด</h3>
+<h3>Step 11 — สั่งเขียน Caption อย่างเดียว</h3>
+<h3>Step 12 — สั่งทำรูปอย่างเดียว</h3>
+<h3>Step 9 — ติดตั้ง Content Toolkit</h3>
+<p><strong>ให้ AI มีความสามารถทำ content ครบ: รูปโพสต์ + caption + hashtag</strong></p>
+<p>มี 2 วิธี เลือกวิธีไหนก็ได้ ผลเหมือนกัน: วิธีที่ 1: ติดตั้งผ่าน ClawHub (แนะนำ)</p>
+<p><strong>ส่งข้อความนี้ให้ AI ใน Telegram: TERMINAL</strong></p>
+<p>Copy รันคำสั่ง 2 อันนี้ให้หน่อย:</p>
+<ul>
+<li>clawhub install content-news-thai</li>
+<li>bash skills/content-news-thai/scripts/setup.sh</li>
+<li>⚠️ ถ้าติด rate limit → ใช้วิธีที่ 2 แทน</li>
+</ul>
+<p><strong>วิธีที่ 2: ติดตั้งเอง (ถ้า ClawHub ติด rate limit)</strong></p>
+<p><strong>ส่งคำสั่งด้านล่างนี้เข้าไปที่ OpenClaw chat ได้เลย: TERMINAL</strong></p>
+<p>Copy curl -L &quot;https://drive.google.com/uc?export=download&amp;id=1ujv420_i1oZerVKrMs3hf83iBp8Mwf2h&quot; -o content-news-thai.zip</p>
+<p><strong>unzip content-news-thai.zip -d ~/.openclaw/workspace/skills/</strong></p>
+<p><strong>cd ~/.openclaw/workspace/skills/content-news-thai/scripts</strong></p>
+<p>bash setup.sh ติดตั้งเสร็จจะได้อะไร?</p>
+<ul>
+<li>Template รูปข่าวสไตล์ Magazine</li>
+</ul>
+<p><strong>ฟอนต์ไทย (Kanit, Prompt, Sarabun) ระบบ gen รูป + ซ้อนข้อความไทย</strong></p>
+<p>💡 รอ 2-3 นาที หลังติดตั้ง — พร้อมใช้!</p>
+<h3>Step 10 — สั่งทำรูปโพสต์ + Caption ครบชุด</h3>
+<p><strong>Prompt หลัก — copy แล้วแก้ในวงเล็บ: MARKDOWN</strong></p>
+<p><strong>Copy ทำ content ครบชุดเรื่อง &quot;[หัวข้อข่าว]&quot;</strong></p>
+<p><strong>ต้องการ: 1. รูปโพสต์ 1080x1350 — มี headline ภาษาไทยบนรูป</strong></p>
+<ul>
+<li>Caption แบบ storytelling กระชับสั้น</li>
+<li>Hashtag ที่เกี่ยวข้อง กลุ่มเป้าหมาย: [ระบุ]</li>
+</ul>
+<h3>ตัวอย่าง:</h3>
+<p><strong>MARKDOWN Copy</strong></p>
+<p>ทำ content ครบชุดเรื่อง &quot;AI กำลังเปลี่ยนวงการค้าปลีก ยอดขายพุ่ง 40%&quot;</p>
+<p>กลุ่มเป้าหมาย: เจ้าของธุรกิจค้าปลีก SME AI จะทำให้: ✅ Gen background image ✅ ใส่ headline ภาษาไทย — ฟอนต์สวย ไม่เพี้ยน ไม่เบลอ ✅ เขียน caption storytelling ✅ ใส่ hashtag</p>
+<h3>Step 11 — สั่งเขียน Caption อย่างเดียว</h3>
+<p><strong>MARKDOWN Copy</strong></p>
+<p><strong>เขียน caption สำหรับโพสต์ Facebook เรื่อง [หัวข้อ]</strong></p>
+<p><strong>สไตล์: - เล่าเรื่องแบบ storytelling กระชับสั้น</strong></p>
+<ul>
+<li>- เปิดด้วย hook ที่ทำให้หยุด scroll</li>
+<li>- สรุปเนื้อหาตรงจุดไม่ยืดเยื้อ</li>
+<li>- ปิดท้ายด้วยความเห็นสร้างสรรค์</li>
+<li>- ชวนให้คนอยากส่งความคิดเห็น</li>
+<li>- Hashtag 3-5 ตัว กลุ่มเป้าหมาย: [ระบุ]</li>
+</ul>
+<h3>Step 12 — สั่งทำรูปอย่างเดียว</h3>
+<p><strong>MARKDOWN Copy</strong></p>
+<p><strong>ทำรูปโพสต์ Facebook ให้หน่อย หัวข้อ: [หัวข้อโพสต์]</strong></p>
+<p><strong>Headline บนรูป: [ข้อความสั้นๆ] Sub-headline: [ข้อความรอง]</strong></p>
+<p><strong>ขนาด: 1080x1350 สไตล์: magazine cover</strong></p>
+<p><strong>งานเลขา AI</strong></p>
+</article>
+<article class="article article-card" id="ai-secretary" data-search="งานเลขา ai มี.ค. 2569 5 steps
+
+use-case productivity
+
+อ่านแบบปกติ ทำทีละ step
+
+⚠️
+
+⚠️ ก่อนใช้งาน ต้องตั้งค่า api ก่อน → ดูวิธีที่หมวด ตั้งค่า api &amp; tools
+
+สารบัญ ai ช่วยได้มากกว่าแค่ content!
+
+2 ค้นหา / สรุปข้อมูล
+
+3 brainstorm / วางแผน
+
+4 reminder / จัดการ task
+
+5 จำข้อมูลสำคัญ
+
+ai ช่วยได้มากกว่าแค่ content! นอกจากทำ content แล้ว ai ยังเป็นเลขาส่วนตัวที่ทำงานให้ 24/7 — ค้นหาข้อมูล, สรุปข่าว, brainstorm, จัดการ task, จำข้อมูลสำคัญ
+
+2 ค้นหา / สรุปข้อมูล
+
+หาข่าวล่าสุด: markdown
+
+copy หาข่าวล่าสุดเรื่อง [หัวข้อ] สรุปมา 3-5 ข่าว
+
+สรุปบทความ: markdown
+
+copy สรุปบทความนี้: [วาง url] เป็น bullet point สั้นๆ
+
+สรุปข้อมูลยาว: markdown
+
+copy สรุปข้อมูลนี้เหลือ 5 ประเด็นหลัก: [วางข้อมูล]
+
+3 brainstorm / วางแผน
+
+markdown copy
+
+brainstorm ไอเดีย content 10 อัน สำหรับ [แบรนด์] กลุ่มเป้าหมาย [x]
+
+วางแผน content 1 สัปดาห์ วันละ 2 โพสต์ แบ่ง 60% ให้คุณค่า / 20% เรื่องเล่า / 20% ขาย
+
+4 reminder / จัดการ task
+
+markdown copy
+
+เตือนวันที่ [x] เวลา [x] เรื่อง [x] จดไว้ — งานสัปดาห์นี้: 1. [x] 2. [x] 3. [x]
+
+markdown copy
+
+สรุปงานวันนี้ให้หน่อย 5
+
+จำข้อมูลสำคัญ ai จำข้อมูลได้! สั่ง &quot;จำไว้ว่า [ข้อมูล]&quot; แล้ว ai จะเก็บไว้ใน memory.md
+
+markdown copy
+
+จำไว้ว่า ราคาสินค้า a = 1,500 บาท จำไว้ว่า ผู้ติดต่อหลักคือ บริษัท x y z
+
+markdown copy
+
+จำไว้ว่า โปรโมชั่นถึงเดือนนี้ลด 20% 💡
+
+💡 ai ทำงาน 24 ชั่วโมง — สั่งงานตี 3 ก็ได้! prompt cheat sheet">
+<div><span class="badge">Use Case</span><span class="badge">Openclaw</span></div>
+<h2>งานเลขา AI </h2>
+<p><strong>มี.ค. 2569 5 steps</strong></p>
+<p><strong>use-case productivity</strong></p>
+<p><strong>อ่านแบบปกติ ทำทีละ Step</strong></p>
+<ul>
+<li>⚠️</li>
+<li>⚠️ ก่อนใช้งาน ต้องตั้งค่า API ก่อน → ดูวิธีที่หมวด ตั้งค่า API &amp; Tools</li>
+</ul>
+<p>สารบัญ AI ช่วยได้มากกว่าแค่ Content!</p>
+<p><strong>2 ค้นหา / สรุปข้อมูล</strong></p>
+<p><strong>3 Brainstorm / วางแผน</strong></p>
+<p><strong>4 Reminder / จัดการ Task</strong></p>
+<p><strong>5 จำข้อมูลสำคัญ</strong></p>
+<p>AI ช่วยได้มากกว่าแค่ Content! นอกจากทำ content แล้ว AI ยังเป็นเลขาส่วนตัวที่ทำงานให้ 24/7 — ค้นหาข้อมูล, สรุปข่าว, brainstorm, จัดการ task, จำข้อมูลสำคัญ</p>
+<p><strong>2 ค้นหา / สรุปข้อมูล</strong></p>
+<p><strong>หาข่าวล่าสุด: MARKDOWN</strong></p>
+<p><strong>Copy หาข่าวล่าสุดเรื่อง [หัวข้อ] สรุปมา 3-5 ข่าว</strong></p>
+<p><strong>สรุปบทความ: MARKDOWN</strong></p>
+<p><strong>Copy สรุปบทความนี้: [วาง URL] เป็น bullet point สั้นๆ</strong></p>
+<p><strong>สรุปข้อมูลยาว: MARKDOWN</strong></p>
+<p><strong>Copy สรุปข้อมูลนี้เหลือ 5 ประเด็นหลัก: [วางข้อมูล]</strong></p>
+<p><strong>3 Brainstorm / วางแผน</strong></p>
+<p><strong>MARKDOWN Copy</strong></p>
+<p>brainstorm ไอเดีย content 10 อัน สำหรับ [แบรนด์] กลุ่มเป้าหมาย [X]</p>
+<p>วางแผน content 1 สัปดาห์ วันละ 2 โพสต์ แบ่ง 60% ให้คุณค่า / 20% เรื่องเล่า / 20% ขาย</p>
+<p><strong>4 Reminder / จัดการ Task</strong></p>
+<p><strong>MARKDOWN Copy</strong></p>
+<p>เตือนวันที่ [X] เวลา [X] เรื่อง [X] จดไว้ — งานสัปดาห์นี้: 1. [X] 2. [X] 3. [X]</p>
+<p><strong>MARKDOWN Copy</strong></p>
+<p><strong>สรุปงานวันนี้ให้หน่อย 5</strong></p>
+<p>จำข้อมูลสำคัญ AI จำข้อมูลได้! สั่ง &quot;จำไว้ว่า [ข้อมูล]&quot; แล้ว AI จะเก็บไว้ใน MEMORY.md</p>
+<p><strong>MARKDOWN Copy</strong></p>
+<p>จำไว้ว่า ราคาสินค้า A = 1,500 บาท จำไว้ว่า ผู้ติดต่อหลักคือ บริษัท X Y Z</p>
+<p><strong>MARKDOWN Copy</strong></p>
+<p><strong>จำไว้ว่า โปรโมชั่นถึงเดือนนี้ลด 20% 💡</strong></p>
+<p><strong>💡 AI ทำงาน 24 ชั่วโมง — สั่งงานตี 3 ก็ได้! Prompt Cheat Sheet</strong></p>
+</article>
+<h2 class="section-title">Skill</h2>
+<article class="article article-card" id="prompt-cheat-sheet" data-search="prompt cheat sheet มี.ค. 2569 skill
+
+prompt prompt สำเร็จรูป — copy แล้ววางได้เลย!
+
+รวม prompt ที่ใช้บ่อยทั้งหมด แก้ข้อมูลในวงเล็บ [ ] แล้วส่งให้ ai ใน telegram
+
+🎨 ทำ content ครบชุด markdown
+
+copy ทำ content ครบชุดเรื่อง &quot;[x]&quot; กลุ่มเป้าหมาย [y]
+
+✍️ เขียน caption markdown
+
+copy เขียน caption fb เรื่อง [x] แบบ storytelling
+
+🖼️ ทำรูปโพสต์ markdown
+
+copy ทำรูปโพสต์ 1080x1350 หัวข้อ [x] สไตล์ magazine
+
+🔍 หาข่าว markdown
+
+copy หาข่าวล่าสุดเรื่อง [x] สรุปมา 5 ข่าว
+
+📝 สรุปบทความ markdown
+
+copy สรุปบทความนี้: [url]
+
+💡 brainstorm markdown
+
+copy brainstorm ไอเดีย content 10 อัน สำหรับ [แบรนด์]
+
+📅 วางแผน content markdown
+
+copy วางแผน content 1 สัปดาห์ วันละ 2 โพสต์
+
+⏰ ตั้ง reminder markdown
+
+copy เตือนวันที่ [x] เวลา [x] เรื่อง [y]
+
+✅ จด task markdown
+
+copy จดไว้ — งานสัปดาห์นี้: 1. [x] 2. [x] 3. [x]
+
+💾 จำข้อมูล markdown
+
+copy จำไว้ว่า [ข้อมูลสำคัญ]
+
+🔄 เปลี่ยนบุคลิก ai markdown
+
+copy แก้ soul.md ให้โทนเสียง [ใหม่]
+
+ℹ️ ℹ️ prompt เหล่านี้ใช้ได้ใน telegram กับ bot ที่ตั้งค่าแล้วเท่านั้น
+
+🔒 ai money machine
+
+เปลี่ยน content เป็นเงินล้าน? สอนทุกขั้นตอน ดูเพิ่มเติมที่คลังแสง ai →">
+<div><span class="badge">Skill</span><span class="badge">Openclaw</span></div>
+<h2>Prompt Cheat Sheet </h2>
+<p><strong>มี.ค. 2569 skill</strong></p>
+<p>prompt Prompt สำเร็จรูป — Copy แล้ววางได้เลย!</p>
+<p>รวม prompt ที่ใช้บ่อยทั้งหมด แก้ข้อมูลในวงเล็บ [ ] แล้วส่งให้ AI ใน Telegram</p>
+<p><strong>🎨 ทำ Content ครบชุด MARKDOWN</strong></p>
+<p><strong>Copy ทำ content ครบชุดเรื่อง &quot;[X]&quot; กลุ่มเป้าหมาย [Y]</strong></p>
+<p><strong>✍️ เขียน Caption MARKDOWN</strong></p>
+<p><strong>Copy เขียน caption FB เรื่อง [X] แบบ storytelling</strong></p>
+<p><strong>🖼️ ทำรูปโพสต์ MARKDOWN</strong></p>
+<p><strong>Copy ทำรูปโพสต์ 1080x1350 หัวข้อ [X] สไตล์ magazine</strong></p>
+<p><strong>🔍 หาข่าว MARKDOWN</strong></p>
+<p><strong>Copy หาข่าวล่าสุดเรื่อง [X] สรุปมา 5 ข่าว</strong></p>
+<p><strong>📝 สรุปบทความ MARKDOWN</strong></p>
+<p><strong>Copy สรุปบทความนี้: [URL]</strong></p>
+<p><strong>💡 Brainstorm MARKDOWN</strong></p>
+<p><strong>Copy brainstorm ไอเดีย content 10 อัน สำหรับ [แบรนด์]</strong></p>
+<p><strong>📅 วางแผน Content MARKDOWN</strong></p>
+<p><strong>Copy วางแผน content 1 สัปดาห์ วันละ 2 โพสต์</strong></p>
+<p><strong>⏰ ตั้ง Reminder MARKDOWN</strong></p>
+<p><strong>Copy เตือนวันที่ [X] เวลา [X] เรื่อง [Y]</strong></p>
+<ul>
+<li>✅ จด Task MARKDOWN</li>
+</ul>
+<p><strong>Copy จดไว้ — งานสัปดาห์นี้: 1. [X] 2. [X] 3. [X]</strong></p>
+<p><strong>💾 จำข้อมูล MARKDOWN</strong></p>
+<p><strong>Copy จำไว้ว่า [ข้อมูลสำคัญ]</strong></p>
+<p><strong>🔄 เปลี่ยนบุคลิก AI MARKDOWN</strong></p>
+<p><strong>Copy แก้ SOUL.md ให้โทนเสียง [ใหม่]</strong></p>
+<p>ℹ️ ℹ️ Prompt เหล่านี้ใช้ได้ใน Telegram กับ bot ที่ตั้งค่าแล้วเท่านั้น</p>
+<p><strong>🔒 AI Money Machine</strong></p>
+<p>เปลี่ยน content เป็นเงินล้าน? สอนทุกขั้นตอน ดูเพิ่มเติมที่คลังแสง AI →</p>
+</article>
+<h2 class="section-title">API &amp; Tools</h2>
+<article class="article article-card" id="setup-kie-ai" data-search="ตั้งค่า kie.ai (สร้างรูป ai) ตั้งค่า api &amp; tools มี.ค. 2569
+
+2 steps image
+
+อ่านแบบปกติ ทำทีละ step
+
+kie.ai คืออะไร? kie.ai เป็นบริการสร้างรูปด้วย ai ที่ openclaw ใช้สำหรับ gen รูปโพสต์ รูปข่าว และ background ต่างๆ ราคาถูกกว่าใช้ api ตรง 30-50% เพราะเป็นระบบ credit-based จ่ายตามใช้
+
+2 ขั้นตอนตั้งค่า
+
+1. สมัครบัญชี เปิด https://kie.ai → กด sign up → สร้างบัญชี
+
+2. สร้าง api key ไปที่ https://kie.ai/api-key → กด create api key → copy เก็บไว้
+
+terminal copy
+
+api key ตัวอย่าง: kie_sk_xxxxxxxxxxxxxxxxxxxx
+
+3. ใส่ใน openclaw เข้า openclaw dashboard → settings → config → หาช่อง kie api key → วาง key → กด save
+
+4. ทดสอบ ส่งข้อความนี้ให้ ai ใน telegram:
+
+markdown copy
+
+ทำรูปโพสต์ 1080x1350 หัวข้อ ai เปลี่ยนโลกธุรกิจ
+
+ถ้าได้รูปกลับมา = สำเร็จ! 🎉 💡
+
+💡 kie.ai เป็น credit-based — เติมเงินตามใช้ ไม่มีค่ารายเดือน ประหยัดกว่า dall-e api ตรง 30-50%
+
+⚠️
+
+⚠️ ถ้า gen รูปไม่ได้ ให้เช็ค: (1) api key ถูกมั้ย (2) มี credit เหลือมั้ย (3) ลอง restart bot
+
+ตั้งค่า brave search (ค้นหาข่าว)">
+<div><span class="badge">API &amp; Tools</span><span class="badge">Openclaw</span></div>
+<h2>ตั้งค่า Kie.ai (สร้างรูป AI) </h2>
+<p><strong>ตั้งค่า API &amp; Tools มี.ค. 2569</strong></p>
+<p><strong>2 steps image</strong></p>
+<p><strong>อ่านแบบปกติ ทำทีละ Step</strong></p>
+<p>Kie.ai คืออะไร? Kie.ai เป็นบริการสร้างรูปด้วย AI ที่ OpenClaw ใช้สำหรับ gen รูปโพสต์ รูปข่าว และ background ต่างๆ ราคาถูกกว่าใช้ API ตรง 30-50% เพราะเป็นระบบ credit-based จ่ายตามใช้</p>
+<p><strong>2 ขั้นตอนตั้งค่า</strong></p>
+<ul>
+<li>สมัครบัญชี เปิด https://kie.ai → กด Sign up → สร้างบัญชี</li>
+<li>สร้าง API Key ไปที่ https://kie.ai/api-key → กด Create API Key → Copy เก็บไว้</li>
+</ul>
+<p><strong>TERMINAL Copy</strong></p>
+<p><strong>API Key ตัวอย่าง: kie_sk_xxxxxxxxxxxxxxxxxxxx</strong></p>
+<ul>
+<li>ใส่ใน OpenClaw เข้า OpenClaw Dashboard → Settings → Config → หาช่อง Kie API Key → วาง key → กด Save</li>
+<li>ทดสอบ ส่งข้อความนี้ให้ AI ใน Telegram:</li>
+</ul>
+<p><strong>MARKDOWN Copy</strong></p>
+<p><strong>ทำรูปโพสต์ 1080x1350 หัวข้อ AI เปลี่ยนโลกธุรกิจ</strong></p>
+<p><strong>ถ้าได้รูปกลับมา = สำเร็จ! 🎉 💡</strong></p>
+<p>💡 Kie.ai เป็น credit-based — เติมเงินตามใช้ ไม่มีค่ารายเดือน ประหยัดกว่า DALL-E API ตรง 30-50%</p>
+<ul>
+<li>⚠️</li>
+<li>⚠️ ถ้า gen รูปไม่ได้ ให้เช็ค: (1) API key ถูกมั้ย (2) มี credit เหลือมั้ย (3) ลอง restart bot</li>
+</ul>
+<p><strong>ตั้งค่า Brave Search (ค้นหาข่าว)</strong></p>
+</article>
+<article class="article article-card" id="setup-brave-search" data-search="ตั้งค่า brave search (ค้นหาข่าว) ตั้งค่า api &amp; tools มี.ค. 2569
+
+2 steps search
+
+อ่านแบบปกติ ทำทีละ step
+
+brave search api คืออะไร? brave search api ให้ ai ค้นหาข้อมูลบนอินเทอร์เน็ตได้แบบ real-time — หาข่าวล่าสุด ค้นหาข้อมูลคู่แข่ง เช็คเทรนด์ ฯลฯ มี free tier ให้ใช้ฟรี
+
+2 ขั้นตอนตั้งค่า
+
+1. สมัครบัญชี เปิด https://brave.com/search/api/ → กด get started → สร้างบัญชี
+
+2. เลือก plan เลือก &quot;data for search&quot; — มี free tier ให้ 2,000 queries/เดือน เพียงพอสำหรับเริ่มต้น
+
+3. สร้าง api key ใน api dashboard → กด create api key → copy เก็บไว้
+
+terminal copy
+
+api key ตัวอย่าง: bsa_xxxxxxxxxxxxxxxxxxxx
+
+4. ใส่ใน openclaw (เลือกวิธีใดวิธีหนึ่ง) วิธี a — ผ่าน dashboard: openclaw dashboard → settings → config → ใส่ brave_api_key → save
+
+วิธี b — ผ่าน gateway environment: hpanel → docker manager → manage → environment → เพิ่ม: terminal
+
+copy brave_api_key=bsa_xxxxxxxxxxxxxxxxxxxx
+
+5. ทดสอบ ส่งข้อความนี้ให้ ai:
+
+markdown copy
+
+หาข่าวล่าสุดเรื่อง ai สรุปมา 5 ข่าว ถ้า ai หาข่าวจากอินเทอร์เน็ตได้ = สำเร็จ!
+
+💡 💡 free tier 2,000 queries/เดือน — เพียงพอสำหรับทีม 5 คนที่ใช้วันละ 10-15 ครั้ง
+
+ℹ️ ℹ️ อ้างอิง: https://docs.openclaw.ai/brave-search
+
+ตั้งค่า meta api (โพส facebook/ig)">
+<div><span class="badge">API &amp; Tools</span><span class="badge">Openclaw</span></div>
+<h2>ตั้งค่า Brave Search (ค้นหาข่าว) </h2>
+<p><strong>ตั้งค่า API &amp; Tools มี.ค. 2569</strong></p>
+<p><strong>2 steps search</strong></p>
+<p><strong>อ่านแบบปกติ ทำทีละ Step</strong></p>
+<p>Brave Search API คืออะไร? Brave Search API ให้ AI ค้นหาข้อมูลบนอินเทอร์เน็ตได้แบบ real-time — หาข่าวล่าสุด ค้นหาข้อมูลคู่แข่ง เช็คเทรนด์ ฯลฯ มี free tier ให้ใช้ฟรี</p>
+<p><strong>2 ขั้นตอนตั้งค่า</strong></p>
+<ul>
+<li>สมัครบัญชี เปิด https://brave.com/search/api/ → กด Get Started → สร้างบัญชี</li>
+<li>เลือก Plan เลือก &quot;Data for Search&quot; — มี free tier ให้ 2,000 queries/เดือน เพียงพอสำหรับเริ่มต้น</li>
+<li>สร้าง API Key ใน API Dashboard → กด Create API Key → Copy เก็บไว้</li>
+</ul>
+<p><strong>TERMINAL Copy</strong></p>
+<p><strong>API Key ตัวอย่าง: BSA_xxxxxxxxxxxxxxxxxxxx</strong></p>
+<ul>
+<li>ใส่ใน OpenClaw (เลือกวิธีใดวิธีหนึ่ง) วิธี A — ผ่าน Dashboard: OpenClaw Dashboard → Settings → Config → ใส่ BRAVE_API_KEY → Save</li>
+</ul>
+<p>วิธี B — ผ่าน Gateway Environment: hPanel → Docker Manager → Manage → Environment → เพิ่ม: TERMINAL</p>
+<p><strong>Copy BRAVE_API_KEY=BSA_xxxxxxxxxxxxxxxxxxxx</strong></p>
+<ul>
+<li>ทดสอบ ส่งข้อความนี้ให้ AI:</li>
+</ul>
+<p><strong>MARKDOWN Copy</strong></p>
+<p>หาข่าวล่าสุดเรื่อง AI สรุปมา 5 ข่าว ถ้า AI หาข่าวจากอินเทอร์เน็ตได้ = สำเร็จ!</p>
+<p>💡 💡 Free tier 2,000 queries/เดือน — เพียงพอสำหรับทีม 5 คนที่ใช้วันละ 10-15 ครั้ง</p>
+<p><strong>ℹ️ ℹ️ อ้างอิง: https://docs.openclaw.ai/brave-search</strong></p>
+<p><strong>ตั้งค่า Meta API (โพส Facebook/IG)</strong></p>
+</article>
+<article class="article article-card" id="setup-meta-api" data-search="ตั้งค่า meta api (โพส facebook/ig) ตั้งค่า api &amp; tools มี.ค. 2569
+
+2 steps facebook
+
+instagram อ่านแบบปกติ
+
+ทำทีละ step meta api ทำอะไรได้?
+
+เชื่อม meta api แล้ว ai จะสามารถ: • โพส content ลง facebook page อัตโนมัติ • โพสลง instagram business • ตั้งเวลาโพสล่วงหน้า • ดึงข้อมูล insights
+
+⚠️
+
+⚠️ ขั้นตอนซับซ้อนกว่า api อื่น — แนะนำทำเป็น homework หลัง workshop หรือให้ทีม dev ช่วย
+
+2 ขั้นตอนตั้งค่า
+
+1. สร้าง facebook app
+
+1. เปิด https://developers.facebook.com 2. กด my apps → create app 3. เลือก business → ตั้งชื่อ app 4. สร้างเสร็จจะเห็น app dashboard
+
+2. เพิ่ม products ใน app dashboard: 1. กด add product 2. เพิ่ม &quot;facebook login&quot; → set up 3. เพิ่ม &quot;pages api&quot; (อาจต้อง request access)
+
+3. สร้าง page access token
+
+1. ไป graph api explorer (developers.facebook.com/tools/explorer) 2. เลือก app ที่สร้าง 3. เลือก page → get token 4. กด generate access token 5. copy token เก็บไว้
+
+⚠️
+
+⚠️ token มีอายุ! ต้องสร้าง long-lived token: 1. ใน app dashboard → settings → basic → ดู app secret 2. ใช้ graph api แลก short-lived → long-lived token
+
+4. ตั้งค่าใน openclaw เข้า openclaw dashboard → settings → config → ใส่: • facebook app id • facebook app secret • page access token
+
+5. ทดสอบ markdown
+
+copy โพสข้อความนี้ลง facebook: &quot;ทดสอบโพสจาก ai 🤖&quot;
+
+💡 💡 เชื่อม meta api สำเร็จแล้ว สั่ง ai ตั้งเวลาโพสได้: &quot;ตั้งเวลาโพสวันพรุ่งนี้ 10:00 เรื่อง [x]&quot;
+
+ตั้งค่า youtube api">
+<div><span class="badge">API &amp; Tools</span><span class="badge">Openclaw</span></div>
+<h2>ตั้งค่า Meta API (โพส Facebook/IG) </h2>
+<p><strong>ตั้งค่า API &amp; Tools มี.ค. 2569</strong></p>
+<p><strong>2 steps facebook</strong></p>
+<p><strong>instagram อ่านแบบปกติ</strong></p>
+<p>ทำทีละ Step Meta API ทำอะไรได้?</p>
+<p>เชื่อม Meta API แล้ว AI จะสามารถ: • โพส content ลง Facebook Page อัตโนมัติ • โพสลง Instagram Business • ตั้งเวลาโพสล่วงหน้า • ดึงข้อมูล insights</p>
+<ul>
+<li>⚠️</li>
+<li>⚠️ ขั้นตอนซับซ้อนกว่า API อื่น — แนะนำทำเป็น homework หลัง workshop หรือให้ทีม dev ช่วย</li>
+</ul>
+<p><strong>2 ขั้นตอนตั้งค่า</strong></p>
+<ul>
+<li>สร้าง Facebook App</li>
+<li>เปิด https://developers.facebook.com 2. กด My Apps → Create App 3. เลือก Business → ตั้งชื่อ app 4. สร้างเสร็จจะเห็น App Dashboard</li>
+<li>เพิ่ม Products ใน App Dashboard: 1. กด Add Product 2. เพิ่ม &quot;Facebook Login&quot; → Set up 3. เพิ่ม &quot;Pages API&quot; (อาจต้อง request access)</li>
+<li>สร้าง Page Access Token</li>
+<li>ไป Graph API Explorer (developers.facebook.com/tools/explorer) 2. เลือก App ที่สร้าง 3. เลือก Page → Get Token 4. กด Generate Access Token 5. Copy token เก็บไว้</li>
+<li>⚠️</li>
+<li>⚠️ Token มีอายุ! ต้องสร้าง Long-lived token: 1. ใน App Dashboard → Settings → Basic → ดู App Secret 2. ใช้ Graph API แลก short-lived → long-lived token</li>
+<li>ตั้งค่าใน OpenClaw เข้า OpenClaw Dashboard → Settings → Config → ใส่: • Facebook App ID • Facebook App Secret • Page Access Token</li>
+<li>ทดสอบ MARKDOWN</li>
+</ul>
+<p><strong>Copy โพสข้อความนี้ลง Facebook: &quot;ทดสอบโพสจาก AI 🤖&quot;</strong></p>
+<p>💡 💡 เชื่อม Meta API สำเร็จแล้ว สั่ง AI ตั้งเวลาโพสได้: &quot;ตั้งเวลาโพสวันพรุ่งนี้ 10:00 เรื่อง [X]&quot;</p>
+<p><strong>ตั้งค่า YouTube API</strong></p>
+</article>
+<article class="article article-card" id="setup-youtube-api" data-search="ตั้งค่า youtube api ตั้งค่า api &amp; tools มี.ค. 2569
+
+2 steps youtube
+
+google อ่านแบบปกติ
+
+ทำทีละ step youtube api ทำอะไรได้?
+
+เชื่อม youtube api แล้ว ai จะสามารถ: • ค้นหาวิดีโอ youtube • ดึงข้อมูล channel / video analytics • สร้าง script สำหรับ youtube content
+
+⚠️
+
+⚠️ ต้องมี google cloud account ก่อน — ถ้ายังไม่มีสมัครฟรีที่ cloud.google.com
+
+2 ขั้นตอนตั้งค่า
+
+1. สร้าง google cloud project
+
+1. เปิด https://console.cloud.google.com 2. กด select project → new project 3. ตั้งชื่อ → create
+
+2. เปิด youtube data api v3
+
+1. ไปที่ apis &amp; services → library 2. ค้นหา &quot;youtube data api v3&quot; 3. กด enable
+
+3. สร้าง api key
+
+1. ไปที่ apis &amp; services → credentials 2. กด create credentials → api key 3. copy key เก็บไว้
+
+terminal copy
+
+api key ตัวอย่าง: aizasyxxxxxxxxxxxxxxxxxxx
+
+⚠️
+
+⚠️ แนะนำ: restrict api key ให้ใช้ได้เฉพาะ youtube data api เท่านั้น — กันคนอื่นเอาไปใช้
+
+4. ใส่ใน openclaw openclaw dashboard → settings → config → ใส่ youtube api key → save
+
+5. ทดสอบ markdown
+
+copy หาวิดีโอ youtube เรื่อง ai marketing สรุปมา 5 อัน
+
+💡 💡 youtube api มี free quota 10,000 units/วัน — เพียงพอสำหรับการใช้งานปกติ
+
+tiktok — หมายเหตุ">
+<div><span class="badge">API &amp; Tools</span><span class="badge">Openclaw</span></div>
+<h2>ตั้งค่า YouTube API </h2>
+<p><strong>ตั้งค่า API &amp; Tools มี.ค. 2569</strong></p>
+<p><strong>2 steps youtube</strong></p>
+<p><strong>google อ่านแบบปกติ</strong></p>
+<p>ทำทีละ Step YouTube API ทำอะไรได้?</p>
+<p>เชื่อม YouTube API แล้ว AI จะสามารถ: • ค้นหาวิดีโอ YouTube • ดึงข้อมูล channel / video analytics • สร้าง script สำหรับ YouTube content</p>
+<ul>
+<li>⚠️</li>
+<li>⚠️ ต้องมี Google Cloud account ก่อน — ถ้ายังไม่มีสมัครฟรีที่ cloud.google.com</li>
+</ul>
+<p><strong>2 ขั้นตอนตั้งค่า</strong></p>
+<ul>
+<li>สร้าง Google Cloud Project</li>
+<li>เปิด https://console.cloud.google.com 2. กด Select Project → New Project 3. ตั้งชื่อ → Create</li>
+<li>เปิด YouTube Data API v3</li>
+<li>ไปที่ APIs &amp; Services → Library 2. ค้นหา &quot;YouTube Data API v3&quot; 3. กด Enable</li>
+<li>สร้าง API Key</li>
+<li>ไปที่ APIs &amp; Services → Credentials 2. กด Create Credentials → API Key 3. Copy key เก็บไว้</li>
+</ul>
+<p><strong>TERMINAL Copy</strong></p>
+<p><strong>API Key ตัวอย่าง: AIzaSyXXXXXXXXXXXXXXXXXXX</strong></p>
+<ul>
+<li>⚠️</li>
+<li>⚠️ แนะนำ: Restrict API key ให้ใช้ได้เฉพาะ YouTube Data API เท่านั้น — กันคนอื่นเอาไปใช้</li>
+<li>ใส่ใน OpenClaw OpenClaw Dashboard → Settings → Config → ใส่ YouTube API Key → Save</li>
+<li>ทดสอบ MARKDOWN</li>
+</ul>
+<p><strong>Copy หาวิดีโอ YouTube เรื่อง AI Marketing สรุปมา 5 อัน</strong></p>
+<p>💡 💡 YouTube API มี free quota 10,000 units/วัน — เพียงพอสำหรับการใช้งานปกติ</p>
+<p><strong>TikTok — หมายเหตุ</strong></p>
+</article>
+<article class="article article-card" id="tiktok-note" data-search="tiktok — หมายเหตุ ตั้งค่า api &amp; tools มี.ค. 2569
+
+2 steps tiktok
+
+note อ่านแบบปกติ
+
+ทำทีละ step tiktok api — ยังไม่รองรับ
+
+ℹ️ ℹ️ openclaw ยังไม่รองรับ tiktok api โดยตรง ณ ตอนนี้ — อาจรองรับในอนาคต
+
+2 วิธีใช้งาน tiktok กับ ai ตอนนี้
+
+ให้ ai สร้าง content แล้ว copy ไปโพสเอง: สร้าง caption tiktok
+
+markdown copy
+
+เขียน caption tiktok เรื่อง [หัวข้อ] พร้อม hashtag ยอดนิยม
+
+สร้าง script วิดีโอ markdown
+
+copy เขียน script วิดีโอ tiktok 30 วินาที เรื่อง [หัวข้อ]
+
+สไตล์: hook 3 วิแรก + เนื้อหา + cta วางแผน content tiktok
+
+markdown copy
+
+วางแผน content tiktok 1 สัปดาห์ วันละ 1 คลิป แนว: [ประเภท] กลุ่มเป้าหมาย: [x]
+
+💡 💡 ai ช่วยคิด content ได้ — แค่ต้อง copy ไปโพสเองบน tiktok
+
+🔒 ai money machine
+
+เปลี่ยน content เป็นเงินล้าน? สอนทุกขั้นตอน ดูเพิ่มเติมที่คลังแสง ai →">
+<div><span class="badge">API &amp; Tools</span><span class="badge">Openclaw</span></div>
+<h2>TikTok — หมายเหตุ </h2>
+<p><strong>ตั้งค่า API &amp; Tools มี.ค. 2569</strong></p>
+<p><strong>2 steps tiktok</strong></p>
+<p><strong>note อ่านแบบปกติ</strong></p>
+<p><strong>ทำทีละ Step TikTok API — ยังไม่รองรับ</strong></p>
+<p>ℹ️ ℹ️ OpenClaw ยังไม่รองรับ TikTok API โดยตรง ณ ตอนนี้ — อาจรองรับในอนาคต</p>
+<p><strong>2 วิธีใช้งาน TikTok กับ AI ตอนนี้</strong></p>
+<p><strong>ให้ AI สร้าง content แล้ว copy ไปโพสเอง: สร้าง Caption TikTok</strong></p>
+<p><strong>MARKDOWN Copy</strong></p>
+<p><strong>เขียน caption TikTok เรื่อง [หัวข้อ] พร้อม hashtag ยอดนิยม</strong></p>
+<p><strong>สร้าง Script วิดีโอ MARKDOWN</strong></p>
+<p><strong>Copy เขียน script วิดีโอ TikTok 30 วินาที เรื่อง [หัวข้อ]</strong></p>
+<p><strong>สไตล์: hook 3 วิแรก + เนื้อหา + CTA วางแผน Content TikTok</strong></p>
+<p><strong>MARKDOWN Copy</strong></p>
+<p>วางแผน content TikTok 1 สัปดาห์ วันละ 1 คลิป แนว: [ประเภท] กลุ่มเป้าหมาย: [X]</p>
+<p><strong>💡 💡 AI ช่วยคิด content ได้ — แค่ต้อง copy ไปโพสเองบน TikTok</strong></p>
+<p><strong>🔒 AI Money Machine</strong></p>
+<p>เปลี่ยน content เป็นเงินล้าน? สอนทุกขั้นตอน ดูเพิ่มเติมที่คลังแสง AI →</p>
+</article>
+<h2 class="section-title">Prompt Templates</h2>
+<article class="article article-card" id="prompt-marketing" data-search="📣 marketing — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป marketing
+
+prompt สำเร็จรูป
+
+รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+วางแผน content calendar วางแผน content 1 เดือน แบ่งตามวัน + หัวข้อ
+
+prompt copy
+
+วางแผน content calendar สำหรับ [ชื่อแบรนด์] ธุรกิจ: [ประเภทธุรกิจ]
+
+กลุ่มเป้าหมาย: [กลุ่มเป้าหมาย] ช่องทาง: [facebook/ig/tiktok]
+
+ระยะเวลา: 1 เดือน โพสต์วันละ [1-2] โพสต์
+
+แบ่งเป็น: - 60% ให้ความรู้/คุณค่า
+
+- 20% เล่าเรื่อง/behind the scene
+
+- 20% ขาย/โปรโมชั่น วิเคราะห์คู่แข่ง
+
+เปรียบเทียบจุดแข็ง-จุดอ่อน กับคู่แข่ง 3 ราย prompt
+
+copy วิเคราะห์คู่แข่งให้หน่อย
+
+แบรนด์เรา: [ชื่อแบรนด์] — [สินค้า/บริการ] คู่แข่ง 3 ราย:
+
+1. [ชื่อคู่แข่ง 1]
+
+2. [ชื่อคู่แข่ง 2]
+
+3. [ชื่อคู่แข่ง 3] วิเคราะห์:
+
+- จุดแข็ง vs จุดอ่อน
+
+- กลยุทธ์ content ที่ใช้
+
+- ราคาและ positioning
+
+- โอกาสที่เราจะชนะ เขียน campaign brief
+
+สรุป brief แคมเปญให้ทีมเข้าใจตรงกัน prompt
+
+copy เขียน campaign brief
+
+แคมเปญ: [ชื่อแคมเปญ] วัตถุประสงค์: [เพิ่มยอดขาย/สร้าง awareness/lead gen]
+
+สินค้า: [ชื่อสินค้า] กลุ่มเป้าหมาย: [อายุ เพศ ความสนใจ]
+
+งบประมาณ: [จำนวนเงิน] ระยะเวลา: [วันเริ่ม - วันจบ]
+
+ข้อความหลัก (key message): [1 ประโยค] ช่องทาง: [fb/ig/tiktok/line]
+
+สร้าง buyer persona สร้างโปรไฟล์ลูกค้าในฝัน ละเอียดถึง pain point
+
+prompt copy
+
+สร้าง buyer persona สำหรับ [ชื่อแบรนด์] สินค้า/บริการ: [อธิบายสั้นๆ]
+
+ราคา: [ช่วงราคา] สร้างให้ 2 personas:
+
+แต่ละคนต้องมี: - ชื่อสมมุติ + อายุ + อาชีพ
+
+- รายได้/เดือน
+
+- pain points 3 ข้อ
+
+- สิ่งที่มองหา (desires)
+
+- ช่องทางที่ใช้ (social media)
+
+- สิ่งที่ทำให้ตัดสินใจซื้อ
+
+- ข้อกังวลก่อนซื้อ content pillar strategy
+
+กำหนดเสาหลัก content 4-5 แกน prompt
+
+copy สร้าง content pillar strategy
+
+แบรนด์: [ชื่อแบรนด์] ธุรกิจ: [ประเภท]
+
+กลุ่มเป้าหมาย: [ใคร] เป้าหมาย: [สร้าง awareness / เพิ่มยอดขาย / สร้าง community]
+
+สร้าง 4-5 content pillars: แต่ละ pillar ต้องมี:
+
+- ชื่อ pillar
+
+- คำอธิบาย 1 บรรทัด
+
+- ตัวอย่างหัวข้อ 3 อัน
+
+- format ที่เหมาะ (โพสต์ / วิดีโอ / carousel / story)
+
+เขียน brand message สร้างข้อความแบรนด์ที่สื่อสารตรงจุด
+
+prompt copy
+
+เขียน brand message สำหรับ [ชื่อแบรนด์] สินค้า/บริการ: [อะไร]
+
+จุดเด่น: [usp 2-3 ข้อ] กลุ่มเป้าหมาย: [ใคร]
+
+คู่แข่ง: [ใคร] เขียนให้:
+
+1. tagline (สั้นกระชับ 5-7 คำ)
+
+2. elevator pitch (30 วินาที)
+
+3. brand story (3 ย่อหน้า)
+
+4. value proposition (3 ข้อ)
+
+5. tone of voice (อธิบาย + ตัวอย่างประโยค) วิเคราะห์ swot
+
+วิเคราะห์จุดแข็ง จุดอ่อน โอกาส อุปสรรค prompt
+
+copy วิเคราะห์ swot ให้หน่อย
+
+ธุรกิจ: [ชื่อธุรกิจ] สินค้า/บริการ: [อะไร]
+
+ตลาด: [b2c/b2b — อุตสาหกรรม] คู่แข่งหลัก: [ใคร]
+
+วิเคราะห์: - strengths (จุดแข็ง 3-5 ข้อ)
+
+- weaknesses (จุดอ่อน 3-5 ข้อ)
+
+- opportunities (โอกาส 3-5 ข้อ)
+
+- threats (อุปสรรค 3-5 ข้อ) สรุป action plan 3 ข้อจาก swot
+
+social media audit ตรวจสอบและประเมิน social media ทุกช่องทาง
+
+prompt copy
+
+ช่วย audit social media ให้หน่อย แบรนด์: [ชื่อแบรนด์]
+
+ช่องทางที่ใช้: - facebook: [url หรือชื่อเพจ]
+
+- instagram: [url]
+
+- tiktok: [url]
+
+- line: [มี/ไม่มี] วิเคราะห์:
+
+1. ความถี่ในการโพสต์
+
+2. ประเภท content ที่โพสต์
+
+3. engagement rate
+
+4. จุดที่ทำดี
+
+5. จุดที่ควรปรับปรุง
+
+6. แนะนำ 5 action items 💰 sales — คำสั่งสำเร็จรูป">
+<div><span class="badge">Prompt Templates</span><span class="badge">Openclaw</span></div>
+<h2>📣 Marketing — คำสั่งสำเร็จรูป </h2>
+<p><strong>คำสั่งสำเร็จรูป marketing</strong></p>
+<p><strong>prompt สำเร็จรูป</strong></p>
+<p>รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ AI ใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ</p>
+<p>💡 กดที่ code block แล้ว copy ไปวางใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ</p>
+<p>วางแผน Content Calendar วางแผน content 1 เดือน แบ่งตามวัน + หัวข้อ</p>
+<p><strong>PROMPT Copy</strong></p>
+<p>วางแผน content calendar สำหรับ [ชื่อแบรนด์] ธุรกิจ: [ประเภทธุรกิจ]</p>
+<p><strong>กลุ่มเป้าหมาย: [กลุ่มเป้าหมาย] ช่องทาง: [Facebook/IG/TikTok]</strong></p>
+<p><strong>ระยะเวลา: 1 เดือน โพสต์วันละ [1-2] โพสต์</strong></p>
+<p><strong>แบ่งเป็น: - 60% ให้ความรู้/คุณค่า</strong></p>
+<ul>
+<li>- 20% เล่าเรื่อง/behind the scene</li>
+<li>- 20% ขาย/โปรโมชั่น วิเคราะห์คู่แข่ง</li>
+</ul>
+<p><strong>เปรียบเทียบจุดแข็ง-จุดอ่อน กับคู่แข่ง 3 ราย PROMPT</strong></p>
+<p><strong>Copy วิเคราะห์คู่แข่งให้หน่อย</strong></p>
+<p>แบรนด์เรา: [ชื่อแบรนด์] — [สินค้า/บริการ] คู่แข่ง 3 ราย:</p>
+<ul>
+<li>[ชื่อคู่แข่ง 1]</li>
+<li>[ชื่อคู่แข่ง 2]</li>
+<li>[ชื่อคู่แข่ง 3] วิเคราะห์:</li>
+<li>- จุดแข็ง vs จุดอ่อน</li>
+<li>- กลยุทธ์ content ที่ใช้</li>
+<li>- ราคาและ positioning</li>
+<li>- โอกาสที่เราจะชนะ เขียน Campaign Brief</li>
+</ul>
+<p><strong>สรุป brief แคมเปญให้ทีมเข้าใจตรงกัน PROMPT</strong></p>
+<p><strong>Copy เขียน campaign brief</strong></p>
+<p>แคมเปญ: [ชื่อแคมเปญ] วัตถุประสงค์: [เพิ่มยอดขาย/สร้าง awareness/lead gen]</p>
+<p><strong>สินค้า: [ชื่อสินค้า] กลุ่มเป้าหมาย: [อายุ เพศ ความสนใจ]</strong></p>
+<p><strong>งบประมาณ: [จำนวนเงิน] ระยะเวลา: [วันเริ่ม - วันจบ]</strong></p>
+<p>ข้อความหลัก (Key Message): [1 ประโยค] ช่องทาง: [FB/IG/TikTok/LINE]</p>
+<p>สร้าง Buyer Persona สร้างโปรไฟล์ลูกค้าในฝัน ละเอียดถึง pain point</p>
+<p><strong>PROMPT Copy</strong></p>
+<p>สร้าง buyer persona สำหรับ [ชื่อแบรนด์] สินค้า/บริการ: [อธิบายสั้นๆ]</p>
+<p>ราคา: [ช่วงราคา] สร้างให้ 2 personas:</p>
+<p><strong>แต่ละคนต้องมี: - ชื่อสมมุติ + อายุ + อาชีพ</strong></p>
+<ul>
+<li>- รายได้/เดือน</li>
+<li>- Pain points 3 ข้อ</li>
+<li>- สิ่งที่มองหา (desires)</li>
+<li>- ช่องทางที่ใช้ (social media)</li>
+<li>- สิ่งที่ทำให้ตัดสินใจซื้อ</li>
+<li>- ข้อกังวลก่อนซื้อ Content Pillar Strategy</li>
+</ul>
+<p><strong>กำหนดเสาหลัก content 4-5 แกน PROMPT</strong></p>
+<p><strong>Copy สร้าง content pillar strategy</strong></p>
+<p><strong>แบรนด์: [ชื่อแบรนด์] ธุรกิจ: [ประเภท]</strong></p>
+<p>กลุ่มเป้าหมาย: [ใคร] เป้าหมาย: [สร้าง awareness / เพิ่มยอดขาย / สร้าง community]</p>
+<p>สร้าง 4-5 content pillars: แต่ละ pillar ต้องมี:</p>
+<ul>
+<li>- ชื่อ pillar</li>
+<li>- คำอธิบาย 1 บรรทัด</li>
+<li>- ตัวอย่างหัวข้อ 3 อัน</li>
+<li>- format ที่เหมาะ (โพสต์ / วิดีโอ / carousel / story)</li>
+</ul>
+<p><strong>เขียน Brand Message สร้างข้อความแบรนด์ที่สื่อสารตรงจุด</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>เขียน brand message สำหรับ [ชื่อแบรนด์] สินค้า/บริการ: [อะไร]</strong></p>
+<p><strong>จุดเด่น: [USP 2-3 ข้อ] กลุ่มเป้าหมาย: [ใคร]</strong></p>
+<p>คู่แข่ง: [ใคร] เขียนให้:</p>
+<ul>
+<li>Tagline (สั้นกระชับ 5-7 คำ)</li>
+<li>Elevator Pitch (30 วินาที)</li>
+<li>Brand Story (3 ย่อหน้า)</li>
+<li>Value Proposition (3 ข้อ)</li>
+<li>Tone of Voice (อธิบาย + ตัวอย่างประโยค) วิเคราะห์ SWOT</li>
+</ul>
+<p><strong>วิเคราะห์จุดแข็ง จุดอ่อน โอกาส อุปสรรค PROMPT</strong></p>
+<p><strong>Copy วิเคราะห์ SWOT ให้หน่อย</strong></p>
+<p><strong>ธุรกิจ: [ชื่อธุรกิจ] สินค้า/บริการ: [อะไร]</strong></p>
+<p><strong>ตลาด: [B2C/B2B — อุตสาหกรรม] คู่แข่งหลัก: [ใคร]</strong></p>
+<p><strong>วิเคราะห์: - Strengths (จุดแข็ง 3-5 ข้อ)</strong></p>
+<ul>
+<li>- Weaknesses (จุดอ่อน 3-5 ข้อ)</li>
+<li>- Opportunities (โอกาส 3-5 ข้อ)</li>
+<li>- Threats (อุปสรรค 3-5 ข้อ) สรุป action plan 3 ข้อจาก SWOT</li>
+</ul>
+<p><strong>Social Media Audit ตรวจสอบและประเมิน social media ทุกช่องทาง</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>ช่วย audit social media ให้หน่อย แบรนด์: [ชื่อแบรนด์]</strong></p>
+<p><strong>ช่องทางที่ใช้: - Facebook: [URL หรือชื่อเพจ]</strong></p>
+<ul>
+<li>- Instagram: [URL]</li>
+<li>- TikTok: [URL]</li>
+<li>- LINE: [มี/ไม่มี] วิเคราะห์:</li>
+<li>ความถี่ในการโพสต์</li>
+<li>ประเภท content ที่โพสต์</li>
+<li>engagement rate</li>
+<li>จุดที่ทำดี</li>
+<li>จุดที่ควรปรับปรุง</li>
+<li>แนะนำ 5 action items 💰 Sales — คำสั่งสำเร็จรูป</li>
+</ul>
+</article>
+<article class="article article-card" id="prompt-sales" data-search="💰 sales — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป sales
+
+prompt สำเร็จรูป
+
+รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+เขียน sales pitch สร้าง pitch ที่โน้มน้าวใจใน 2 นาที
+
+prompt copy
+
+เขียน sales pitch สำหรับ [ชื่อสินค้า/บริการ] ขายให้: [กลุ่มเป้าหมาย]
+
+ราคา: [ราคา] จุดเด่น: [usp 3 ข้อ]
+
+ปัญหาที่แก้: [pain point ของลูกค้า] เขียน pitch 3 แบบ:
+
+1. แบบสั้น 30 วินาที (elevator pitch)
+
+2. แบบกลาง 2 นาที (presentation)
+
+3. แบบ chat (ส่งทาง line/dm) สร้าง proposal
+
+เขียน proposal ส่งลูกค้าแบบมืออาชีพ prompt
+
+copy เขียน proposal สำหรับ [ชื่อโปรเจค]
+
+ลูกค้า: [ชื่อบริษัท/คน] บริการ: [อะไร]
+
+ขอบเขตงาน: [รายละเอียด] ระยะเวลา: [กี่วัน/สัปดาห์/เดือน]
+
+งบประมาณ: [ช่วงราคา] ต้องมี:
+
+1. executive summary
+
+2. ปัญหาที่จะแก้
+
+3. แนวทางการทำงาน
+
+4. timeline
+
+5. ราคาและเงื่อนไข
+
+6. ทำไมต้องเลือกเรา follow-up email
+
+ส่ง follow-up หลังเสนอราคา หรือหลังประชุม prompt
+
+copy เขียน follow-up email
+
+บริบท: [ประชุมเมื่อวาน / ส่ง proposal ไปแล้ว 3 วัน / พบกันที่งาน x]
+
+ชื่อลูกค้า: [ชื่อ] สินค้า/บริการ: [อะไร]
+
+เป้าหมาย: [นัดประชุม / ปิดการขาย / ถามความคืบหน้า]
+
+เขียนให้: - subject line ที่น่าเปิด
+
+- เนื้อหาสั้นกระชับ
+
+- cta ชัดเจน
+
+- tone: professional แต่เป็นกันเอง objection handling script
+
+เตรียมคำตอบสำหรับข้อโต้แย้งที่พบบ่อย prompt
+
+copy สร้าง objection handling script
+
+สินค้า/บริการ: [อะไร] ราคา: [ราคา]
+
+กลุ่มเป้าหมาย: [ใคร] เตรียมคำตอบสำหรับ:
+
+1. &quot;แพงไป&quot;
+
+2. &quot;ขอคิดก่อน&quot;
+
+3. &quot;ไม่แน่ใจว่าจะได้ผล&quot;
+
+4. &quot;ใช้ของที่อื่นอยู่แล้ว&quot;
+
+5. &quot;ยังไม่ใช่เวลาที่เหมาะ&quot;
+
+6. &quot;ส่งข้อมูลมาให้ดูก่อน&quot;
+
+7. &quot;ต้องปรึกษาคนอื่นก่อน&quot; แต่ละข้อตอบ 2-3 ประโยค tone เป็นกันเอง ไม่กดดัน
+
+cold outreach message เขียนข้อความ dm หาลูกค้าใหม่
+
+prompt copy
+
+เขียน cold outreach message ส่งทาง: [line / dm ig / email / fb messenger]
+
+ลูกค้าเป้าหมาย: [ใคร — อาชีพ/ธุรกิจ] สินค้า/บริการ: [อะไร]
+
+จุดเด่น: [ทำไมเขาควรสนใจ] เขียน 3 แบบ:
+
+1. แบบตรงประเด็น (3 บรรทัด)
+
+2. แบบให้คุณค่าก่อน (share ความรู้ → ชวนคุย)
+
+3. แบบอ้างอิงผลงาน (case study สั้นๆ) ห้ามเหมือน spam ต้องรู้สึกเหมือนคนจริงส่งมา
+
+เขียน quotation สร้างใบเสนอราคาแบบมีรายละเอียดครบ
+
+prompt copy
+
+สร้างใบเสนอราคา จาก: [ชื่อบริษัท/ชื่อเรา]
+
+ถึง: [ชื่อลูกค้า] โปรเจค: [ชื่อโปรเจค]
+
+รายการ: 1. [รายการที่ 1] — [รายละเอียด]
+
+2. [รายการที่ 2] — [รายละเอียด]
+
+3. [รายการที่ 3] — [รายละเอียด] เงื่อนไข: [ระยะเวลา / จำนวนแก้ไข / ส่งมอบยังไง]
+
+การชำระเงิน: [มัดจำ % / งวดไหนบ้าง] สรุป pipeline
+
+สรุปสถานะการขายทั้งหมดแบบเห็นภาพ prompt
+
+copy สรุป sales pipeline ให้หน่อย
+
+ข้อมูล deals ปัจจุบัน: 1. [ชื่อลูกค้า] — [มูลค่า] — [สถานะ: ติดต่อแล้ว/เสนอราคา/รอตอบ/ปิดได้]
+
+2. [ชื่อลูกค้า] — [มูลค่า] — [สถานะ]
+
+3. [ชื่อลูกค้า] — [มูลค่า] — [สถานะ] (เพิ่มได้ตามจริง)
+
+สรุปให้: - จำนวน deals ในแต่ละ stage
+
+- มูลค่ารวม
+
+- deals ที่ควร follow-up ด่วน
+
+- คาดการณ์ยอดเดือนนี้ win-back campaign
+
+ชวนลูกค้าเก่ากลับมาซื้ออีกครั้ง prompt
+
+copy สร้าง win-back campaign
+
+ธุรกิจ: [ชื่อธุรกิจ] สินค้า/บริการ: [อะไร]
+
+ลูกค้าเก่า: [ซื้อครั้งสุดท้ายนานแค่ไหน] จำนวนลูกค้าเก่า: [ประมาณกี่คน]
+
+เขียนให้: 1. ข้อความ re-engage แรก (ทักทาย + ถามสารทุกข์)
+
+2. ข้อความ offer พิเศษ (ส่วนลด/ของแถม)
+
+3. ข้อความ last chance (urgency)
+
+4. flow ส่งแต่ละข้อความห่างกันกี่วัน ส่งทาง: [line / email / sms]
+
+📝 admin — คำสั่งสำเร็จรูป">
+<div><span class="badge">Prompt Templates</span><span class="badge">Openclaw</span></div>
+<h2>💰 Sales — คำสั่งสำเร็จรูป </h2>
+<p><strong>คำสั่งสำเร็จรูป sales</strong></p>
+<p><strong>prompt สำเร็จรูป</strong></p>
+<p>รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ AI ใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ</p>
+<p>💡 กดที่ code block แล้ว copy ไปวางใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ</p>
+<p><strong>เขียน Sales Pitch สร้าง pitch ที่โน้มน้าวใจใน 2 นาที</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p>เขียน sales pitch สำหรับ [ชื่อสินค้า/บริการ] ขายให้: [กลุ่มเป้าหมาย]</p>
+<p><strong>ราคา: [ราคา] จุดเด่น: [USP 3 ข้อ]</strong></p>
+<p>ปัญหาที่แก้: [pain point ของลูกค้า] เขียน pitch 3 แบบ:</p>
+<ul>
+<li>แบบสั้น 30 วินาที (elevator pitch)</li>
+<li>แบบกลาง 2 นาที (presentation)</li>
+<li>แบบ chat (ส่งทาง LINE/DM) สร้าง Proposal</li>
+</ul>
+<p><strong>เขียน proposal ส่งลูกค้าแบบมืออาชีพ PROMPT</strong></p>
+<p><strong>Copy เขียน proposal สำหรับ [ชื่อโปรเจค]</strong></p>
+<p><strong>ลูกค้า: [ชื่อบริษัท/คน] บริการ: [อะไร]</strong></p>
+<p><strong>ขอบเขตงาน: [รายละเอียด] ระยะเวลา: [กี่วัน/สัปดาห์/เดือน]</strong></p>
+<p>งบประมาณ: [ช่วงราคา] ต้องมี:</p>
+<ul>
+<li>Executive Summary</li>
+<li>ปัญหาที่จะแก้</li>
+<li>แนวทางการทำงาน</li>
+<li>Timeline</li>
+<li>ราคาและเงื่อนไข</li>
+<li>ทำไมต้องเลือกเรา Follow-up Email</li>
+</ul>
+<p><strong>ส่ง follow-up หลังเสนอราคา หรือหลังประชุม PROMPT</strong></p>
+<p><strong>Copy เขียน follow-up email</strong></p>
+<p>บริบท: [ประชุมเมื่อวาน / ส่ง proposal ไปแล้ว 3 วัน / พบกันที่งาน X]</p>
+<p><strong>ชื่อลูกค้า: [ชื่อ] สินค้า/บริการ: [อะไร]</strong></p>
+<p><strong>เป้าหมาย: [นัดประชุม / ปิดการขาย / ถามความคืบหน้า]</strong></p>
+<p><strong>เขียนให้: - subject line ที่น่าเปิด</strong></p>
+<ul>
+<li>- เนื้อหาสั้นกระชับ</li>
+<li>- CTA ชัดเจน</li>
+<li>- tone: professional แต่เป็นกันเอง Objection Handling Script</li>
+</ul>
+<p><strong>เตรียมคำตอบสำหรับข้อโต้แย้งที่พบบ่อย PROMPT</strong></p>
+<p><strong>Copy สร้าง objection handling script</strong></p>
+<p><strong>สินค้า/บริการ: [อะไร] ราคา: [ราคา]</strong></p>
+<p>กลุ่มเป้าหมาย: [ใคร] เตรียมคำตอบสำหรับ:</p>
+<ul>
+<li>&quot;แพงไป&quot;</li>
+<li>&quot;ขอคิดก่อน&quot;</li>
+<li>&quot;ไม่แน่ใจว่าจะได้ผล&quot;</li>
+<li>&quot;ใช้ของที่อื่นอยู่แล้ว&quot;</li>
+<li>&quot;ยังไม่ใช่เวลาที่เหมาะ&quot;</li>
+<li>&quot;ส่งข้อมูลมาให้ดูก่อน&quot;</li>
+<li>&quot;ต้องปรึกษาคนอื่นก่อน&quot; แต่ละข้อตอบ 2-3 ประโยค tone เป็นกันเอง ไม่กดดัน</li>
+</ul>
+<p><strong>Cold Outreach Message เขียนข้อความ DM หาลูกค้าใหม่</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p>เขียน cold outreach message ส่งทาง: [LINE / DM IG / Email / FB Messenger]</p>
+<p><strong>ลูกค้าเป้าหมาย: [ใคร — อาชีพ/ธุรกิจ] สินค้า/บริการ: [อะไร]</strong></p>
+<p>จุดเด่น: [ทำไมเขาควรสนใจ] เขียน 3 แบบ:</p>
+<ul>
+<li>แบบตรงประเด็น (3 บรรทัด)</li>
+<li>แบบให้คุณค่าก่อน (share ความรู้ → ชวนคุย)</li>
+<li>แบบอ้างอิงผลงาน (case study สั้นๆ) ห้ามเหมือน spam ต้องรู้สึกเหมือนคนจริงส่งมา</li>
+</ul>
+<p><strong>เขียน Quotation สร้างใบเสนอราคาแบบมีรายละเอียดครบ</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>สร้างใบเสนอราคา จาก: [ชื่อบริษัท/ชื่อเรา]</strong></p>
+<p><strong>ถึง: [ชื่อลูกค้า] โปรเจค: [ชื่อโปรเจค]</strong></p>
+<p><strong>รายการ: 1. [รายการที่ 1] — [รายละเอียด]</strong></p>
+<ul>
+<li>[รายการที่ 2] — [รายละเอียด]</li>
+<li>[รายการที่ 3] — [รายละเอียด] เงื่อนไข: [ระยะเวลา / จำนวนแก้ไข / ส่งมอบยังไง]</li>
+</ul>
+<p><strong>การชำระเงิน: [มัดจำ % / งวดไหนบ้าง] สรุป Pipeline</strong></p>
+<p><strong>สรุปสถานะการขายทั้งหมดแบบเห็นภาพ PROMPT</strong></p>
+<p><strong>Copy สรุป sales pipeline ให้หน่อย</strong></p>
+<p>ข้อมูล deals ปัจจุบัน: 1. [ชื่อลูกค้า] — [มูลค่า] — [สถานะ: ติดต่อแล้ว/เสนอราคา/รอตอบ/ปิดได้]</p>
+<ul>
+<li>[ชื่อลูกค้า] — [มูลค่า] — [สถานะ]</li>
+<li>[ชื่อลูกค้า] — [มูลค่า] — [สถานะ] (เพิ่มได้ตามจริง)</li>
+</ul>
+<p><strong>สรุปให้: - จำนวน deals ในแต่ละ stage</strong></p>
+<ul>
+<li>- มูลค่ารวม</li>
+<li>- deals ที่ควร follow-up ด่วน</li>
+<li>- คาดการณ์ยอดเดือนนี้ Win-back Campaign</li>
+</ul>
+<p><strong>ชวนลูกค้าเก่ากลับมาซื้ออีกครั้ง PROMPT</strong></p>
+<p><strong>Copy สร้าง win-back campaign</strong></p>
+<p><strong>ธุรกิจ: [ชื่อธุรกิจ] สินค้า/บริการ: [อะไร]</strong></p>
+<p>ลูกค้าเก่า: [ซื้อครั้งสุดท้ายนานแค่ไหน] จำนวนลูกค้าเก่า: [ประมาณกี่คน]</p>
+<p><strong>เขียนให้: 1. ข้อความ re-engage แรก (ทักทาย + ถามสารทุกข์)</strong></p>
+<ul>
+<li>ข้อความ offer พิเศษ (ส่วนลด/ของแถม)</li>
+<li>ข้อความ last chance (urgency)</li>
+<li>flow ส่งแต่ละข้อความห่างกันกี่วัน ส่งทาง: [LINE / Email / SMS]</li>
+</ul>
+<p><strong>📝 Admin — คำสั่งสำเร็จรูป</strong></p>
+</article>
+<article class="article article-card" id="prompt-admin" data-search="📝 admin — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป admin
+
+prompt สำเร็จรูป
+
+รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+สรุปประชุม สรุป meeting notes จาก transcript หรือจดเอง
+
+prompt copy
+
+สรุปประชุมให้หน่อย ประชุมเรื่อง: [หัวข้อ]
+
+ผู้เข้าร่วม: [รายชื่อ] วันที่: [วันที่]
+
+เนื้อหาที่คุยกัน: [วางเนื้อหาที่จดไว้ หรือ transcript ตรงนี้]
+
+สรุปให้: 1. ประเด็นสำคัญ (bullet points)
+
+2. action items — ใครทำอะไร เมื่อไหร่
+
+3. ข้อตกลงที่ได้
+
+4. นัดถัดไป เขียน email ทางการ
+
+เขียน email ภาษาสุภาพ เป็นทางการ prompt
+
+copy เขียน email ทางการ
+
+ส่งถึง: [ชื่อ — ตำแหน่ง] เรื่อง: [หัวข้อ email]
+
+วัตถุประสงค์: [แจ้งเรื่อง / ขอข้อมูล / ส่งเอกสาร / เชิญประชุม]
+
+รายละเอียด: [ข้อมูลที่ต้องใส่] tone: [ทางการมาก / ทางการปานกลาง / semi-formal]
+
+ภาษา: [ไทย / อังกฤษ] ลงท้าย: [ชื่อ — ตำแหน่ง — บริษัท]
+
+จัดตาราง สร้างตารางงาน/ตารางเวร/timeline
+
+prompt copy
+
+จัดตารางให้หน่อย ประเภท: [ตารางงานรายสัปดาห์ / ตารางเวร / timeline โปรเจค]
+
+จำนวนคน: [กี่คน — ชื่อ] ระยะเวลา: [1 สัปดาห์ / 1 เดือน]
+
+เงื่อนไข: - [เช่น คนละไม่เกิน 5 วัน/สัปดาห์]
+
+- [วันหยุด: เสาร์-อาทิตย์]
+
+- [ต้องมีคนอย่างน้อย 2 คน/วัน] format: ตาราง
+
+สร้าง sop เขียน standard operating procedure ขั้นตอนชัดเจน
+
+prompt copy
+
+สร้าง sop สำหรับ [ชื่อกระบวนการ] แผนก: [แผนกอะไร]
+
+ผู้รับผิดชอบ: [ตำแหน่ง] ความถี่: [ทุกวัน / ทุกสัปดาห์ / ตามเคส]
+
+รายละเอียดกระบวนการ: [อธิบายคร่าวๆ ว่าทำอะไรบ้าง]
+
+เขียน sop ที่มี: 1. วัตถุประสงค์
+
+2. ขอบเขต
+
+3. ขั้นตอน (step-by-step พร้อมรายละเอียด)
+
+4. checklist สิ่งที่ต้องตรวจ
+
+5. ข้อควรระวัง เขียนรายงาน
+
+สรุปรายงานสรุปผลงาน ประจำสัปดาห์/เดือน prompt
+
+copy เขียนรายงานสรุป
+
+ประเภท: [รายงานประจำสัปดาห์ / เดือน / โปรเจค]
+
+ช่วงเวลา: [วันที่ — ถึงวันที่] แผนก: [แผนก]
+
+ผลงาน: - [ผลงานที่ 1]
+
+- [ผลงานที่ 2]
+
+- [ผลงานที่ 3] ปัญหา/อุปสรรค:
+
+- [ปัญหาที่ 1] เขียนรายงานที่มี:
+
+1. สรุปภาพรวม
+
+2. ผลงานสำคัญ
+
+3. ตัวเลข/kpi
+
+4. ปัญหาและวิธีแก้
+
+5. แผนสัปดาห์/เดือนหน้า นัดหมาย
+
+เขียนข้อความนัดประชุม/นัดพบ prompt
+
+copy เขียนข้อความนัดหมาย
+
+นัดกับ: [ชื่อ/ทีม] เรื่อง: [หัวข้อ]
+
+วันเวลาที่เสนอ: - ตัวเลือก 1: [วัน เวลา]
+
+- ตัวเลือก 2: [วัน เวลา]
+
+- ตัวเลือก 3: [วัน เวลา] สถานที่: [ออฟฟิศ / zoom / google meet]
+
+ระยะเวลา: [30 นาที / 1 ชั่วโมง] ส่งทาง: [email / line / teams]
+
+tone: [ทางการ / เป็นกันเอง] memo ภายใน
+
+เขียน memo แจ้งเรื่องภายในบริษัท prompt
+
+copy เขียน memo ภายใน
+
+จาก: [ชื่อ — ตำแหน่ง] ถึง: [ทีม/แผนก/ทุกคน]
+
+เรื่อง: [หัวข้อ] วันที่: [วันที่]
+
+เนื้อหา: [อธิบายสิ่งที่ต้องแจ้ง]
+
+สิ่งที่ต้องทำ: - [action item 1]
+
+- [action item 2] deadline: [วันที่]
+
+tone: [ทางการ / กึ่งทางการ]
+
+checklist งาน
+
+สร้าง checklist สำหรับงานหรือ event prompt
+
+copy สร้าง checklist สำหรับ [ชื่องาน/event/โปรเจค]
+
+รายละเอียด: [อธิบายคร่าวๆ] วันที่: [วันที่จัดงาน/deadline]
+
+ทีม: [กี่คน — ใครบ้าง] สร้าง checklist แบ่งเป็น:
+
+1. ก่อนงาน (เตรียมอะไรบ้าง)
+
+2. วันงาน (ทำอะไรบ้าง ตามลำดับ)
+
+3. หลังงาน (สรุป/follow-up) แต่ละ item ระบุ: ผู้รับผิดชอบ + deadline
+
+🎨 content creator — คำสั่งสำเร็จรูป">
+<div><span class="badge">Prompt Templates</span><span class="badge">Openclaw</span></div>
+<h2>📝 Admin — คำสั่งสำเร็จรูป </h2>
+<p><strong>คำสั่งสำเร็จรูป admin</strong></p>
+<p><strong>prompt สำเร็จรูป</strong></p>
+<p>รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ AI ใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ</p>
+<p>💡 กดที่ code block แล้ว copy ไปวางใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ</p>
+<p><strong>สรุปประชุม สรุป meeting notes จาก transcript หรือจดเอง</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>สรุปประชุมให้หน่อย ประชุมเรื่อง: [หัวข้อ]</strong></p>
+<p><strong>ผู้เข้าร่วม: [รายชื่อ] วันที่: [วันที่]</strong></p>
+<p><strong>เนื้อหาที่คุยกัน: [วางเนื้อหาที่จดไว้ หรือ transcript ตรงนี้]</strong></p>
+<p><strong>สรุปให้: 1. ประเด็นสำคัญ (bullet points)</strong></p>
+<ul>
+<li>Action Items — ใครทำอะไร เมื่อไหร่</li>
+<li>ข้อตกลงที่ได้</li>
+<li>นัดถัดไป เขียน Email ทางการ</li>
+</ul>
+<p><strong>เขียน email ภาษาสุภาพ เป็นทางการ PROMPT</strong></p>
+<p><strong>Copy เขียน email ทางการ</strong></p>
+<p><strong>ส่งถึง: [ชื่อ — ตำแหน่ง] เรื่อง: [หัวข้อ email]</strong></p>
+<p><strong>วัตถุประสงค์: [แจ้งเรื่อง / ขอข้อมูล / ส่งเอกสาร / เชิญประชุม]</strong></p>
+<p>รายละเอียด: [ข้อมูลที่ต้องใส่] Tone: [ทางการมาก / ทางการปานกลาง / semi-formal]</p>
+<p><strong>ภาษา: [ไทย / อังกฤษ] ลงท้าย: [ชื่อ — ตำแหน่ง — บริษัท]</strong></p>
+<p><strong>จัดตาราง สร้างตารางงาน/ตารางเวร/timeline</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p>จัดตารางให้หน่อย ประเภท: [ตารางงานรายสัปดาห์ / ตารางเวร / timeline โปรเจค]</p>
+<p><strong>จำนวนคน: [กี่คน — ชื่อ] ระยะเวลา: [1 สัปดาห์ / 1 เดือน]</strong></p>
+<p><strong>เงื่อนไข: - [เช่น คนละไม่เกิน 5 วัน/สัปดาห์]</strong></p>
+<ul>
+<li>- [วันหยุด: เสาร์-อาทิตย์]</li>
+<li>- [ต้องมีคนอย่างน้อย 2 คน/วัน] Format: ตาราง</li>
+</ul>
+<p><strong>สร้าง SOP เขียน Standard Operating Procedure ขั้นตอนชัดเจน</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>สร้าง SOP สำหรับ [ชื่อกระบวนการ] แผนก: [แผนกอะไร]</strong></p>
+<p><strong>ผู้รับผิดชอบ: [ตำแหน่ง] ความถี่: [ทุกวัน / ทุกสัปดาห์ / ตามเคส]</strong></p>
+<p><strong>รายละเอียดกระบวนการ: [อธิบายคร่าวๆ ว่าทำอะไรบ้าง]</strong></p>
+<p><strong>เขียน SOP ที่มี: 1. วัตถุประสงค์</strong></p>
+<ul>
+<li>ขอบเขต</li>
+<li>ขั้นตอน (step-by-step พร้อมรายละเอียด)</li>
+<li>checklist สิ่งที่ต้องตรวจ</li>
+<li>ข้อควรระวัง เขียนรายงาน</li>
+</ul>
+<p><strong>สรุปรายงานสรุปผลงาน ประจำสัปดาห์/เดือน PROMPT</strong></p>
+<p><strong>Copy เขียนรายงานสรุป</strong></p>
+<p><strong>ประเภท: [รายงานประจำสัปดาห์ / เดือน / โปรเจค]</strong></p>
+<p><strong>ช่วงเวลา: [วันที่ — ถึงวันที่] แผนก: [แผนก]</strong></p>
+<p><strong>ผลงาน: - [ผลงานที่ 1]</strong></p>
+<ul>
+<li>- [ผลงานที่ 2]</li>
+<li>- [ผลงานที่ 3] ปัญหา/อุปสรรค:</li>
+<li>- [ปัญหาที่ 1] เขียนรายงานที่มี:</li>
+<li>สรุปภาพรวม</li>
+<li>ผลงานสำคัญ</li>
+<li>ตัวเลข/KPI</li>
+<li>ปัญหาและวิธีแก้</li>
+<li>แผนสัปดาห์/เดือนหน้า นัดหมาย</li>
+</ul>
+<p><strong>เขียนข้อความนัดประชุม/นัดพบ PROMPT</strong></p>
+<p><strong>Copy เขียนข้อความนัดหมาย</strong></p>
+<p><strong>นัดกับ: [ชื่อ/ทีม] เรื่อง: [หัวข้อ]</strong></p>
+<p><strong>วันเวลาที่เสนอ: - ตัวเลือก 1: [วัน เวลา]</strong></p>
+<ul>
+<li>- ตัวเลือก 2: [วัน เวลา]</li>
+<li>- ตัวเลือก 3: [วัน เวลา] สถานที่: [ออฟฟิศ / Zoom / Google Meet]</li>
+</ul>
+<p><strong>ระยะเวลา: [30 นาที / 1 ชั่วโมง] ส่งทาง: [Email / LINE / Teams]</strong></p>
+<p><strong>Tone: [ทางการ / เป็นกันเอง] Memo ภายใน</strong></p>
+<p><strong>เขียน memo แจ้งเรื่องภายในบริษัท PROMPT</strong></p>
+<p><strong>Copy เขียน memo ภายใน</strong></p>
+<p><strong>จาก: [ชื่อ — ตำแหน่ง] ถึง: [ทีม/แผนก/ทุกคน]</strong></p>
+<p><strong>เรื่อง: [หัวข้อ] วันที่: [วันที่]</strong></p>
+<p><strong>เนื้อหา: [อธิบายสิ่งที่ต้องแจ้ง]</strong></p>
+<p><strong>สิ่งที่ต้องทำ: - [action item 1]</strong></p>
+<ul>
+<li>- [action item 2] Deadline: [วันที่]</li>
+</ul>
+<p><strong>Tone: [ทางการ / กึ่งทางการ]</strong></p>
+<p><strong>Checklist งาน</strong></p>
+<p><strong>สร้าง checklist สำหรับงานหรือ event PROMPT</strong></p>
+<p><strong>Copy สร้าง checklist สำหรับ [ชื่องาน/event/โปรเจค]</strong></p>
+<p><strong>รายละเอียด: [อธิบายคร่าวๆ] วันที่: [วันที่จัดงาน/deadline]</strong></p>
+<p>ทีม: [กี่คน — ใครบ้าง] สร้าง checklist แบ่งเป็น:</p>
+<ul>
+<li>ก่อนงาน (เตรียมอะไรบ้าง)</li>
+<li>วันงาน (ทำอะไรบ้าง ตามลำดับ)</li>
+<li>หลังงาน (สรุป/follow-up) แต่ละ item ระบุ: ผู้รับผิดชอบ + deadline</li>
+</ul>
+<p><strong>🎨 Content Creator — คำสั่งสำเร็จรูป</strong></p>
+</article>
+<article class="article article-card" id="prompt-creator" data-search="🎨 content creator — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป content-creator
+
+prompt สำเร็จรูป
+
+รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+เขียน script วิดีโอ เขียน script สำหรับ reels/tiktok/youtube
+
+prompt copy
+
+เขียน script วิดีโอ แพลตฟอร์ม: [reels / tiktok / youtube]
+
+ความยาว: [15 วินาที / 60 วินาที / 5 นาที] หัวข้อ: [เรื่องอะไร]
+
+กลุ่มเป้าหมาย: [ใคร] สไตล์: [สอน / เล่าเรื่อง / ตลก / dramatic]
+
+ต้องมี: 1. hook แรก (3 วินาทีแรก) — ต้องหยุด scroll
+
+2. เนื้อหา — จัดเป็น scene
+
+3. cta — ปิดท้ายให้คนทำอะไร
+
+4. คำแนะนำ b-roll / transition caption storytelling
+
+เขียน caption แบบเล่าเรื่องชวนอ่านจนจบ prompt
+
+copy เขียน caption แบบ storytelling
+
+แพลตฟอร์ม: [facebook / ig / tiktok] หัวข้อ: [เรื่องอะไร]
+
+แบรนด์: [ชื่อแบรนด์] กลุ่มเป้าหมาย: [ใคร]
+
+สไตล์: - เปิดด้วย hook ที่ทำให้หยุด scroll
+
+- เล่าเรื่องประสบการณ์จริง
+
+- สรุปเชื่อมกลับสินค้า/บริการ
+
+- ปิดด้วย cta + emoji
+
+- hashtag 3-5 ตัว brainstorm ไอเดีย 10 อัน
+
+ระดมไอเดีย content 10 หัวข้อ ทำได้เลย prompt
+
+copy brainstorm ไอเดีย content 10 อัน
+
+แบรนด์: [ชื่อแบรนด์] ธุรกิจ: [ประเภท]
+
+กลุ่มเป้าหมาย: [ใคร] ช่องทาง: [facebook / ig / tiktok]
+
+แต่ละไอเดียต้องมี: - หัวข้อ
+
+- format (โพสต์ / reels / carousel / story)
+
+- hook 1 บรรทัด
+
+- ทำไมเรื่องนี้คนจะสนใจ เน้น: 60% ให้ความรู้ / 20% เล่าเรื่อง / 20% ขาย
+
+เขียน blog post เขียนบทความ seo-friendly จาก outline
+
+prompt copy
+
+เขียน blog post หัวข้อ: [ชื่อบทความ]
+
+keyword หลัก: [keyword ที่ต้องการ rank] ความยาว: [800 / 1500 / 2000 คำ]
+
+กลุ่มเป้าหมาย: [ใคร] tone: [ให้ความรู้ / สนุกสนาน / มืออาชีพ]
+
+โครงสร้าง: 1. title (มี keyword + น่าคลิก)
+
+2. intro (hook + สรุปสิ่งที่จะได้)
+
+3. เนื้อหา (แบ่งหัวข้อย่อย h2/h3)
+
+4. สรุป
+
+5. cta
+
+6. meta description carousel content
+
+สร้าง carousel 7-10 slides สวยๆ prompt
+
+copy สร้าง carousel content
+
+แพลตฟอร์ม: [ig / facebook / linkedin] หัวข้อ: [เรื่องอะไร]
+
+จำนวน slides: [7-10 slides] กลุ่มเป้าหมาย: [ใคร]
+
+แต่ละ slide ต้องมี: - headline (สั้นกระชับ)
+
+- เนื้อหา (2-3 บรรทัด)
+
+- คำแนะนำภาพ/graphic slide แรก: hook ที่ทำให้ swipe
+
+slide สุดท้าย: cta + ชวน save/share podcast outline
+
+วางโครงสร้าง episode พร้อมคำถาม prompt
+
+copy สร้าง podcast outline
+
+ชื่อรายการ: [ชื่อ podcast] หัวข้อ episode: [เรื่องอะไร]
+
+แขกรับเชิญ: [ชื่อ — ตำแหน่ง] (ถ้ามี) ความยาว: [30 นาที / 1 ชั่วโมง]
+
+สร้าง outline: 1. intro (แนะนำตัว + หัวข้อ)
+
+2. main questions (5-7 คำถาม)
+
+3. deep dive topics
+
+4. quick fire round (คำถามสั้นๆ สนุกๆ)
+
+5. outro (สรุป + cta) tone: [casual / professional]
+
+newsletter เขียน newsletter อ่านจบใน 3 นาที
+
+prompt copy
+
+เขียน newsletter ชื่อ newsletter: [ชื่อ]
+
+หัวข้อสัปดาห์นี้: [เรื่องอะไร] กลุ่มผู้อ่าน: [ใคร]
+
+โครงสร้าง: 1. subject line (น่าเปิด — เขียน 3 ตัวเลือก)
+
+2. preview text
+
+3. เนื้อหาหลัก (อ่านจบใน 3 นาที)
+
+4. ลิงก์/แหล่งอ้างอิง 2-3 อัน
+
+5. cta
+
+6. ps line (เกร็ดเล็กน้อย) content repurpose
+
+แปลง content เดิมเป็นหลาย format prompt
+
+copy repurpose content นี้ให้หน่อย
+
+content เดิม: [วาง content เดิมตรงนี้ — บทความ / script / post]
+
+แปลงเป็น: 1. twitter/x thread (5-7 tweets)
+
+2. linkedin post
+
+3. ig carousel outline (7 slides)
+
+4. tiktok script (60 วินาที)
+
+5. email newsletter excerpt
+
+6. facebook post รักษา key message เดิม แต่ปรับ tone ให้เหมาะแต่ละแพลตฟอร์ม
+
+🛒 affiliate — คำสั่งสำเร็จรูป">
+<div><span class="badge">Prompt Templates</span><span class="badge">Openclaw</span></div>
+<h2>🎨 Content Creator — คำสั่งสำเร็จรูป </h2>
+<p><strong>คำสั่งสำเร็จรูป content-creator</strong></p>
+<p><strong>prompt สำเร็จรูป</strong></p>
+<p>รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ AI ใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ</p>
+<p>💡 กดที่ code block แล้ว copy ไปวางใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ</p>
+<p><strong>เขียน Script วิดีโอ เขียน script สำหรับ Reels/TikTok/YouTube</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>เขียน script วิดีโอ แพลตฟอร์ม: [Reels / TikTok / YouTube]</strong></p>
+<p><strong>ความยาว: [15 วินาที / 60 วินาที / 5 นาที] หัวข้อ: [เรื่องอะไร]</strong></p>
+<p><strong>กลุ่มเป้าหมาย: [ใคร] สไตล์: [สอน / เล่าเรื่อง / ตลก / dramatic]</strong></p>
+<p><strong>ต้องมี: 1. Hook แรก (3 วินาทีแรก) — ต้องหยุด scroll</strong></p>
+<ul>
+<li>เนื้อหา — จัดเป็น scene</li>
+<li>CTA — ปิดท้ายให้คนทำอะไร</li>
+<li>คำแนะนำ B-roll / transition Caption Storytelling</li>
+</ul>
+<p><strong>เขียน caption แบบเล่าเรื่องชวนอ่านจนจบ PROMPT</strong></p>
+<p><strong>Copy เขียน caption แบบ storytelling</strong></p>
+<p><strong>แพลตฟอร์ม: [Facebook / IG / TikTok] หัวข้อ: [เรื่องอะไร]</strong></p>
+<p><strong>แบรนด์: [ชื่อแบรนด์] กลุ่มเป้าหมาย: [ใคร]</strong></p>
+<p><strong>สไตล์: - เปิดด้วย hook ที่ทำให้หยุด scroll</strong></p>
+<ul>
+<li>- เล่าเรื่องประสบการณ์จริง</li>
+<li>- สรุปเชื่อมกลับสินค้า/บริการ</li>
+<li>- ปิดด้วย CTA + emoji</li>
+<li>- Hashtag 3-5 ตัว Brainstorm ไอเดีย 10 อัน</li>
+</ul>
+<p><strong>ระดมไอเดีย content 10 หัวข้อ ทำได้เลย PROMPT</strong></p>
+<p><strong>Copy brainstorm ไอเดีย content 10 อัน</strong></p>
+<p><strong>แบรนด์: [ชื่อแบรนด์] ธุรกิจ: [ประเภท]</strong></p>
+<p><strong>กลุ่มเป้าหมาย: [ใคร] ช่องทาง: [Facebook / IG / TikTok]</strong></p>
+<p><strong>แต่ละไอเดียต้องมี: - หัวข้อ</strong></p>
+<ul>
+<li>- format (โพสต์ / Reels / carousel / story)</li>
+<li>- hook 1 บรรทัด</li>
+<li>- ทำไมเรื่องนี้คนจะสนใจ เน้น: 60% ให้ความรู้ / 20% เล่าเรื่อง / 20% ขาย</li>
+</ul>
+<p><strong>เขียน Blog Post เขียนบทความ SEO-friendly จาก outline</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>เขียน blog post หัวข้อ: [ชื่อบทความ]</strong></p>
+<p>Keyword หลัก: [keyword ที่ต้องการ rank] ความยาว: [800 / 1500 / 2000 คำ]</p>
+<p><strong>กลุ่มเป้าหมาย: [ใคร] Tone: [ให้ความรู้ / สนุกสนาน / มืออาชีพ]</strong></p>
+<p><strong>โครงสร้าง: 1. Title (มี keyword + น่าคลิก)</strong></p>
+<ul>
+<li>Intro (hook + สรุปสิ่งที่จะได้)</li>
+<li>เนื้อหา (แบ่งหัวข้อย่อย H2/H3)</li>
+<li>สรุป</li>
+<li>CTA</li>
+<li>Meta description Carousel Content</li>
+</ul>
+<p><strong>สร้าง carousel 7-10 slides สวยๆ PROMPT</strong></p>
+<p><strong>Copy สร้าง carousel content</strong></p>
+<p><strong>แพลตฟอร์ม: [IG / Facebook / LinkedIn] หัวข้อ: [เรื่องอะไร]</strong></p>
+<p><strong>จำนวน slides: [7-10 slides] กลุ่มเป้าหมาย: [ใคร]</strong></p>
+<p><strong>แต่ละ slide ต้องมี: - Headline (สั้นกระชับ)</strong></p>
+<ul>
+<li>- เนื้อหา (2-3 บรรทัด)</li>
+<li>- คำแนะนำภาพ/graphic Slide แรก: Hook ที่ทำให้ swipe</li>
+</ul>
+<p><strong>Slide สุดท้าย: CTA + ชวน save/share Podcast Outline</strong></p>
+<p><strong>วางโครงสร้าง episode พร้อมคำถาม PROMPT</strong></p>
+<p><strong>Copy สร้าง podcast outline</strong></p>
+<p><strong>ชื่อรายการ: [ชื่อ podcast] หัวข้อ episode: [เรื่องอะไร]</strong></p>
+<p>แขกรับเชิญ: [ชื่อ — ตำแหน่ง] (ถ้ามี) ความยาว: [30 นาที / 1 ชั่วโมง]</p>
+<p><strong>สร้าง outline: 1. Intro (แนะนำตัว + หัวข้อ)</strong></p>
+<ul>
+<li>Main questions (5-7 คำถาม)</li>
+<li>Deep dive topics</li>
+<li>Quick fire round (คำถามสั้นๆ สนุกๆ)</li>
+<li>Outro (สรุป + CTA) Tone: [casual / professional]</li>
+</ul>
+<p><strong>Newsletter เขียน newsletter อ่านจบใน 3 นาที</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>เขียน newsletter ชื่อ newsletter: [ชื่อ]</strong></p>
+<p><strong>หัวข้อสัปดาห์นี้: [เรื่องอะไร] กลุ่มผู้อ่าน: [ใคร]</strong></p>
+<p><strong>โครงสร้าง: 1. Subject line (น่าเปิด — เขียน 3 ตัวเลือก)</strong></p>
+<ul>
+<li>Preview text</li>
+<li>เนื้อหาหลัก (อ่านจบใน 3 นาที)</li>
+<li>ลิงก์/แหล่งอ้างอิง 2-3 อัน</li>
+<li>CTA</li>
+<li>PS line (เกร็ดเล็กน้อย) Content Repurpose</li>
+</ul>
+<p><strong>แปลง content เดิมเป็นหลาย format PROMPT</strong></p>
+<p><strong>Copy repurpose content นี้ให้หน่อย</strong></p>
+<p><strong>Content เดิม: [วาง content เดิมตรงนี้ — บทความ / script / post]</strong></p>
+<p><strong>แปลงเป็น: 1. Twitter/X thread (5-7 tweets)</strong></p>
+<ul>
+<li>LinkedIn post</li>
+<li>IG carousel outline (7 slides)</li>
+<li>TikTok script (60 วินาที)</li>
+<li>Email newsletter excerpt</li>
+<li>Facebook post รักษา key message เดิม แต่ปรับ tone ให้เหมาะแต่ละแพลตฟอร์ม</li>
+</ul>
+<p><strong>🛒 Affiliate — คำสั่งสำเร็จรูป</strong></p>
+</article>
+<article class="article article-card" id="prompt-affiliate" data-search="🛒 affiliate — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป affiliate
+
+prompt สำเร็จรูป
+
+รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+เขียนรีวิวสินค้า รีวิวสินค้าแบบน่าเชื่อถือ ชวนซื้อ
+
+prompt copy
+
+เขียนรีวิวสินค้า ชื่อสินค้า: [ชื่อ]
+
+แบรนด์: [แบรนด์] ราคา: [ราคา]
+
+หมวดหมู่: [เช่น gadget / beauty / health] ข้อมูลสินค้า:
+
+- จุดเด่น: [3-5 ข้อ]
+
+- ข้อด้อย: [1-2 ข้อ — ซื่อสัตย์]
+
+- เหมาะกับใคร: [กลุ่มเป้าหมาย] เขียนรีวิว:
+
+1. hook (ทำไมต้องอ่าน)
+
+2. ประสบการณ์ใช้จริง
+
+3. ข้อดี-ข้อเสีย
+
+4. เทียบกับคู่แข่ง
+
+5. สรุป + ให้คะแนน /10
+
+6. cta (link ซื้อ) เปรียบเทียบ 3 สินค้า
+
+ตารางเปรียบเทียบ side-by-side prompt
+
+copy เปรียบเทียบ 3 สินค้า
+
+หมวดหมู่: [เช่น หูฟัง / ครีมกันแดด / คอร์สออนไลน์]
+
+สินค้า: 1. [ชื่อ] — ราคา [x] บาท
+
+2. [ชื่อ] — ราคา [x] บาท
+
+3. [ชื่อ] — ราคา [x] บาท เปรียบเทียบ:
+
+- คุณสมบัติ
+
+- ราคา
+
+- ข้อดี-ข้อเสีย
+
+- เหมาะกับใคร
+
+- rating /10 สรุป: ตัวไหนดีที่สุดสำหรับคนไหน
+
+format: ตาราง + สรุปแต่ละตัว landing page copy
+
+เขียน copy สำหรับหน้า landing page prompt
+
+copy เขียน landing page copy
+
+สินค้า: [ชื่อสินค้า] ราคา: [ราคา]
+
+กลุ่มเป้าหมาย: [ใคร] ปัญหาที่แก้: [pain point]
+
+เขียนให้: 1. headline (จับใจ — 1 บรรทัด)
+
+2. sub-headline
+
+3. pain points (3 ข้อ)
+
+4. solution (สินค้าแก้ยังไง)
+
+5. features &amp; benefits (5 ข้อ)
+
+6. social proof (testimonial format)
+
+7. faq (3-5 คำถาม)
+
+8. cta (ปุ่มกดซื้อ + urgency) email sequence
+
+ชุด email 5 ฉบับสำหรับ nurture → ขาย prompt
+
+copy สร้าง email sequence 5 ฉบับ
+
+สินค้า: [ชื่อ] ราคา: [ราคา]
+
+กลุ่มเป้าหมาย: [ใคร] sequence:
+
+1. welcome (แนะนำตัว + ให้คุณค่า)
+
+2. pain point (ชี้ปัญหา)
+
+3. solution (แนะนำสินค้า)
+
+4. social proof (รีวิว/case study)
+
+5. last chance (urgency + cta) แต่ละฉบับ:
+
+- subject line
+
+- เนื้อหา 150-200 คำ
+
+- cta
+
+- ส่งห่างกัน [2-3 วัน] สรุปจุดเด่นสินค้า
+
+สรุป selling points สั้นกระชับ ใช้ได้ทุกที่ prompt
+
+copy สรุปจุดเด่นสินค้า
+
+ชื่อสินค้า: [ชื่อ] ราคา: [ราคา]
+
+ข้อมูลสินค้า: [วางข้อมูลสินค้าตรงนี้ — spec / features / description]
+
+สรุปเป็น: 1. usp 1 บรรทัด
+
+2. bullet points 5 ข้อ (features → benefits)
+
+3. เหมาะกับใคร (2-3 กลุ่ม)
+
+4. ทำไมต้องตัวนี้ (เปรียบเทียบ)
+
+5. caption สั้นๆ ใช้โพสต์ได้เลย เขียน cta ที่ได้ผล
+
+สร้าง call-to-action หลายแบบสำหรับ a/b test prompt
+
+copy สร้าง cta (call-to-action) 10 แบบ
+
+สินค้า: [ชื่อ] ราคา: [ราคา]
+
+ข้อเสนอ: [ส่วนลด / ของแถม / ทดลองฟรี] ช่องทาง: [เว็บ / fb / ig / line]
+
+สร้าง cta: - 3 แบบสร้าง urgency
+
+- 3 แบบให้คุณค่า
+
+- 2 แบบ social proof
+
+- 2 แบบตลก/สนุก แต่ละอัน: ข้อความ cta + ปุ่ม text
+
+commission calculator คำนวณรายได้ affiliate ตามสถานการณ์ต่างๆ
+
+prompt copy
+
+คำนวณรายได้ affiliate สินค้า: [ชื่อ]
+
+ราคาสินค้า: [ราคา] บาท ค่า commission: [x]%
+
+คำนวณให้: 1. ขายได้ 10 ชิ้น/เดือน = ?
+
+2. ขายได้ 50 ชิ้น/เดือน = ?
+
+3. ขายได้ 100 ชิ้น/เดือน = ? วิเคราะห์:
+
+- ต้องมี traffic เท่าไหร่ (สมมุติ conversion rate 2-3%)
+
+- ช่องทางไหนน่าจะได้ traffic มากสุด
+
+- เทียบกับเวลาที่ใช้ คุ้มมั้ย product roundup
+
+เขียนบทความ &#x27;x สินค้าที่ดีที่สุด&#x27; สำหรับ seo prompt
+
+copy เขียน product roundup
+
+หัวข้อ: &quot;[จำนวน] [หมวดหมู่] ที่ดีที่สุดใน [ปี]&quot;
+
+ตัวอย่าง: &quot;7 หูฟังไร้สายที่ดีที่สุดในปี 2026&quot;
+
+สินค้า: 1. [ชื่อ] — ราคา [x]
+
+2. [ชื่อ] — ราคา [x]
+
+3. [ชื่อ] — ราคา [x] (เพิ่มได้)
+
+แต่ละตัวต้องมี: - ภาพรวม 2-3 ประโยค
+
+- ข้อดี 3 ข้อ / ข้อเสีย 1-2 ข้อ
+
+- เหมาะกับใคร
+
+- rating /10 สรุป: ตัวไหนดีสำหรับงบไหน
+
+🎵 tiktoker — คำสั่งสำเร็จรูป">
+<div><span class="badge">Prompt Templates</span><span class="badge">Openclaw</span></div>
+<h2>🛒 Affiliate — คำสั่งสำเร็จรูป </h2>
+<p><strong>คำสั่งสำเร็จรูป affiliate</strong></p>
+<p><strong>prompt สำเร็จรูป</strong></p>
+<p>รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ AI ใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ</p>
+<p>💡 กดที่ code block แล้ว copy ไปวางใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ</p>
+<p><strong>เขียนรีวิวสินค้า รีวิวสินค้าแบบน่าเชื่อถือ ชวนซื้อ</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>เขียนรีวิวสินค้า ชื่อสินค้า: [ชื่อ]</strong></p>
+<p><strong>แบรนด์: [แบรนด์] ราคา: [ราคา]</strong></p>
+<p>หมวดหมู่: [เช่น gadget / beauty / health] ข้อมูลสินค้า:</p>
+<ul>
+<li>- จุดเด่น: [3-5 ข้อ]</li>
+<li>- ข้อด้อย: [1-2 ข้อ — ซื่อสัตย์]</li>
+<li>- เหมาะกับใคร: [กลุ่มเป้าหมาย] เขียนรีวิว:</li>
+<li>Hook (ทำไมต้องอ่าน)</li>
+<li>ประสบการณ์ใช้จริง</li>
+<li>ข้อดี-ข้อเสีย</li>
+<li>เทียบกับคู่แข่ง</li>
+<li>สรุป + ให้คะแนน /10</li>
+<li>CTA (link ซื้อ) เปรียบเทียบ 3 สินค้า</li>
+</ul>
+<p><strong>ตารางเปรียบเทียบ side-by-side PROMPT</strong></p>
+<p><strong>Copy เปรียบเทียบ 3 สินค้า</strong></p>
+<p><strong>หมวดหมู่: [เช่น หูฟัง / ครีมกันแดด / คอร์สออนไลน์]</strong></p>
+<p><strong>สินค้า: 1. [ชื่อ] — ราคา [X] บาท</strong></p>
+<ul>
+<li>[ชื่อ] — ราคา [X] บาท</li>
+<li>[ชื่อ] — ราคา [X] บาท เปรียบเทียบ:</li>
+<li>- คุณสมบัติ</li>
+<li>- ราคา</li>
+<li>- ข้อดี-ข้อเสีย</li>
+<li>- เหมาะกับใคร</li>
+<li>- Rating /10 สรุป: ตัวไหนดีที่สุดสำหรับคนไหน</li>
+</ul>
+<p><strong>Format: ตาราง + สรุปแต่ละตัว Landing Page Copy</strong></p>
+<p><strong>เขียน copy สำหรับหน้า landing page PROMPT</strong></p>
+<p><strong>Copy เขียน landing page copy</strong></p>
+<p><strong>สินค้า: [ชื่อสินค้า] ราคา: [ราคา]</strong></p>
+<p><strong>กลุ่มเป้าหมาย: [ใคร] ปัญหาที่แก้: [pain point]</strong></p>
+<p><strong>เขียนให้: 1. Headline (จับใจ — 1 บรรทัด)</strong></p>
+<ul>
+<li>Sub-headline</li>
+<li>Pain points (3 ข้อ)</li>
+<li>Solution (สินค้าแก้ยังไง)</li>
+<li>Features &amp; Benefits (5 ข้อ)</li>
+<li>Social proof (testimonial format)</li>
+<li>FAQ (3-5 คำถาม)</li>
+<li>CTA (ปุ่มกดซื้อ + urgency) Email Sequence</li>
+</ul>
+<p><strong>ชุด email 5 ฉบับสำหรับ nurture → ขาย PROMPT</strong></p>
+<p><strong>Copy สร้าง email sequence 5 ฉบับ</strong></p>
+<p><strong>สินค้า: [ชื่อ] ราคา: [ราคา]</strong></p>
+<p>กลุ่มเป้าหมาย: [ใคร] Sequence:</p>
+<ul>
+<li>Welcome (แนะนำตัว + ให้คุณค่า)</li>
+<li>Pain point (ชี้ปัญหา)</li>
+<li>Solution (แนะนำสินค้า)</li>
+<li>Social proof (รีวิว/case study)</li>
+<li>Last chance (urgency + CTA) แต่ละฉบับ:</li>
+<li>- Subject line</li>
+<li>- เนื้อหา 150-200 คำ</li>
+<li>- CTA</li>
+<li>- ส่งห่างกัน [2-3 วัน] สรุปจุดเด่นสินค้า</li>
+</ul>
+<p><strong>สรุป selling points สั้นกระชับ ใช้ได้ทุกที่ PROMPT</strong></p>
+<p><strong>Copy สรุปจุดเด่นสินค้า</strong></p>
+<p><strong>ชื่อสินค้า: [ชื่อ] ราคา: [ราคา]</strong></p>
+<p>ข้อมูลสินค้า: [วางข้อมูลสินค้าตรงนี้ — spec / features / description]</p>
+<p><strong>สรุปเป็น: 1. USP 1 บรรทัด</strong></p>
+<ul>
+<li>Bullet points 5 ข้อ (features → benefits)</li>
+<li>เหมาะกับใคร (2-3 กลุ่ม)</li>
+<li>ทำไมต้องตัวนี้ (เปรียบเทียบ)</li>
+<li>Caption สั้นๆ ใช้โพสต์ได้เลย เขียน CTA ที่ได้ผล</li>
+</ul>
+<p><strong>สร้าง call-to-action หลายแบบสำหรับ A/B test PROMPT</strong></p>
+<p><strong>Copy สร้าง CTA (Call-to-Action) 10 แบบ</strong></p>
+<p><strong>สินค้า: [ชื่อ] ราคา: [ราคา]</strong></p>
+<p>ข้อเสนอ: [ส่วนลด / ของแถม / ทดลองฟรี] ช่องทาง: [เว็บ / FB / IG / LINE]</p>
+<p><strong>สร้าง CTA: - 3 แบบสร้าง urgency</strong></p>
+<ul>
+<li>- 3 แบบให้คุณค่า</li>
+<li>- 2 แบบ social proof</li>
+<li>- 2 แบบตลก/สนุก แต่ละอัน: ข้อความ CTA + ปุ่ม text</li>
+</ul>
+<p><strong>Commission Calculator คำนวณรายได้ affiliate ตามสถานการณ์ต่างๆ</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>คำนวณรายได้ affiliate สินค้า: [ชื่อ]</strong></p>
+<p><strong>ราคาสินค้า: [ราคา] บาท ค่า commission: [X]%</strong></p>
+<p>คำนวณให้: 1. ขายได้ 10 ชิ้น/เดือน = ?</p>
+<ul>
+<li>ขายได้ 50 ชิ้น/เดือน = ?</li>
+<li>ขายได้ 100 ชิ้น/เดือน = ? วิเคราะห์:</li>
+<li>- ต้องมี traffic เท่าไหร่ (สมมุติ conversion rate 2-3%)</li>
+<li>- ช่องทางไหนน่าจะได้ traffic มากสุด</li>
+<li>- เทียบกับเวลาที่ใช้ คุ้มมั้ย Product Roundup</li>
+</ul>
+<p><strong>เขียนบทความ &#x27;X สินค้าที่ดีที่สุด&#x27; สำหรับ SEO PROMPT</strong></p>
+<p><strong>Copy เขียน product roundup</strong></p>
+<p><strong>หัวข้อ: &quot;[จำนวน] [หมวดหมู่] ที่ดีที่สุดใน [ปี]&quot;</strong></p>
+<h3>ตัวอย่าง: &quot;7 หูฟังไร้สายที่ดีที่สุดในปี 2026&quot;</h3>
+<p><strong>สินค้า: 1. [ชื่อ] — ราคา [X]</strong></p>
+<ul>
+<li>[ชื่อ] — ราคา [X]</li>
+<li>[ชื่อ] — ราคา [X] (เพิ่มได้)</li>
+</ul>
+<p><strong>แต่ละตัวต้องมี: - ภาพรวม 2-3 ประโยค</strong></p>
+<ul>
+<li>- ข้อดี 3 ข้อ / ข้อเสีย 1-2 ข้อ</li>
+<li>- เหมาะกับใคร</li>
+<li>- Rating /10 สรุป: ตัวไหนดีสำหรับงบไหน</li>
+</ul>
+<p><strong>🎵 TikToker — คำสั่งสำเร็จรูป</strong></p>
+</article>
+<article class="article article-card" id="prompt-tiktoker" data-search="🎵 tiktoker — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป tiktok
+
+prompt สำเร็จรูป
+
+รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+hook 3 วินาที สร้าง opening hook ที่หยุด scroll ได้
+
+prompt copy
+
+สร้าง hook สำหรับ tiktok 10 แบบ หัวข้อ: [เรื่องอะไร]
+
+กลุ่มเป้าหมาย: [ใคร] แต่ละ hook:
+
+- ความยาวไม่เกิน 3 วินาที
+
+- ต้องทำให้คนหยุด scroll
+
+- มี element of surprise / curiosity / controversy
+
+แบบ: - 3 แบบ &quot;คุณทำผิดมาตลอด...&quot;
+
+- 3 แบบ &quot;ไม่มีใครบอกคุณเรื่องนี้...&quot;
+
+- 2 แบบตั้งคำถาม
+
+- 2 แบบ shocking fact viral script format
+
+script tiktok ที่มีโอกาส viral สูง prompt
+
+copy เขียน tiktok script แบบ viral
+
+หัวข้อ: [เรื่องอะไร] ความยาว: [15 / 30 / 60 วินาที]
+
+สไตล์: [สอน / เล่าเรื่อง / ตลก / shocking] format:
+
+[0-3s] hook: (หยุด scroll) [3-10s] context: (ทำไมต้องดู)
+
+[10-25s] content: (เนื้อหาหลัก) [25-30s] cta: (ทำให้คนมีส่วนร่วม)
+
+เพิ่ม: - คำแนะนำ text overlay
+
+- เพลงที่เหมาะ (trending)
+
+- transition ที่แนะนำ trend adaptation
+
+เอา trend มาดัดแปลงให้เข้ากับแบรนด์ prompt
+
+copy ดัดแปลง tiktok trend ให้เข้ากับแบรนด์
+
+trend: [อธิบาย trend — เช่น &quot;get ready with me&quot; / &quot;pov&quot; / เพลงที่กำลังฮิต]
+
+แบรนด์: [ชื่อแบรนด์] สินค้า/บริการ: [อะไร]
+
+กลุ่มเป้าหมาย: [ใคร] สร้าง script 3 แบบ:
+
+1. แบบตรงๆ (ตาม trend เป๊ะ + ใส่แบรนด์)
+
+2. แบบ twist (ดัดแปลงให้แปลก)
+
+3. แบบ series (ต่อยอดเป็น 3 ตอน) duet/stitch ideas
+
+ไอเดีย duet หรือ stitch กับ video ดังๆ prompt
+
+copy ให้ไอเดีย duet/stitch 5 แบบ
+
+หัวข้อ/niche: [niche ของช่อง] แบรนด์: [ชื่อแบรนด์] (ถ้ามี)
+
+สไตล์ช่อง: [สอน / ตลก / lifestyle] แต่ละไอเดีย:
+
+- ประเภท: duet หรือ stitch
+
+- stitch กับ video แบบไหน (อธิบายประเภท)
+
+- script ที่จะพูด
+
+- ทำไมคนจะดู
+
+- estimated length caption สั้น
+
+caption tiktok ที่สั้นกระชับ ชวนมีส่วนร่วม prompt
+
+copy เขียน tiktok caption 10 แบบ
+
+หัวข้อวิดีโอ: [เรื่องอะไร] เขียน:
+
+- 3 แบบตั้งคำถาม (ชวน comment)
+
+- 3 แบบ controversial (ชวน debate)
+
+- 2 แบบตลก
+
+- 2 แบบ cta (ชวน follow/save/share) ทุกอัน:
+
+- ไม่เกิน 2 บรรทัด
+
+- มี emoji 1-2 ตัว
+
+- ไม่ใส่ hashtag (ใส่แยก) hashtag strategy
+
+วาง hashtag strategy สำหรับ reach สูงสุด prompt
+
+copy วาง hashtag strategy สำหรับ tiktok
+
+niche: [niche ของช่อง] หัวข้อวิดีโอ: [เรื่องอะไร]
+
+กลุ่มเป้าหมาย: [ใคร] ภาษา: [ไทย / ไทย+อังกฤษ]
+
+สร้าง hashtag set: 1. trending hashtags (3-5 อัน)
+
+2. niche hashtags (3-5 อัน)
+
+3. long-tail hashtags (3-5 อัน)
+
+4. branded hashtag (1 อัน — สร้างใหม่) อธิบาย: ทำไมเลือก hashtag เหล่านี้
+
+content series วาง content series 5-7 ตอน ให้คนติดตาม
+
+prompt copy
+
+สร้าง tiktok content series หัวข้อ series: [เรื่องอะไร]
+
+จำนวนตอน: [5-7 ตอน] ความยาวต่อตอน: [30-60 วินาที]
+
+แต่ละตอน: - ชื่อตอน
+
+- hook
+
+- เนื้อหาหลัก
+
+- cliffhanger/teaser ตอนถัดไป ตอนแรก: intro + ทำให้อยากดูต่อ
+
+ตอนสุดท้าย: สรุป + cta follow behind-the-scene script
+
+script เบื้องหลังการทำงาน ให้คนรู้สึกใกล้ชิด prompt
+
+copy เขียน behind-the-scene script
+
+เบื้องหลังอะไร: [ทำงาน / ผลิตสินค้า / เตรียมงาน / ชีวิตประจำวัน]
+
+ธุรกิจ: [ชื่อธุรกิจ] ความยาว: [30-60 วินาที]
+
+format: - เปิดด้วย &quot;พาดูเบื้องหลัง...&quot;
+
+- แสดง process step-by-step
+
+- ใส่ personality + ความรู้สึก
+
+- ปิดด้วยผลลัพธ์ที่น่าพอใจ tone: genuine, ไม่ทำ ไม่เว่อร์
+
+💼 freelancer — คำสั่งสำเร็จรูป">
+<div><span class="badge">Prompt Templates</span><span class="badge">Openclaw</span></div>
+<h2>🎵 TikToker — คำสั่งสำเร็จรูป </h2>
+<p><strong>คำสั่งสำเร็จรูป tiktok</strong></p>
+<p><strong>prompt สำเร็จรูป</strong></p>
+<p>รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ AI ใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ</p>
+<p>💡 กดที่ code block แล้ว copy ไปวางใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ</p>
+<p><strong>Hook 3 วินาที สร้าง opening hook ที่หยุด scroll ได้</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>สร้าง hook สำหรับ TikTok 10 แบบ หัวข้อ: [เรื่องอะไร]</strong></p>
+<p>กลุ่มเป้าหมาย: [ใคร] แต่ละ hook:</p>
+<ul>
+<li>- ความยาวไม่เกิน 3 วินาที</li>
+<li>- ต้องทำให้คนหยุด scroll</li>
+<li>- มี element of surprise / curiosity / controversy</li>
+</ul>
+<p><strong>แบบ: - 3 แบบ &quot;คุณทำผิดมาตลอด...&quot;</strong></p>
+<ul>
+<li>- 3 แบบ &quot;ไม่มีใครบอกคุณเรื่องนี้...&quot;</li>
+<li>- 2 แบบตั้งคำถาม</li>
+<li>- 2 แบบ shocking fact Viral Script Format</li>
+</ul>
+<p><strong>script TikTok ที่มีโอกาส viral สูง PROMPT</strong></p>
+<p><strong>Copy เขียน TikTok script แบบ viral</strong></p>
+<p><strong>หัวข้อ: [เรื่องอะไร] ความยาว: [15 / 30 / 60 วินาที]</strong></p>
+<p>สไตล์: [สอน / เล่าเรื่อง / ตลก / shocking] Format:</p>
+<p><strong>[0-3s] HOOK: (หยุด scroll) [3-10s] CONTEXT: (ทำไมต้องดู)</strong></p>
+<p>[10-25s] CONTENT: (เนื้อหาหลัก) [25-30s] CTA: (ทำให้คนมีส่วนร่วม)</p>
+<p><strong>เพิ่ม: - คำแนะนำ text overlay</strong></p>
+<ul>
+<li>- เพลงที่เหมาะ (trending)</li>
+<li>- transition ที่แนะนำ Trend Adaptation</li>
+</ul>
+<p><strong>เอา trend มาดัดแปลงให้เข้ากับแบรนด์ PROMPT</strong></p>
+<p><strong>Copy ดัดแปลง TikTok trend ให้เข้ากับแบรนด์</strong></p>
+<p>Trend: [อธิบาย trend — เช่น &quot;get ready with me&quot; / &quot;POV&quot; / เพลงที่กำลังฮิต]</p>
+<p><strong>แบรนด์: [ชื่อแบรนด์] สินค้า/บริการ: [อะไร]</strong></p>
+<p>กลุ่มเป้าหมาย: [ใคร] สร้าง script 3 แบบ:</p>
+<ul>
+<li>แบบตรงๆ (ตาม trend เป๊ะ + ใส่แบรนด์)</li>
+<li>แบบ twist (ดัดแปลงให้แปลก)</li>
+<li>แบบ series (ต่อยอดเป็น 3 ตอน) Duet/Stitch Ideas</li>
+</ul>
+<p><strong>ไอเดีย duet หรือ stitch กับ video ดังๆ PROMPT</strong></p>
+<p><strong>Copy ให้ไอเดีย duet/stitch 5 แบบ</strong></p>
+<p><strong>หัวข้อ/niche: [niche ของช่อง] แบรนด์: [ชื่อแบรนด์] (ถ้ามี)</strong></p>
+<p>สไตล์ช่อง: [สอน / ตลก / lifestyle] แต่ละไอเดีย:</p>
+<ul>
+<li>- ประเภท: duet หรือ stitch</li>
+<li>- stitch กับ video แบบไหน (อธิบายประเภท)</li>
+<li>- script ที่จะพูด</li>
+<li>- ทำไมคนจะดู</li>
+<li>- estimated length Caption สั้น</li>
+</ul>
+<p><strong>caption TikTok ที่สั้นกระชับ ชวนมีส่วนร่วม PROMPT</strong></p>
+<p><strong>Copy เขียน TikTok caption 10 แบบ</strong></p>
+<p>หัวข้อวิดีโอ: [เรื่องอะไร] เขียน:</p>
+<ul>
+<li>- 3 แบบตั้งคำถาม (ชวน comment)</li>
+<li>- 3 แบบ controversial (ชวน debate)</li>
+<li>- 2 แบบตลก</li>
+<li>- 2 แบบ CTA (ชวน follow/save/share) ทุกอัน:</li>
+<li>- ไม่เกิน 2 บรรทัด</li>
+<li>- มี emoji 1-2 ตัว</li>
+<li>- ไม่ใส่ hashtag (ใส่แยก) Hashtag Strategy</li>
+</ul>
+<p><strong>วาง hashtag strategy สำหรับ reach สูงสุด PROMPT</strong></p>
+<p><strong>Copy วาง hashtag strategy สำหรับ TikTok</strong></p>
+<p><strong>Niche: [niche ของช่อง] หัวข้อวิดีโอ: [เรื่องอะไร]</strong></p>
+<p><strong>กลุ่มเป้าหมาย: [ใคร] ภาษา: [ไทย / ไทย+อังกฤษ]</strong></p>
+<p><strong>สร้าง hashtag set: 1. Trending hashtags (3-5 อัน)</strong></p>
+<ul>
+<li>Niche hashtags (3-5 อัน)</li>
+<li>Long-tail hashtags (3-5 อัน)</li>
+<li>Branded hashtag (1 อัน — สร้างใหม่) อธิบาย: ทำไมเลือก hashtag เหล่านี้</li>
+</ul>
+<p><strong>Content Series วาง content series 5-7 ตอน ให้คนติดตาม</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>สร้าง TikTok content series หัวข้อ series: [เรื่องอะไร]</strong></p>
+<p><strong>จำนวนตอน: [5-7 ตอน] ความยาวต่อตอน: [30-60 วินาที]</strong></p>
+<p><strong>แต่ละตอน: - ชื่อตอน</strong></p>
+<ul>
+<li>- hook</li>
+<li>- เนื้อหาหลัก</li>
+<li>- cliffhanger/teaser ตอนถัดไป ตอนแรก: intro + ทำให้อยากดูต่อ</li>
+</ul>
+<p><strong>ตอนสุดท้าย: สรุป + CTA follow Behind-the-Scene Script</strong></p>
+<p><strong>script เบื้องหลังการทำงาน ให้คนรู้สึกใกล้ชิด PROMPT</strong></p>
+<p><strong>Copy เขียน behind-the-scene script</strong></p>
+<p><strong>เบื้องหลังอะไร: [ทำงาน / ผลิตสินค้า / เตรียมงาน / ชีวิตประจำวัน]</strong></p>
+<p><strong>ธุรกิจ: [ชื่อธุรกิจ] ความยาว: [30-60 วินาที]</strong></p>
+<p><strong>Format: - เปิดด้วย &quot;พาดูเบื้องหลัง...&quot;</strong></p>
+<ul>
+<li>- แสดง process step-by-step</li>
+<li>- ใส่ personality + ความรู้สึก</li>
+<li>- ปิดด้วยผลลัพธ์ที่น่าพอใจ Tone: genuine, ไม่ทำ ไม่เว่อร์</li>
+</ul>
+<p><strong>💼 Freelancer — คำสั่งสำเร็จรูป</strong></p>
+</article>
+<article class="article article-card" id="prompt-freelancer" data-search="💼 freelancer — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป freelancer
+
+prompt สำเร็จรูป
+
+รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+เขียน proposal ส่งลูกค้า proposal ที่ดูมืออาชีพ ปิดงานได้
+
+prompt copy
+
+เขียน proposal สำหรับ freelance งาน: [ประเภทงาน — design / เขียน content / dev / marketing]
+
+ลูกค้า: [ชื่อ/บริษัท] โจทย์: [ลูกค้าต้องการอะไร]
+
+ราคา: [ราคาที่จะเสนอ] ระยะเวลา: [กี่วัน]
+
+ต้องมี: 1. เข้าใจโจทย์ (paraphrase สิ่งที่ลูกค้าต้องการ)
+
+2. แนวทางการทำงาน
+
+3. ผลงานที่เกี่ยวข้อง (อ้างอิง)
+
+4. timeline
+
+5. ราคาและเงื่อนไข
+
+6. ทำไมต้องเลือกเรา portfolio description
+
+เขียนอธิบายผลงานให้น่าสนใจ prompt
+
+copy เขียน portfolio description
+
+ผลงาน: [ชื่อโปรเจค] ลูกค้า: [ชื่อ]
+
+ประเภทงาน: [design / content / dev / marketing]
+
+สิ่งที่ทำ: [อธิบายสั้นๆ] ผลลัพธ์: [ตัวเลข — เช่น engagement เพิ่ม x% / ยอดขายเพิ่ม]
+
+เขียนให้: - 1 ย่อหน้าสรุป
+
+- challenge: ลูกค้ามีปัญหาอะไร
+
+- solution: แก้ยังไง
+
+- result: ผลลัพธ์ที่ได้
+
+- testimonial (ถ้ามี) ตั้งราคา
+
+คำนวณราคาที่เหมาะสมกับงาน prompt
+
+copy ช่วยตั้งราคา freelance
+
+ประเภทงาน: [อะไร] รายละเอียดงาน: [scope งาน]
+
+เวลาที่ใช้: [ประมาณกี่ชั่วโมง/วัน] ระดับประสบการณ์: [มือใหม่ / กลาง / เชี่ยวชาญ]
+
+ตลาดเป้าหมาย: [ลูกค้าไทย / ต่างประเทศ] ช่วย:
+
+1. คำนวณราคาที่เหมาะสม (ต่อชิ้น + ต่อชั่วโมง)
+
+2. เปรียบเทียบกับราคาตลาด
+
+3. เสนอ pricing packages (basic / standard / premium)
+
+4. สิ่งที่ควรรวม/ไม่รวมในราคา contract draft
+
+ร่างสัญญาจ้างงาน freelance prompt
+
+copy ผู้ว่าจ้าง: [ชื่อลูกค้า/บริษัท]
+
+ผู้รับจ้าง: [ชื่อเรา] งาน: [รายละเอียดงาน]
+
+ราคา: [จำนวนเงิน] ระยะเวลา: [วันเริ่ม — วันจบ]
+
+เงื่อนไข: - จำนวนครั้งแก้ไข: [กี่ครั้ง]
+
+- การชำระเงิน: [มัดจำ x% ก่อนเริ่ม / ที่เหลือหลังส่งมอบ]
+
+- ลิขสิทธิ์: [โอนให้ลูกค้า / เก็บไว้ + ให้ license]
+
+- การยกเลิก: [เงื่อนไข] ร่างเป็นภาษาไทย กึ่งทางการ
+
+client onboarding checklist checklist สำหรับเริ่มงานกับลูกค้าใหม่
+
+prompt copy
+
+สร้าง client onboarding checklist ประเภทงาน: [อะไร]
+
+ลูกค้าใหม่: [ชื่อ] สร้าง checklist:
+
+1. ก่อนเริ่มงาน (ข้อมูลที่ต้องขอจากลูกค้า)
+
+2. kick-off (สิ่งที่ต้องคุยกัน)
+
+3. ระหว่างทำงาน (checkpoint + update)
+
+4. ส่งมอบ (format + ช่องทาง)
+
+5. หลังส่งมอบ (feedback + invoice) รวม: template ข้อความทักลูกค้าครั้งแรก
+
+testimonial request ขอ testimonial จากลูกค้าแบบไม่อึดอัด
+
+prompt copy
+
+เขียนข้อความขอ testimonial จากลูกค้า ลูกค้า: [ชื่อ]
+
+งานที่ทำให้: [อะไร] ส่งทาง: [line / email]
+
+เขียน 2 แบบ: 1. แบบง่ายๆ (ขอแค่ 2-3 ประโยค)
+
+2. แบบมี guideline (ส่งคำถาม 3-5 ข้อให้ตอบ) คำถามที่แนะนำ:
+
+- ก่อนจ้างมีปัญหาอะไร?
+
+- ผลลัพธ์ที่ได้?
+
+- จะแนะนำให้คนอื่นมั้ย? tone: ขอบคุณจริงๆ ไม่กดดัน
+
+upsell pitch เสนอบริการเพิ่มเติมให้ลูกค้าเก่า
+
+prompt copy
+
+เขียน upsell pitch ลูกค้า: [ชื่อ]
+
+งานที่ทำให้แล้ว: [อะไร] บริการเพิ่มที่อยากเสนอ: [อะไร]
+
+ราคาเพิ่ม: [ราคา] เขียนข้อความ:
+
+1. ขอบคุณ + อ้างอิงงานที่ทำแล้ว
+
+2. สิ่งที่สังเกตเห็น (โอกาสที่ลูกค้ายังไม่ได้ทำ)
+
+3. เสนอบริการเพิ่ม + ราคาพิเศษสำหรับลูกค้าเก่า
+
+4. cta (นัดคุย / ส่ง proposal) tone: ให้คุณค่า ไม่ใช่ขายของ
+
+invoice template สร้าง invoice ส่งลูกค้าแบบครบถ้วน
+
+prompt copy
+
+สร้าง invoice จาก: [ชื่อเรา — ที่อยู่ — เลขที่ผู้เสียภาษี]
+
+ถึง: [ชื่อลูกค้า — ที่อยู่] เลขที่ invoice: [inv-xxxx]
+
+วันที่: [วันที่] รายการ:
+
+1. [รายการ] — [จำนวน] x [ราคาต่อหน่วย] = [รวม]
+
+2. [รายการ] — [จำนวน] x [ราคาต่อหน่วย] = [รวม]
+
+ยอดรวม: [จำนวน] vat 7%: [คำนวณ / ไม่มี]
+
+รวมทั้งสิ้น: [จำนวน] ชำระเงิน: [โอนเข้าบัญชี — ชื่อ — เลขที่]
+
+กำหนดชำระ: [ภายใน x วัน] 📢 ads optimizer — คำสั่งสำเร็จรูป">
+<div><span class="badge">Prompt Templates</span><span class="badge">Openclaw</span></div>
+<h2>💼 Freelancer — คำสั่งสำเร็จรูป </h2>
+<p><strong>คำสั่งสำเร็จรูป freelancer</strong></p>
+<p><strong>prompt สำเร็จรูป</strong></p>
+<p>รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ AI ใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ</p>
+<p>💡 กดที่ code block แล้ว copy ไปวางใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ</p>
+<p><strong>เขียน Proposal ส่งลูกค้า proposal ที่ดูมืออาชีพ ปิดงานได้</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p>เขียน proposal สำหรับ freelance งาน: [ประเภทงาน — design / เขียน content / dev / marketing]</p>
+<p><strong>ลูกค้า: [ชื่อ/บริษัท] โจทย์: [ลูกค้าต้องการอะไร]</strong></p>
+<p><strong>ราคา: [ราคาที่จะเสนอ] ระยะเวลา: [กี่วัน]</strong></p>
+<p><strong>ต้องมี: 1. เข้าใจโจทย์ (paraphrase สิ่งที่ลูกค้าต้องการ)</strong></p>
+<ul>
+<li>แนวทางการทำงาน</li>
+<li>ผลงานที่เกี่ยวข้อง (อ้างอิง)</li>
+<li>Timeline</li>
+<li>ราคาและเงื่อนไข</li>
+<li>ทำไมต้องเลือกเรา Portfolio Description</li>
+</ul>
+<p><strong>เขียนอธิบายผลงานให้น่าสนใจ PROMPT</strong></p>
+<p><strong>Copy เขียน portfolio description</strong></p>
+<p><strong>ผลงาน: [ชื่อโปรเจค] ลูกค้า: [ชื่อ]</strong></p>
+<p><strong>ประเภทงาน: [design / content / dev / marketing]</strong></p>
+<p>สิ่งที่ทำ: [อธิบายสั้นๆ] ผลลัพธ์: [ตัวเลข — เช่น engagement เพิ่ม X% / ยอดขายเพิ่ม]</p>
+<p><strong>เขียนให้: - 1 ย่อหน้าสรุป</strong></p>
+<ul>
+<li>- Challenge: ลูกค้ามีปัญหาอะไร</li>
+<li>- Solution: แก้ยังไง</li>
+<li>- Result: ผลลัพธ์ที่ได้</li>
+<li>- Testimonial (ถ้ามี) ตั้งราคา</li>
+</ul>
+<p><strong>คำนวณราคาที่เหมาะสมกับงาน PROMPT</strong></p>
+<p><strong>Copy ช่วยตั้งราคา freelance</strong></p>
+<p><strong>ประเภทงาน: [อะไร] รายละเอียดงาน: [scope งาน]</strong></p>
+<p>เวลาที่ใช้: [ประมาณกี่ชั่วโมง/วัน] ระดับประสบการณ์: [มือใหม่ / กลาง / เชี่ยวชาญ]</p>
+<p>ตลาดเป้าหมาย: [ลูกค้าไทย / ต่างประเทศ] ช่วย:</p>
+<ul>
+<li>คำนวณราคาที่เหมาะสม (ต่อชิ้น + ต่อชั่วโมง)</li>
+<li>เปรียบเทียบกับราคาตลาด</li>
+<li>เสนอ pricing packages (Basic / Standard / Premium)</li>
+<li>สิ่งที่ควรรวม/ไม่รวมในราคา Contract Draft</li>
+</ul>
+<p><strong>ร่างสัญญาจ้างงาน freelance PROMPT</strong></p>
+<p><strong>Copy ผู้ว่าจ้าง: [ชื่อลูกค้า/บริษัท]</strong></p>
+<p><strong>ผู้รับจ้าง: [ชื่อเรา] งาน: [รายละเอียดงาน]</strong></p>
+<p><strong>ราคา: [จำนวนเงิน] ระยะเวลา: [วันเริ่ม — วันจบ]</strong></p>
+<p><strong>เงื่อนไข: - จำนวนครั้งแก้ไข: [กี่ครั้ง]</strong></p>
+<ul>
+<li>- การชำระเงิน: [มัดจำ X% ก่อนเริ่ม / ที่เหลือหลังส่งมอบ]</li>
+<li>- ลิขสิทธิ์: [โอนให้ลูกค้า / เก็บไว้ + ให้ license]</li>
+<li>- การยกเลิก: [เงื่อนไข] ร่างเป็นภาษาไทย กึ่งทางการ</li>
+</ul>
+<p>Client Onboarding Checklist checklist สำหรับเริ่มงานกับลูกค้าใหม่</p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>สร้าง client onboarding checklist ประเภทงาน: [อะไร]</strong></p>
+<p>ลูกค้าใหม่: [ชื่อ] สร้าง checklist:</p>
+<ul>
+<li>ก่อนเริ่มงาน (ข้อมูลที่ต้องขอจากลูกค้า)</li>
+<li>kick-off (สิ่งที่ต้องคุยกัน)</li>
+<li>ระหว่างทำงาน (checkpoint + update)</li>
+<li>ส่งมอบ (format + ช่องทาง)</li>
+<li>หลังส่งมอบ (feedback + invoice) รวม: template ข้อความทักลูกค้าครั้งแรก</li>
+</ul>
+<p><strong>Testimonial Request ขอ testimonial จากลูกค้าแบบไม่อึดอัด</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>เขียนข้อความขอ testimonial จากลูกค้า ลูกค้า: [ชื่อ]</strong></p>
+<p><strong>งานที่ทำให้: [อะไร] ส่งทาง: [LINE / Email]</strong></p>
+<p><strong>เขียน 2 แบบ: 1. แบบง่ายๆ (ขอแค่ 2-3 ประโยค)</strong></p>
+<ul>
+<li>แบบมี guideline (ส่งคำถาม 3-5 ข้อให้ตอบ) คำถามที่แนะนำ:</li>
+<li>- ก่อนจ้างมีปัญหาอะไร?</li>
+<li>- ผลลัพธ์ที่ได้?</li>
+<li>- จะแนะนำให้คนอื่นมั้ย? Tone: ขอบคุณจริงๆ ไม่กดดัน</li>
+</ul>
+<p><strong>Upsell Pitch เสนอบริการเพิ่มเติมให้ลูกค้าเก่า</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>เขียน upsell pitch ลูกค้า: [ชื่อ]</strong></p>
+<p><strong>งานที่ทำให้แล้ว: [อะไร] บริการเพิ่มที่อยากเสนอ: [อะไร]</strong></p>
+<p>ราคาเพิ่ม: [ราคา] เขียนข้อความ:</p>
+<ul>
+<li>ขอบคุณ + อ้างอิงงานที่ทำแล้ว</li>
+<li>สิ่งที่สังเกตเห็น (โอกาสที่ลูกค้ายังไม่ได้ทำ)</li>
+<li>เสนอบริการเพิ่ม + ราคาพิเศษสำหรับลูกค้าเก่า</li>
+<li>CTA (นัดคุย / ส่ง proposal) Tone: ให้คุณค่า ไม่ใช่ขายของ</li>
+</ul>
+<p><strong>Invoice Template สร้าง invoice ส่งลูกค้าแบบครบถ้วน</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>สร้าง invoice จาก: [ชื่อเรา — ที่อยู่ — เลขที่ผู้เสียภาษี]</strong></p>
+<p><strong>ถึง: [ชื่อลูกค้า — ที่อยู่] เลขที่ invoice: [INV-XXXX]</strong></p>
+<p>วันที่: [วันที่] รายการ:</p>
+<ul>
+<li>[รายการ] — [จำนวน] x [ราคาต่อหน่วย] = [รวม]</li>
+<li>[รายการ] — [จำนวน] x [ราคาต่อหน่วย] = [รวม]</li>
+</ul>
+<p><strong>ยอดรวม: [จำนวน] VAT 7%: [คำนวณ / ไม่มี]</strong></p>
+<p><strong>รวมทั้งสิ้น: [จำนวน] ชำระเงิน: [โอนเข้าบัญชี — ชื่อ — เลขที่]</strong></p>
+<p><strong>กำหนดชำระ: [ภายใน X วัน] 📢 Ads Optimizer — คำสั่งสำเร็จรูป</strong></p>
+</article>
+<article class="article article-card" id="prompt-ads" data-search="📢 ads optimizer — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป ads
+
+prompt สำเร็จรูป
+
+รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+เขียน ad copy fb/ig เขียน ad copy 5 ตัว สำหรับ a/b test
+
+prompt copy
+
+เขียน ad copy สำหรับ facebook/ig ads สินค้า: [ชื่อ]
+
+ราคา: [ราคา] ข้อเสนอ: [ส่วนลด / ทดลองฟรี / ของแถม]
+
+กลุ่มเป้าหมาย: [ใคร — อายุ ความสนใจ] เป้าหมายแคมเปญ: [ยอดขาย / lead gen / traffic]
+
+เขียน 5 ตัว: 1. แบบ pain point (ชี้ปัญหา → solution)
+
+2. แบบ benefit-first (ผลลัพธ์ที่ได้)
+
+3. แบบ social proof (คนอื่นใช้แล้ว)
+
+4. แบบ urgency (เวลาจำกัด)
+
+5. แบบ storytelling (เล่าเรื่อง) แต่ละตัว: headline + primary text + cta
+
+a/b test variations สร้าง variations 5 แบบสำหรับ test
+
+prompt copy
+
+สร้าง a/b test variations 5 แบบ ad เดิม:
+
+headline: [headline เดิม] primary text: [เนื้อหาเดิม]
+
+cta: [cta เดิม] สร้าง variations:
+
+1. เปลี่ยน headline (3 แบบ)
+
+2. เปลี่ยน primary text (3 แบบ)
+
+3. เปลี่ยน cta (3 แบบ)
+
+4. เปลี่ยน angle ทั้งหมด (2 แบบ) อธิบาย: ทำไมแต่ละ variation น่าจะ perform ดี
+
+audience targeting strategy วาง targeting ให้ตรงกลุ่มที่สุด
+
+prompt copy
+
+วาง audience targeting strategy สินค้า: [อะไร]
+
+ราคา: [ราคา] ลูกค้าปัจจุบัน: [อธิบายคร่าวๆ]
+
+งบ/เดือน: [งบ] แพลตฟอร์ม: [fb/ig / google / tiktok]
+
+สร้าง 3 audiences: 1. core audience (interest-based)
+
+2. lookalike audience
+
+3. retargeting audience แต่ละ audience:
+
+- demographics
+
+- interests / behaviors
+
+- ขนาดกลุ่มที่เหมาะ
+
+- งบที่แนะนำ สรุป ad report
+
+สรุปผลแคมเปญโฆษณาให้เข้าใจง่าย prompt
+
+copy สรุป ad report ให้หน่อย
+
+ข้อมูล: - แคมเปญ: [ชื่อ]
+
+- ระยะเวลา: [วันที่ — ถึงวันที่]
+
+- งบที่ใช้: [จำนวน]
+
+- reach: [ตัวเลข]
+
+- impressions: [ตัวเลข]
+
+- clicks: [ตัวเลข]
+
+- ctr: [%]
+
+- conversions: [ตัวเลข]
+
+- cpa: [ราคา]
+
+- roas: [ตัวเลข] สรุป:
+
+1. ภาพรวมผลลัพธ์ (ดีหรือไม่ดี)
+
+2. สิ่งที่ทำดี
+
+3. สิ่งที่ควรปรับ
+
+4. action items สำหรับ sprint ถัดไป retargeting message
+
+เขียนข้อความสำหรับ retarget คนที่เคยสนใจ prompt
+
+copy เขียน retargeting ad
+
+สินค้า: [ชื่อ] กลุ่มที่จะ retarget:
+
+- คนที่เข้าเว็บแต่ไม่ซื้อ
+
+- คนที่ add to cart แล้วไม่จ่าย
+
+- คนที่ดู ad แต่ไม่คลิก เขียน ad copy แต่ละกลุ่ม:
+
+1. reminder (เตือนว่ายังสนใจอยู่มั้ย)
+
+2. incentive (ให้ส่วนลดเพิ่ม)
+
+3. social proof (คนอื่นซื้อแล้ว)
+
+4. urgency (ใกล้หมด/ราคาจะขึ้น) ad creative brief
+
+brief สำหรับทีม creative ทำรูป/วิดีโอ prompt
+
+copy เขียน ad creative brief
+
+สินค้า: [ชื่อ] แคมเปญ: [ชื่อ]
+
+แพลตฟอร์ม: [fb/ig/tiktok] format: [รูป / วิดีโอ / carousel]
+
+ขนาด: [1080x1080 / 1080x1350 / 9:16] brief:
+
+1. key message (1 ประโยค)
+
+2. headline บนรูป
+
+3. visual direction (อธิบายรูปที่ต้องการ)
+
+4. สี/mood
+
+5. cta บนรูป
+
+6. โลโก้/branding ที่ต้องใส่
+
+7. reference (ตัวอย่างที่ชอบ) budget allocation plan
+
+วางแผนแบ่งงบโฆษณาให้คุ้มที่สุด prompt
+
+copy วางแผน budget allocation
+
+งบรวม/เดือน: [จำนวน] บาท ธุรกิจ: [ประเภท]
+
+เป้าหมาย: [ยอดขาย / lead / awareness] ช่องทางที่ใช้: [fb/ig / google / tiktok / line]
+
+ช่วย: 1. แบ่งงบแต่ละช่องทาง (% + จำนวนเงิน)
+
+2. แบ่งงบตาม funnel (awareness / consideration / conversion)
+
+3. งบสำหรับ testing vs scaling
+
+4. kpi ที่ควร track
+
+5. เมื่อไหร่ควรปรับงบ roas analysis
+
+วิเคราะห์ roas และหาทางเพิ่ม prompt
+
+copy วิเคราะห์ roas
+
+ข้อมูล: - ยอดขายจากโฆษณา: [จำนวน] บาท
+
+- งบโฆษณา: [จำนวน] บาท
+
+- roas ปัจจุบัน: [ตัวเลข]x
+
+- roas เป้าหมาย: [ตัวเลข]x
+
+- ต้นทุนสินค้า: [%]
+
+- margin: [%] วิเคราะห์:
+
+1. roas ปัจจุบันดีหรือไม่ (เทียบกับ benchmark)
+
+2. break-even roas คือเท่าไหร่
+
+3. วิธีเพิ่ม roas 5 ข้อ
+
+4. สิ่งที่ควร cut
+
+5. scaling strategy ⚡ ai automation — คำสั่งสำเร็จรูป">
+<div><span class="badge">Prompt Templates</span><span class="badge">Openclaw</span></div>
+<h2>📢 Ads Optimizer — คำสั่งสำเร็จรูป </h2>
+<p><strong>คำสั่งสำเร็จรูป ads</strong></p>
+<p><strong>prompt สำเร็จรูป</strong></p>
+<p>รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ AI ใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ</p>
+<p>💡 กดที่ code block แล้ว copy ไปวางใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ</p>
+<p><strong>เขียน Ad Copy FB/IG เขียน ad copy 5 ตัว สำหรับ A/B test</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>เขียน ad copy สำหรับ Facebook/IG Ads สินค้า: [ชื่อ]</strong></p>
+<p><strong>ราคา: [ราคา] ข้อเสนอ: [ส่วนลด / ทดลองฟรี / ของแถม]</strong></p>
+<p>กลุ่มเป้าหมาย: [ใคร — อายุ ความสนใจ] เป้าหมายแคมเปญ: [ยอดขาย / lead gen / traffic]</p>
+<p><strong>เขียน 5 ตัว: 1. แบบ pain point (ชี้ปัญหา → solution)</strong></p>
+<ul>
+<li>แบบ benefit-first (ผลลัพธ์ที่ได้)</li>
+<li>แบบ social proof (คนอื่นใช้แล้ว)</li>
+<li>แบบ urgency (เวลาจำกัด)</li>
+<li>แบบ storytelling (เล่าเรื่อง) แต่ละตัว: headline + primary text + CTA</li>
+</ul>
+<p><strong>A/B Test Variations สร้าง variations 5 แบบสำหรับ test</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p>สร้าง A/B test variations 5 แบบ Ad เดิม:</p>
+<p><strong>Headline: [headline เดิม] Primary text: [เนื้อหาเดิม]</strong></p>
+<p>CTA: [CTA เดิม] สร้าง variations:</p>
+<ul>
+<li>เปลี่ยน headline (3 แบบ)</li>
+<li>เปลี่ยน primary text (3 แบบ)</li>
+<li>เปลี่ยน CTA (3 แบบ)</li>
+<li>เปลี่ยน angle ทั้งหมด (2 แบบ) อธิบาย: ทำไมแต่ละ variation น่าจะ perform ดี</li>
+</ul>
+<p><strong>Audience Targeting Strategy วาง targeting ให้ตรงกลุ่มที่สุด</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>วาง audience targeting strategy สินค้า: [อะไร]</strong></p>
+<p><strong>ราคา: [ราคา] ลูกค้าปัจจุบัน: [อธิบายคร่าวๆ]</strong></p>
+<p><strong>งบ/เดือน: [งบ] แพลตฟอร์ม: [FB/IG / Google / TikTok]</strong></p>
+<p><strong>สร้าง 3 audiences: 1. Core audience (interest-based)</strong></p>
+<ul>
+<li>Lookalike audience</li>
+<li>Retargeting audience แต่ละ audience:</li>
+<li>- Demographics</li>
+<li>- Interests / behaviors</li>
+<li>- ขนาดกลุ่มที่เหมาะ</li>
+<li>- งบที่แนะนำ สรุป Ad Report</li>
+</ul>
+<p><strong>สรุปผลแคมเปญโฆษณาให้เข้าใจง่าย PROMPT</strong></p>
+<p><strong>Copy สรุป ad report ให้หน่อย</strong></p>
+<p><strong>ข้อมูล: - แคมเปญ: [ชื่อ]</strong></p>
+<ul>
+<li>- ระยะเวลา: [วันที่ — ถึงวันที่]</li>
+<li>- งบที่ใช้: [จำนวน]</li>
+<li>- Reach: [ตัวเลข]</li>
+<li>- Impressions: [ตัวเลข]</li>
+<li>- Clicks: [ตัวเลข]</li>
+<li>- CTR: [%]</li>
+<li>- Conversions: [ตัวเลข]</li>
+<li>- CPA: [ราคา]</li>
+<li>- ROAS: [ตัวเลข] สรุป:</li>
+<li>ภาพรวมผลลัพธ์ (ดีหรือไม่ดี)</li>
+<li>สิ่งที่ทำดี</li>
+<li>สิ่งที่ควรปรับ</li>
+<li>Action items สำหรับ sprint ถัดไป Retargeting Message</li>
+</ul>
+<p><strong>เขียนข้อความสำหรับ retarget คนที่เคยสนใจ PROMPT</strong></p>
+<p><strong>Copy เขียน retargeting ad</strong></p>
+<p>สินค้า: [ชื่อ] กลุ่มที่จะ retarget:</p>
+<ul>
+<li>- คนที่เข้าเว็บแต่ไม่ซื้อ</li>
+<li>- คนที่ add to cart แล้วไม่จ่าย</li>
+<li>- คนที่ดู ad แต่ไม่คลิก เขียน ad copy แต่ละกลุ่ม:</li>
+<li>Reminder (เตือนว่ายังสนใจอยู่มั้ย)</li>
+<li>Incentive (ให้ส่วนลดเพิ่ม)</li>
+<li>Social proof (คนอื่นซื้อแล้ว)</li>
+<li>Urgency (ใกล้หมด/ราคาจะขึ้น) Ad Creative Brief</li>
+</ul>
+<p><strong>brief สำหรับทีม creative ทำรูป/วิดีโอ PROMPT</strong></p>
+<p><strong>Copy เขียน ad creative brief</strong></p>
+<p><strong>สินค้า: [ชื่อ] แคมเปญ: [ชื่อ]</strong></p>
+<p><strong>แพลตฟอร์ม: [FB/IG/TikTok] Format: [รูป / วิดีโอ / carousel]</strong></p>
+<p>ขนาด: [1080x1080 / 1080x1350 / 9:16] Brief:</p>
+<ul>
+<li>Key message (1 ประโยค)</li>
+<li>Headline บนรูป</li>
+<li>Visual direction (อธิบายรูปที่ต้องการ)</li>
+<li>สี/mood</li>
+<li>CTA บนรูป</li>
+<li>โลโก้/branding ที่ต้องใส่</li>
+<li>Reference (ตัวอย่างที่ชอบ) Budget Allocation Plan</li>
+</ul>
+<p><strong>วางแผนแบ่งงบโฆษณาให้คุ้มที่สุด PROMPT</strong></p>
+<p><strong>Copy วางแผน budget allocation</strong></p>
+<p><strong>งบรวม/เดือน: [จำนวน] บาท ธุรกิจ: [ประเภท]</strong></p>
+<p>เป้าหมาย: [ยอดขาย / lead / awareness] ช่องทางที่ใช้: [FB/IG / Google / TikTok / LINE]</p>
+<p><strong>ช่วย: 1. แบ่งงบแต่ละช่องทาง (% + จำนวนเงิน)</strong></p>
+<ul>
+<li>แบ่งงบตาม funnel (awareness / consideration / conversion)</li>
+<li>งบสำหรับ testing vs scaling</li>
+<li>KPI ที่ควร track</li>
+<li>เมื่อไหร่ควรปรับงบ ROAS Analysis</li>
+</ul>
+<p><strong>วิเคราะห์ ROAS และหาทางเพิ่ม PROMPT</strong></p>
+<p><strong>Copy วิเคราะห์ ROAS</strong></p>
+<p><strong>ข้อมูล: - ยอดขายจากโฆษณา: [จำนวน] บาท</strong></p>
+<ul>
+<li>- งบโฆษณา: [จำนวน] บาท</li>
+<li>- ROAS ปัจจุบัน: [ตัวเลข]x</li>
+<li>- ROAS เป้าหมาย: [ตัวเลข]x</li>
+<li>- ต้นทุนสินค้า: [%]</li>
+<li>- margin: [%] วิเคราะห์:</li>
+<li>ROAS ปัจจุบันดีหรือไม่ (เทียบกับ benchmark)</li>
+<li>Break-even ROAS คือเท่าไหร่</li>
+<li>วิธีเพิ่ม ROAS 5 ข้อ</li>
+<li>สิ่งที่ควร cut</li>
+<li>scaling strategy ⚡ AI Automation — คำสั่งสำเร็จรูป</li>
+</ul>
+</article>
+<article class="article article-card" id="prompt-automation" data-search="⚡ ai automation — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป automation
+
+ai prompt
+
+สำเร็จรูป รวม 7 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+ออกแบบ workflow automation ออกแบบระบบ automation สำหรับงานซ้ำๆ
+
+prompt copy
+
+ออกแบบ workflow automation งานที่ทำซ้ำ: [อธิบายงาน]
+
+ความถี่: [ทุกวัน / ทุกสัปดาห์ / เมื่อมี trigger]
+
+เครื่องมือที่ใช้อยู่: [notion / google sheets / line / etc.]
+
+ออกแบบ: 1. trigger: อะไรเริ่มต้น flow
+
+2. steps: แต่ละขั้นตอนทำอะไร
+
+3. tools: ใช้เครื่องมืออะไรเชื่อม
+
+4. output: ผลลัพธ์สุดท้ายคืออะไร
+
+5. error handling: ถ้าผิดพลาดทำยังไง chatbot flow
+
+ออกแบบ flow สำหรับ chatbot ตอบลูกค้า prompt
+
+copy ออกแบบ chatbot flow
+
+ธุรกิจ: [ชื่อ] ช่องทาง: [line / fb messenger / เว็บ]
+
+เป้าหมาย: [ตอบคำถาม / จอง / ขาย / support] faq ที่พบบ่อย:
+
+1. [คำถาม 1]
+
+2. [คำถาม 2]
+
+3. [คำถาม 3] ออกแบบ flow:
+
+1. welcome message
+
+2. menu หลัก (3-5 ตัวเลือก)
+
+3. แต่ละ path → คำตอบ + next step
+
+4. จุดที่ต้องส่งต่อคน
+
+5. closing message email automation sequence
+
+ออกแบบ automated email ตาม trigger prompt
+
+copy ออกแบบ email automation
+
+trigger: [สมัครสมาชิก / ซื้อสินค้า / หยุดใช้งาน]
+
+ธุรกิจ: [ชื่อ] เป้าหมาย: [nurture / onboard / re-engage]
+
+sequence [5-7 ฉบับ]: แต่ละฉบับ:
+
+- delay: ส่งหลัง trigger กี่วัน
+
+- subject line
+
+- เนื้อหาหลัก (2-3 ย่อหน้า)
+
+- cta
+
+- condition: ส่งต่อหรือหยุด (if opened/clicked)
+
+report automation ออกแบบระบบสร้างรายงานอัตโนมัติ
+
+prompt copy
+
+ออกแบบระบบ report automation รายงานอะไร: [sales report / marketing report / inventory]
+
+ข้อมูลมาจาก: [google sheets / crm / facebook ads / etc.]
+
+ส่งให้ใคร: [หัวหน้า / ทีม / ลูกค้า] ความถี่: [ทุกวัน / ทุกสัปดาห์ / ทุกเดือน]
+
+ออกแบบ: 1. ข้อมูลที่ต้องดึง
+
+2. การคำนวณ/วิเคราะห์
+
+3. format รายงาน
+
+4. ช่องทางส่ง (email / line / sheets)
+
+5. template ข้อความ task delegation system
+
+ระบบแจกงานอัตโนมัติตาม workflow prompt
+
+copy ออกแบบระบบ task delegation
+
+ทีม: [กี่คน — ตำแหน่ง] งานที่ต้องแจก: [ประเภทงาน]
+
+เครื่องมือ: [notion / trello / asana / google sheets]
+
+ออกแบบ: 1. เมื่อมีงานใหม่เข้ามา → แจกใคร (กฎ)
+
+2. notification ให้คนที่ได้งาน
+
+3. deadline tracking
+
+4. status updates
+
+5. escalation (ถ้างานไม่เสร็จตามเวลา)
+
+6. weekly summary notification bot
+
+สร้าง bot แจ้งเตือนอัตโนมัติ prompt
+
+copy ออกแบบ notification bot
+
+แจ้งเตือนอะไร: [ออเดอร์ใหม่ / งานที่ต้องทำ / kpi / etc.]
+
+ส่งทาง: [line / telegram / slack / email] trigger: [เมื่อมี event / ตามเวลา]
+
+ออกแบบ: 1. เงื่อนไขที่ trigger
+
+2. ข้อความที่ส่ง (template)
+
+3. ข้อมูลที่ต้องแสดง
+
+4. ปุ่ม/action ที่กดได้
+
+5. ความถี่ + ช่วงเวลาที่ส่ง (ไม่รบกวนตอนดึก) scheduling automation
+
+ระบบจัดการนัดหมาย/ตารางอัตโนมัติ prompt
+
+copy ออกแบบระบบ scheduling automation
+
+ประเภท: [นัดลูกค้า / จัดเวร / ตาราง content / ตาราง meeting]
+
+จำนวนคน: [กี่คน] เครื่องมือ: [google calendar / notion / calendly]
+
+ออกแบบ: 1. วิธีจองนัด (link / form / bot)
+
+2. ตรวจสอบ availability อัตโนมัติ
+
+3. confirmation message
+
+4. reminder (ก่อนนัด 1 วัน + 1 ชั่วโมง)
+
+5. follow-up หลังนัด
+
+6. reschedule/cancel flow 💻 web/app builder — คำสั่งสำเร็จรูป">
+<div><span class="badge">Prompt Templates</span><span class="badge">Openclaw</span></div>
+<h2>⚡ AI Automation — คำสั่งสำเร็จรูป </h2>
+<p><strong>คำสั่งสำเร็จรูป automation</strong></p>
+<p><strong>ai prompt</strong></p>
+<p>สำเร็จรูป รวม 7 คำสั่งสำเร็จรูป copy แล้วส่งให้ AI ใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ</p>
+<p>💡 กดที่ code block แล้ว copy ไปวางใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ</p>
+<p><strong>ออกแบบ Workflow Automation ออกแบบระบบ automation สำหรับงานซ้ำๆ</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>ออกแบบ workflow automation งานที่ทำซ้ำ: [อธิบายงาน]</strong></p>
+<p><strong>ความถี่: [ทุกวัน / ทุกสัปดาห์ / เมื่อมี trigger]</strong></p>
+<p><strong>เครื่องมือที่ใช้อยู่: [Notion / Google Sheets / LINE / etc.]</strong></p>
+<p><strong>ออกแบบ: 1. Trigger: อะไรเริ่มต้น flow</strong></p>
+<ul>
+<li>Steps: แต่ละขั้นตอนทำอะไร</li>
+<li>Tools: ใช้เครื่องมืออะไรเชื่อม</li>
+<li>Output: ผลลัพธ์สุดท้ายคืออะไร</li>
+<li>Error handling: ถ้าผิดพลาดทำยังไง Chatbot Flow</li>
+</ul>
+<p><strong>ออกแบบ flow สำหรับ chatbot ตอบลูกค้า PROMPT</strong></p>
+<p><strong>Copy ออกแบบ chatbot flow</strong></p>
+<p><strong>ธุรกิจ: [ชื่อ] ช่องทาง: [LINE / FB Messenger / เว็บ]</strong></p>
+<p>เป้าหมาย: [ตอบคำถาม / จอง / ขาย / support] FAQ ที่พบบ่อย:</p>
+<ul>
+<li>[คำถาม 1]</li>
+<li>[คำถาม 2]</li>
+<li>[คำถาม 3] ออกแบบ flow:</li>
+<li>Welcome message</li>
+<li>Menu หลัก (3-5 ตัวเลือก)</li>
+<li>แต่ละ path → คำตอบ + next step</li>
+<li>จุดที่ต้องส่งต่อคน</li>
+<li>Closing message Email Automation Sequence</li>
+</ul>
+<p><strong>ออกแบบ automated email ตาม trigger PROMPT</strong></p>
+<p><strong>Copy ออกแบบ email automation</strong></p>
+<p><strong>Trigger: [สมัครสมาชิก / ซื้อสินค้า / หยุดใช้งาน]</strong></p>
+<p><strong>ธุรกิจ: [ชื่อ] เป้าหมาย: [nurture / onboard / re-engage]</strong></p>
+<p>Sequence [5-7 ฉบับ]: แต่ละฉบับ:</p>
+<ul>
+<li>- Delay: ส่งหลัง trigger กี่วัน</li>
+<li>- Subject line</li>
+<li>- เนื้อหาหลัก (2-3 ย่อหน้า)</li>
+<li>- CTA</li>
+<li>- Condition: ส่งต่อหรือหยุด (if opened/clicked)</li>
+</ul>
+<p><strong>Report Automation ออกแบบระบบสร้างรายงานอัตโนมัติ</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p>ออกแบบระบบ report automation รายงานอะไร: [sales report / marketing report / inventory]</p>
+<p><strong>ข้อมูลมาจาก: [Google Sheets / CRM / Facebook Ads / etc.]</strong></p>
+<p>ส่งให้ใคร: [หัวหน้า / ทีม / ลูกค้า] ความถี่: [ทุกวัน / ทุกสัปดาห์ / ทุกเดือน]</p>
+<p><strong>ออกแบบ: 1. ข้อมูลที่ต้องดึง</strong></p>
+<ul>
+<li>การคำนวณ/วิเคราะห์</li>
+<li>Format รายงาน</li>
+<li>ช่องทางส่ง (Email / LINE / Sheets)</li>
+<li>Template ข้อความ Task Delegation System</li>
+</ul>
+<p><strong>ระบบแจกงานอัตโนมัติตาม workflow PROMPT</strong></p>
+<p><strong>Copy ออกแบบระบบ task delegation</strong></p>
+<p><strong>ทีม: [กี่คน — ตำแหน่ง] งานที่ต้องแจก: [ประเภทงาน]</strong></p>
+<p><strong>เครื่องมือ: [Notion / Trello / Asana / Google Sheets]</strong></p>
+<p><strong>ออกแบบ: 1. เมื่อมีงานใหม่เข้ามา → แจกใคร (กฎ)</strong></p>
+<ul>
+<li>Notification ให้คนที่ได้งาน</li>
+<li>Deadline tracking</li>
+<li>Status updates</li>
+<li>Escalation (ถ้างานไม่เสร็จตามเวลา)</li>
+<li>Weekly summary Notification Bot</li>
+</ul>
+<p><strong>สร้าง bot แจ้งเตือนอัตโนมัติ PROMPT</strong></p>
+<p><strong>Copy ออกแบบ notification bot</strong></p>
+<p><strong>แจ้งเตือนอะไร: [ออเดอร์ใหม่ / งานที่ต้องทำ / KPI / etc.]</strong></p>
+<p>ส่งทาง: [LINE / Telegram / Slack / Email] Trigger: [เมื่อมี event / ตามเวลา]</p>
+<p><strong>ออกแบบ: 1. เงื่อนไขที่ trigger</strong></p>
+<ul>
+<li>ข้อความที่ส่ง (template)</li>
+<li>ข้อมูลที่ต้องแสดง</li>
+<li>ปุ่ม/action ที่กดได้</li>
+<li>ความถี่ + ช่วงเวลาที่ส่ง (ไม่รบกวนตอนดึก) Scheduling Automation</li>
+</ul>
+<p><strong>ระบบจัดการนัดหมาย/ตารางอัตโนมัติ PROMPT</strong></p>
+<p><strong>Copy ออกแบบระบบ scheduling automation</strong></p>
+<p><strong>ประเภท: [นัดลูกค้า / จัดเวร / ตาราง content / ตาราง meeting]</strong></p>
+<p>จำนวนคน: [กี่คน] เครื่องมือ: [Google Calendar / Notion / Calendly]</p>
+<p><strong>ออกแบบ: 1. วิธีจองนัด (link / form / bot)</strong></p>
+<ul>
+<li>ตรวจสอบ availability อัตโนมัติ</li>
+<li>Confirmation message</li>
+<li>Reminder (ก่อนนัด 1 วัน + 1 ชั่วโมง)</li>
+<li>Follow-up หลังนัด</li>
+<li>Reschedule/cancel flow 💻 Web/App Builder — คำสั่งสำเร็จรูป</li>
+</ul>
+</article>
+<article class="article article-card" id="prompt-web" data-search="💻 web/app builder — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป web
+
+app prompt
+
+สำเร็จรูป รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+เขียน wireframe spec อธิบาย wireframe ให้ designer/dev เข้าใจ
+
+prompt copy
+
+เขียน wireframe spec โปรเจค: [ชื่อ]
+
+ประเภท: [เว็บ / app / landing page] หน้าที่ต้องการ: [หน้าอะไรบ้าง]
+
+แต่ละหน้า: 1. ชื่อหน้า
+
+2. layout (อธิบายว่ามีอะไร ตรงไหน)
+
+3. elements (ปุ่ม / form / รูป / text)
+
+4. user flow (กดอะไร → ไปไหน)
+
+5. หมายเหตุสำหรับ designer feature list
+
+สร้าง feature list แบ่ง mvp vs nice-to-have prompt
+
+copy สร้าง feature list
+
+โปรเจค: [ชื่อ] ประเภท: [เว็บ / app / saas]
+
+กลุ่มเป้าหมาย: [ใคร] ปัญหาที่แก้: [pain point]
+
+สร้าง: 1. mvp features (ต้องมี — launch ได้เลย)
+
+2. phase 2 (ทำหลัง launch)
+
+3. nice-to-have (ทำเมื่อมีเวลา) แต่ละ feature:
+
+- ชื่อ feature
+
+- อธิบาย 1 บรรทัด
+
+- priority (high/medium/low)
+
+- ระดับความยาก (easy/medium/hard) user story
+
+เขียน user stories สำหรับ dev team prompt
+
+copy เขียน user stories
+
+โปรเจค: [ชื่อ] feature: [ชื่อ feature]
+
+user type: [ผู้ใช้ทั่วไป / admin / ลูกค้า] เขียน 5-8 user stories:
+
+format: &quot;ในฐานะ [user type] ฉันต้องการ [action] เพื่อ [benefit]&quot;
+
+แต่ละ story: - acceptance criteria (3-5 ข้อ)
+
+- priority
+
+- story points (1/2/3/5/8) landing page copy
+
+เขียน copy สำหรับ landing page ทั้งหน้า prompt
+
+copy เขียน landing page copy
+
+ชื่อ product: [ชื่อ] ประเภท: [saas / app / service]
+
+ราคา: [ราคา/แพลน] กลุ่มเป้าหมาย: [ใคร]
+
+จุดเด่น: [usp 3 ข้อ] เขียนทุก section:
+
+1. hero (headline + sub + cta)
+
+2. problem (pain points 3 ข้อ)
+
+3. solution (product แก้ยังไง)
+
+4. features (5-6 features + icon คำอธิบาย)
+
+5. how it works (3 steps)
+
+6. testimonials (3 quotes)
+
+7. pricing
+
+8. faq (5 ข้อ)
+
+9. final cta tech stack recommendation
+
+แนะนำ tech stack ที่เหมาะกับโปรเจค prompt
+
+copy แนะนำ tech stack
+
+โปรเจค: [อธิบายสั้นๆ] ประเภท: [เว็บ / app / saas / e-commerce]
+
+ขนาดทีม: [กี่คน — skill level] งบ: [ต่ำ / กลาง / สูง]
+
+เวลา: [กี่เดือน] scale: [ผู้ใช้กี่คน]
+
+แนะนำ: 1. frontend
+
+2. backend
+
+3. database
+
+4. hosting
+
+5. auth
+
+6. payment (ถ้ามี)
+
+7. analytics อธิบาย: ทำไมเลือก + ทางเลือกอื่น + ค่าใช้จ่าย
+
+api design ออกแบบ api endpoints
+
+prompt copy
+
+ออกแบบ api โปรเจค: [ชื่อ]
+
+resource หลัก: [เช่น users, products, orders]
+
+ออกแบบ endpoints: แต่ละ resource:
+
+- get (list + single)
+
+- post (create)
+
+- put/patch (update)
+
+- delete แต่ละ endpoint:
+
+- method + url
+
+- request body (json)
+
+- response body (json)
+
+- status codes
+
+- auth required? database schema
+
+ออกแบบ database schema prompt
+
+copy โปรเจค: [อธิบายสั้นๆ]
+
+ข้อมูลที่ต้องเก็บ: [อะไรบ้าง] database: [postgresql / mysql / mongodb]
+
+ออกแบบ: 1. tables/collections
+
+2. fields + types
+
+3. relations (1:1, 1:n, n:n)
+
+4. indexes ที่ควรมี
+
+5. sample data format: sql create table หรือ prisma schema
+
+deployment checklist checklist ก่อน deploy ขึ้น production
+
+prompt copy
+
+สร้าง deployment checklist โปรเจค: [ชื่อ]
+
+stack: [เช่น next.js + vercel + neon] domain: [domain]
+
+checklist:
+
+1. code review
+
+2. environment variables
+
+3. database migration
+
+4. build test
+
+5. security check
+
+6. performance check
+
+7. backup
+
+8. dns/ssl
+
+9. monitoring setup
+
+10. rollback plan แต่ละข้อ: อธิบายสั้นๆ ว่าเช็คอะไร
+
+📚 e-book / digital product — คำสั่งสำเร็จรูป">
+<div><span class="badge">Prompt Templates</span><span class="badge">Openclaw</span></div>
+<h2>💻 Web/App Builder — คำสั่งสำเร็จรูป </h2>
+<p><strong>คำสั่งสำเร็จรูป web</strong></p>
+<p><strong>app prompt</strong></p>
+<p>สำเร็จรูป รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ AI ใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ</p>
+<p>💡 กดที่ code block แล้ว copy ไปวางใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ</p>
+<p><strong>เขียน Wireframe Spec อธิบาย wireframe ให้ designer/dev เข้าใจ</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>เขียน wireframe spec โปรเจค: [ชื่อ]</strong></p>
+<p>ประเภท: [เว็บ / app / landing page] หน้าที่ต้องการ: [หน้าอะไรบ้าง]</p>
+<p><strong>แต่ละหน้า: 1. ชื่อหน้า</strong></p>
+<ul>
+<li>Layout (อธิบายว่ามีอะไร ตรงไหน)</li>
+<li>Elements (ปุ่ม / form / รูป / text)</li>
+<li>User flow (กดอะไร → ไปไหน)</li>
+<li>หมายเหตุสำหรับ designer Feature List</li>
+</ul>
+<p><strong>สร้าง feature list แบ่ง MVP vs Nice-to-have PROMPT</strong></p>
+<p><strong>Copy สร้าง feature list</strong></p>
+<p><strong>โปรเจค: [ชื่อ] ประเภท: [เว็บ / app / SaaS]</strong></p>
+<p><strong>กลุ่มเป้าหมาย: [ใคร] ปัญหาที่แก้: [pain point]</strong></p>
+<p><strong>สร้าง: 1. MVP features (ต้องมี — launch ได้เลย)</strong></p>
+<ul>
+<li>Phase 2 (ทำหลัง launch)</li>
+<li>Nice-to-have (ทำเมื่อมีเวลา) แต่ละ feature:</li>
+<li>- ชื่อ feature</li>
+<li>- อธิบาย 1 บรรทัด</li>
+<li>- Priority (High/Medium/Low)</li>
+<li>- ระดับความยาก (Easy/Medium/Hard) User Story</li>
+</ul>
+<p><strong>เขียน user stories สำหรับ dev team PROMPT</strong></p>
+<p><strong>Copy เขียน user stories</strong></p>
+<p><strong>โปรเจค: [ชื่อ] Feature: [ชื่อ feature]</strong></p>
+<p>User type: [ผู้ใช้ทั่วไป / admin / ลูกค้า] เขียน 5-8 user stories:</p>
+<p><strong>Format: &quot;ในฐานะ [user type] ฉันต้องการ [action] เพื่อ [benefit]&quot;</strong></p>
+<p><strong>แต่ละ story: - Acceptance criteria (3-5 ข้อ)</strong></p>
+<ul>
+<li>- Priority</li>
+<li>- Story points (1/2/3/5/8) Landing Page Copy</li>
+</ul>
+<p><strong>เขียน copy สำหรับ landing page ทั้งหน้า PROMPT</strong></p>
+<p><strong>Copy เขียน landing page copy</strong></p>
+<p><strong>ชื่อ product: [ชื่อ] ประเภท: [SaaS / app / service]</strong></p>
+<p><strong>ราคา: [ราคา/แพลน] กลุ่มเป้าหมาย: [ใคร]</strong></p>
+<p>จุดเด่น: [USP 3 ข้อ] เขียนทุก section:</p>
+<ul>
+<li>Hero (headline + sub + CTA)</li>
+<li>Problem (pain points 3 ข้อ)</li>
+<li>Solution (product แก้ยังไง)</li>
+<li>Features (5-6 features + icon คำอธิบาย)</li>
+<li>How it works (3 steps)</li>
+<li>Testimonials (3 quotes)</li>
+<li>Pricing</li>
+<li>FAQ (5 ข้อ)</li>
+<li>Final CTA Tech Stack Recommendation</li>
+</ul>
+<p><strong>แนะนำ tech stack ที่เหมาะกับโปรเจค PROMPT</strong></p>
+<p><strong>Copy แนะนำ tech stack</strong></p>
+<p><strong>โปรเจค: [อธิบายสั้นๆ] ประเภท: [เว็บ / app / SaaS / e-commerce]</strong></p>
+<p><strong>ขนาดทีม: [กี่คน — skill level] งบ: [ต่ำ / กลาง / สูง]</strong></p>
+<p><strong>เวลา: [กี่เดือน] Scale: [ผู้ใช้กี่คน]</strong></p>
+<p><strong>แนะนำ: 1. Frontend</strong></p>
+<ul>
+<li>Backend</li>
+<li>Database</li>
+<li>Hosting</li>
+<li>Auth</li>
+<li>Payment (ถ้ามี)</li>
+<li>Analytics อธิบาย: ทำไมเลือก + ทางเลือกอื่น + ค่าใช้จ่าย</li>
+</ul>
+<p><strong>API Design ออกแบบ API endpoints</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>ออกแบบ API โปรเจค: [ชื่อ]</strong></p>
+<p><strong>Resource หลัก: [เช่น users, products, orders]</strong></p>
+<p>ออกแบบ endpoints: แต่ละ resource:</p>
+<ul>
+<li>- GET (list + single)</li>
+<li>- POST (create)</li>
+<li>- PUT/PATCH (update)</li>
+<li>- DELETE แต่ละ endpoint:</li>
+<li>- Method + URL</li>
+<li>- Request body (JSON)</li>
+<li>- Response body (JSON)</li>
+<li>- Status codes</li>
+<li>- Auth required? Database Schema</li>
+</ul>
+<p><strong>ออกแบบ database schema PROMPT</strong></p>
+<p><strong>Copy โปรเจค: [อธิบายสั้นๆ]</strong></p>
+<p>ข้อมูลที่ต้องเก็บ: [อะไรบ้าง] Database: [PostgreSQL / MySQL / MongoDB]</p>
+<p><strong>ออกแบบ: 1. Tables/Collections</strong></p>
+<ul>
+<li>Fields + types</li>
+<li>Relations (1:1, 1:N, N:N)</li>
+<li>Indexes ที่ควรมี</li>
+<li>Sample data Format: SQL CREATE TABLE หรือ Prisma schema</li>
+</ul>
+<p><strong>Deployment Checklist checklist ก่อน deploy ขึ้น production</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>สร้าง deployment checklist โปรเจค: [ชื่อ]</strong></p>
+<p><strong>Stack: [เช่น Next.js + Vercel + Neon] Domain: [domain]</strong></p>
+<p>Checklist:</p>
+<ul>
+<li>Code review</li>
+<li>Environment variables</li>
+<li>Database migration</li>
+<li>Build test</li>
+<li>Security check</li>
+<li>Performance check</li>
+<li>Backup</li>
+<li>DNS/SSL</li>
+<li>Monitoring setup</li>
+<li>Rollback plan แต่ละข้อ: อธิบายสั้นๆ ว่าเช็คอะไร</li>
+</ul>
+<p><strong>📚 E-book / Digital Product — คำสั่งสำเร็จรูป</strong></p>
+</article>
+<article class="article article-card" id="prompt-ebook" data-search="📚 e-book / digital product — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป ebook
+
+digital-product prompt
+
+สำเร็จรูป รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+เขียน outline หนังสือ สร้าง outline หนังสือ/e-book ครบทุกบท
+
+prompt copy
+
+สร้าง outline สำหรับ e-book ชื่อ: [ชื่อหนังสือ]
+
+หัวข้อ: [เกี่ยวกับอะไร] กลุ่มเป้าหมาย: [ใคร]
+
+จำนวนหน้า: [50 / 100 / 200] level: [เริ่มต้น / กลาง / สูง]
+
+สร้าง: 1. ชื่อบท (8-12 บท)
+
+2. แต่ละบท: หัวข้อย่อย 3-5 ข้อ
+
+3. key takeaway ของแต่ละบท
+
+4. exercise/worksheet (ถ้าเหมาะ)
+
+5. จำนวนหน้าต่อบท draft บทที่ 1
+
+เขียน draft บทแรก จากข้อมูลที่มี prompt
+
+copy เขียน draft บทที่ 1
+
+ชื่อหนังสือ: [ชื่อ] ชื่อบท: [ชื่อบทที่ 1]
+
+หัวข้อย่อย: 1. [หัวข้อ 1]
+
+2. [หัวข้อ 2]
+
+3. [หัวข้อ 3] key message: [สิ่งที่ผู้อ่านต้องได้จากบทนี้]
+
+tone: [สอน / เล่าเรื่อง / practical] ความยาว: [2000-3000 คำ]
+
+รวม: - opening hook
+
+- เนื้อหาตามหัวข้อ
+
+- ตัวอย่างจริง
+
+- สรุปท้ายบท sales page copy
+
+เขียน copy หน้าขาย digital product prompt
+
+copy เขียน sales page copy
+
+product: [ชื่อ e-book/course] ราคา: [ราคา]
+
+ราคาเดิม: [ราคาก่อนลด] (ถ้ามี) กลุ่มเป้าหมาย: [ใคร]
+
+เขียน: 1. headline (จับใจ)
+
+2. pain points (3-5 ข้อ ที่ผู้อ่านเจอ)
+
+3. &quot;จะดีแค่ไหนถ้า...&quot; (paint the picture)
+
+4. สิ่งที่ได้ (bullet points 7-10 ข้อ)
+
+5. สารบัญ/เนื้อหาที่ได้
+
+6. เกี่ยวกับผู้เขียน
+
+7. testimonials (format)
+
+8. guarantee
+
+9. faq
+
+10. cta + pricing pricing strategy
+
+กำหนดราคาและ tier ที่เหมาะสม prompt
+
+copy ช่วยตั้งราคา digital product
+
+product: [ชื่อ] ประเภท: [e-book / course / template / membership]
+
+เนื้อหา: [อธิบายคร่าวๆ] กลุ่มเป้าหมาย: [ใคร — กำลังซื้อ]
+
+คู่แข่ง: [ราคาของคู่แข่ง] ช่วย:
+
+1. ราคาที่เหมาะสม + เหตุผล
+
+2. pricing tiers (3 แพลน)
+
+3. early bird / launch price
+
+4. bundle options
+
+5. upsell strategy launch plan
+
+วางแผน launch digital product prompt
+
+copy วางแผน launch
+
+product: [ชื่อ] วัน launch: [วันที่]
+
+กลุ่มเป้าหมาย: [ใคร] ช่องทาง: [fb/ig/line/email]
+
+งบ marketing: [จำนวน] วางแผน:
+
+1. pre-launch (2-4 สัปดาห์ก่อน)
+
+2. launch week
+
+3. post-launch (1-2 สัปดาห์หลัง) แต่ละ phase:
+
+- content ที่ต้องทำ
+
+- email ที่ต้องส่ง
+
+- ads ที่ต้องยิง
+
+- milestone + kpi email sequence สำหรับ launch
+
+ชุด email 7 ฉบับสำหรับ launch product prompt
+
+copy สร้าง launch email sequence 7 ฉบับ
+
+product: [ชื่อ] ราคา: [ราคา]
+
+วัน launch: [วันที่] sequence:
+
+1. [d-7] teaser (กำลังจะมีอะไร)
+
+2. [d-3] story (ทำไมถึงสร้างสิ่งนี้)
+
+3. [d-1] early bird (สิทธิพิเศษ)
+
+4. [d-day] launch! (เปิดขาย)
+
+5. [d+1] social proof (คนซื้อแล้วพูดอะไร)
+
+6. [d+3] faq (ตอบข้อสงสัย)
+
+7. [d+5] last chance (ปิดราคาพิเศษ) แต่ละฉบับ: subject + preview + body + cta
+
+bonus content ideas ไอเดีย bonus สำหรับเพิ่มมูลค่า
+
+prompt copy
+
+brainstorm bonus content ideas product หลัก: [ชื่อ — อธิบายสั้นๆ]
+
+ราคา: [ราคา] กลุ่มเป้าหมาย: [ใคร]
+
+ให้ 8-10 ไอเดีย bonus: แต่ละอัน:
+
+- ชื่อ bonus
+
+- format (pdf / video / template / checklist)
+
+- อธิบาย 1 บรรทัด
+
+- มูลค่าสมมุติ
+
+- ใช้เวลาสร้างนานแค่ไหน เน้น: ของที่ทำง่าย แต่ perceived value สูง
+
+upsell strategy วาง strategy ขายเพิ่มหลังซื้อ
+
+prompt copy
+
+วาง upsell strategy product หลัก: [ชื่อ — ราคา]
+
+ลูกค้าที่ซื้อแล้ว: [กี่คน] สร้าง upsell path:
+
+1. order bump (ซื้อพร้อมกัน — ราคาพิเศษ)
+
+2. one-time offer (หลังซื้อทันที)
+
+3. follow-up upsell (หลัง 7 วัน)
+
+4. cross-sell (สินค้าอื่นที่เกี่ยวข้อง) แต่ละ step:
+
+- product อะไร
+
+- ราคา
+
+- ข้อความ/copy
+
+- conversion rate ที่คาดหวัง 🤖 ai tools builder — คำสั่งสำเร็จรูป">
+<div><span class="badge">Prompt Templates</span><span class="badge">Openclaw</span></div>
+<h2>📚 E-book / Digital Product — คำสั่งสำเร็จรูป </h2>
+<p><strong>คำสั่งสำเร็จรูป ebook</strong></p>
+<p><strong>digital-product prompt</strong></p>
+<p>สำเร็จรูป รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ AI ใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ</p>
+<p>💡 กดที่ code block แล้ว copy ไปวางใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ</p>
+<p><strong>เขียน Outline หนังสือ สร้าง outline หนังสือ/e-book ครบทุกบท</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>สร้าง outline สำหรับ e-book ชื่อ: [ชื่อหนังสือ]</strong></p>
+<p><strong>หัวข้อ: [เกี่ยวกับอะไร] กลุ่มเป้าหมาย: [ใคร]</strong></p>
+<p><strong>จำนวนหน้า: [50 / 100 / 200] Level: [เริ่มต้น / กลาง / สูง]</strong></p>
+<p><strong>สร้าง: 1. ชื่อบท (8-12 บท)</strong></p>
+<ul>
+<li>แต่ละบท: หัวข้อย่อย 3-5 ข้อ</li>
+<li>Key takeaway ของแต่ละบท</li>
+<li>Exercise/worksheet (ถ้าเหมาะ)</li>
+<li>จำนวนหน้าต่อบท Draft บทที่ 1</li>
+</ul>
+<p><strong>เขียน draft บทแรก จากข้อมูลที่มี PROMPT</strong></p>
+<p><strong>Copy เขียน draft บทที่ 1</strong></p>
+<p><strong>ชื่อหนังสือ: [ชื่อ] ชื่อบท: [ชื่อบทที่ 1]</strong></p>
+<p><strong>หัวข้อย่อย: 1. [หัวข้อ 1]</strong></p>
+<ul>
+<li>[หัวข้อ 2]</li>
+<li>[หัวข้อ 3] Key message: [สิ่งที่ผู้อ่านต้องได้จากบทนี้]</li>
+</ul>
+<p><strong>Tone: [สอน / เล่าเรื่อง / practical] ความยาว: [2000-3000 คำ]</strong></p>
+<p><strong>รวม: - Opening hook</strong></p>
+<ul>
+<li>- เนื้อหาตามหัวข้อ</li>
+<li>- ตัวอย่างจริง</li>
+<li>- สรุปท้ายบท Sales Page Copy</li>
+</ul>
+<p><strong>เขียน copy หน้าขาย digital product PROMPT</strong></p>
+<p><strong>Copy เขียน sales page copy</strong></p>
+<p><strong>Product: [ชื่อ e-book/course] ราคา: [ราคา]</strong></p>
+<p><strong>ราคาเดิม: [ราคาก่อนลด] (ถ้ามี) กลุ่มเป้าหมาย: [ใคร]</strong></p>
+<p><strong>เขียน: 1. Headline (จับใจ)</strong></p>
+<ul>
+<li>Pain points (3-5 ข้อ ที่ผู้อ่านเจอ)</li>
+<li>&quot;จะดีแค่ไหนถ้า...&quot; (paint the picture)</li>
+<li>สิ่งที่ได้ (bullet points 7-10 ข้อ)</li>
+<li>สารบัญ/เนื้อหาที่ได้</li>
+<li>เกี่ยวกับผู้เขียน</li>
+<li>Testimonials (format)</li>
+<li>Guarantee</li>
+<li>FAQ</li>
+<li>CTA + pricing Pricing Strategy</li>
+</ul>
+<p><strong>กำหนดราคาและ tier ที่เหมาะสม PROMPT</strong></p>
+<p><strong>Copy ช่วยตั้งราคา digital product</strong></p>
+<p>Product: [ชื่อ] ประเภท: [e-book / course / template / membership]</p>
+<p><strong>เนื้อหา: [อธิบายคร่าวๆ] กลุ่มเป้าหมาย: [ใคร — กำลังซื้อ]</strong></p>
+<p>คู่แข่ง: [ราคาของคู่แข่ง] ช่วย:</p>
+<ul>
+<li>ราคาที่เหมาะสม + เหตุผล</li>
+<li>Pricing tiers (3 แพลน)</li>
+<li>Early bird / launch price</li>
+<li>Bundle options</li>
+<li>Upsell strategy Launch Plan</li>
+</ul>
+<p><strong>วางแผน launch digital product PROMPT</strong></p>
+<p><strong>Copy วางแผน launch</strong></p>
+<p><strong>Product: [ชื่อ] วัน launch: [วันที่]</strong></p>
+<p><strong>กลุ่มเป้าหมาย: [ใคร] ช่องทาง: [FB/IG/LINE/Email]</strong></p>
+<p>งบ marketing: [จำนวน] วางแผน:</p>
+<ul>
+<li>Pre-launch (2-4 สัปดาห์ก่อน)</li>
+<li>Launch week</li>
+<li>Post-launch (1-2 สัปดาห์หลัง) แต่ละ phase:</li>
+<li>- Content ที่ต้องทำ</li>
+<li>- Email ที่ต้องส่ง</li>
+<li>- Ads ที่ต้องยิง</li>
+<li>- Milestone + KPI Email Sequence สำหรับ Launch</li>
+</ul>
+<p><strong>ชุด email 7 ฉบับสำหรับ launch product PROMPT</strong></p>
+<p><strong>Copy สร้าง launch email sequence 7 ฉบับ</strong></p>
+<p><strong>Product: [ชื่อ] ราคา: [ราคา]</strong></p>
+<p>วัน launch: [วันที่] Sequence:</p>
+<ul>
+<li>[D-7] Teaser (กำลังจะมีอะไร)</li>
+<li>[D-3] Story (ทำไมถึงสร้างสิ่งนี้)</li>
+<li>[D-1] Early bird (สิทธิพิเศษ)</li>
+<li>[D-Day] Launch! (เปิดขาย)</li>
+<li>[D+1] Social proof (คนซื้อแล้วพูดอะไร)</li>
+<li>[D+3] FAQ (ตอบข้อสงสัย)</li>
+<li>[D+5] Last chance (ปิดราคาพิเศษ) แต่ละฉบับ: subject + preview + body + CTA</li>
+</ul>
+<p><strong>Bonus Content Ideas ไอเดีย bonus สำหรับเพิ่มมูลค่า</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p>brainstorm bonus content ideas Product หลัก: [ชื่อ — อธิบายสั้นๆ]</p>
+<p><strong>ราคา: [ราคา] กลุ่มเป้าหมาย: [ใคร]</strong></p>
+<p>ให้ 8-10 ไอเดีย bonus: แต่ละอัน:</p>
+<ul>
+<li>- ชื่อ bonus</li>
+<li>- format (PDF / video / template / checklist)</li>
+<li>- อธิบาย 1 บรรทัด</li>
+<li>- มูลค่าสมมุติ</li>
+<li>- ใช้เวลาสร้างนานแค่ไหน เน้น: ของที่ทำง่าย แต่ perceived value สูง</li>
+</ul>
+<p><strong>Upsell Strategy วาง strategy ขายเพิ่มหลังซื้อ</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>วาง upsell strategy Product หลัก: [ชื่อ — ราคา]</strong></p>
+<p>ลูกค้าที่ซื้อแล้ว: [กี่คน] สร้าง upsell path:</p>
+<ul>
+<li>Order bump (ซื้อพร้อมกัน — ราคาพิเศษ)</li>
+<li>One-time offer (หลังซื้อทันที)</li>
+<li>Follow-up upsell (หลัง 7 วัน)</li>
+<li>Cross-sell (สินค้าอื่นที่เกี่ยวข้อง) แต่ละ step:</li>
+<li>- Product อะไร</li>
+<li>- ราคา</li>
+<li>- ข้อความ/copy</li>
+<li>- Conversion rate ที่คาดหวัง 🤖 AI Tools Builder — คำสั่งสำเร็จรูป</li>
+</ul>
+</article>
+<article class="article article-card" id="prompt-aitools" data-search="🤖 ai tools builder — คำสั่งสำเร็จรูป คำสั่งสำเร็จรูป ai-tools
+
+builder prompt
+
+สำเร็จรูป รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ ai ใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ
+
+💡 กดที่ code block แล้ว copy ไปวางใน telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ
+
+ออกแบบ ai tool concept conceptualize ai tool ตั้งแต่ idea ถึง spec
+
+prompt copy
+
+ออกแบบ ai tool concept ไอเดีย: [ai ทำอะไร — อธิบายคร่าวๆ]
+
+กลุ่มเป้าหมาย: [ใคร] ปัญหาที่แก้: [pain point]
+
+ช่วย: 1. ชื่อ tool (3 ตัวเลือก)
+
+2. tagline
+
+3. feature หลัก 5 อัน
+
+4. user flow (step-by-step)
+
+5. input อะไร → output อะไร
+
+6. ทำด้วย stack อะไรได้บ้าง
+
+7. mvp scope (ทำอะไรก่อน)
+
+8. monetization (ขายยังไง) เขียน system prompt
+
+เขียน system prompt สำหรับ ai agent/chatbot prompt
+
+copy เขียน system prompt
+
+ai ชื่อ: [ชื่อ] หน้าที่: [ทำอะไร]
+
+กลุ่มผู้ใช้: [ใคร] tone: [professional / friendly / casual]
+
+ภาษา: [ไทย / อังกฤษ / ทั้งคู่] ต้องมี:
+
+1. บทบาทของ ai (เป็นใคร)
+
+2. สิ่งที่ทำได้ (capabilities)
+
+3. สิ่งที่ห้ามทำ (boundaries)
+
+4. format การตอบ
+
+5. ตัวอย่างการตอบที่ดี 3 แบบ
+
+6. ตัวอย่างการตอบที่ไม่ดี 2 แบบ
+
+7. edge cases prompt chain design
+
+ออกแบบ chain of prompts ที่ทำงานต่อกัน prompt
+
+copy ออกแบบ prompt chain
+
+เป้าหมาย: [ผลลัพธ์สุดท้ายที่ต้องการ] input: [ข้อมูลตั้งต้น]
+
+ออกแบบ chain: step 1: [prompt อะไร → output อะไร]
+
+step 2: [เอา output step 1 → prompt อะไร → output อะไร]
+
+step 3: [ต่อเนื่อง...]
+
+... final: [ผลลัพธ์สุดท้าย]
+
+แต่ละ step: - prompt template
+
+- expected output format
+
+- validation (เช็คว่า output ถูกต้อง)
+
+- fallback (ถ้าไม่ได้ผลลัพธ์ที่ต้องการ) evaluation criteria
+
+สร้างเกณฑ์ประเมิน output ของ ai prompt
+
+copy สร้างเกณฑ์ประเมิน ai output
+
+ai ทำอะไร: [task ที่ ai ทำ] output: [ผลลัพธ์ที่ได้]
+
+สร้าง evaluation rubric: 1. accuracy (ความถูกต้อง) — เกณฑ์
+
+2. relevance (ตรงประเด็น) — เกณฑ์
+
+3. completeness (ครบถ้วน) — เกณฑ์
+
+4. tone/style (เหมาะสม) — เกณฑ์
+
+5. actionability (นำไปใช้ได้) — เกณฑ์ scoring: 1-5 แต่ละข้อ
+
+pass threshold: [คะแนนต่ำสุดที่ยอมรับ] ตัวอย่าง output ที่ดี vs ไม่ดี
+
+use case documentation เขียน use case doc สำหรับ ai tool
+
+prompt copy
+
+เขียน use case documentation tool: [ชื่อ ai tool]
+
+เขียน 5 use cases: แต่ละ use case:
+
+1. ชื่อ use case
+
+2. persona (ใครใช้)
+
+3. สถานการณ์ (context)
+
+4. ขั้นตอนการใช้ (step-by-step)
+
+5. input ตัวอย่าง
+
+6. output ตัวอย่าง
+
+7. ผลลัพธ์ที่ได้ (before/after)
+
+8. เวลาที่ประหยัดได้ onboarding guide
+
+เขียน guide สอนใช้ ai tool prompt
+
+copy เขียน onboarding guide
+
+tool: [ชื่อ] กลุ่มผู้ใช้: [ใคร — tech level]
+
+สร้าง guide: 1. welcome (tool ทำอะไรได้)
+
+2. quick start (3 steps ใช้ครั้งแรก)
+
+3. basic features (5 features + วิธีใช้)
+
+4. tips &amp; tricks (5 ข้อ)
+
+5. faq (5 คำถาม)
+
+6. troubleshooting (3 ปัญหาที่เจอบ่อย) tone: ง่ายๆ ทำตามได้เลย
+
+format: step-by-step + screenshots description
+
+pricing model ออกแบบ pricing model สำหรับ ai product
+
+prompt copy
+
+ออกแบบ pricing model product: [ชื่อ ai tool]
+
+ต้นทุน api/เดือน: [ประมาณ] กลุ่มเป้าหมาย: [ใคร — กำลังซื้อ]
+
+คู่แข่ง: [ชื่อ — ราคา] ออกแบบ:
+
+1. free tier (มีอะไรบ้าง + limit)
+
+2. pro tier (ราคา + features)
+
+3. enterprise (ราคา + features) เพิ่มเติม:
+
+- usage-based vs flat rate
+
+- annual discount
+
+- trial period
+
+- revenue projection (100/500/1000 users) competitive analysis
+
+วิเคราะห์คู่แข่งในตลาด ai tools prompt
+
+copy วิเคราะห์คู่แข่ง ai tools
+
+tool ของเรา: [ชื่อ — ทำอะไร] คู่แข่ง:
+
+1. [ชื่อ tool 1]
+
+2. [ชื่อ tool 2]
+
+3. [ชื่อ tool 3] วิเคราะห์:
+
+- feature comparison (ตาราง)
+
+- pricing comparison
+
+- target audience
+
+- จุดแข็ง-จุดอ่อนแต่ละตัว
+
+- gap ที่เราเข้าได้
+
+- positioning strategy
+
+- differentiation (ทำไมต้องเลือกเรา) 🔒
+
+ai money machine เปลี่ยน content เป็นเงินล้าน? สอนทุกขั้นตอน
+
+ดูเพิ่มเติมที่คลังแสง ai →">
+<div><span class="badge">Prompt Templates</span><span class="badge">Openclaw</span></div>
+<h2>🤖 AI Tools Builder — คำสั่งสำเร็จรูป </h2>
+<p><strong>คำสั่งสำเร็จรูป ai-tools</strong></p>
+<p><strong>builder prompt</strong></p>
+<p>สำเร็จรูป รวม 8 คำสั่งสำเร็จรูป copy แล้วส่งให้ AI ใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ตามธุรกิจของคุณ</p>
+<p>💡 กดที่ code block แล้ว copy ไปวางใน Telegram ได้เลย — แก้ข้อมูลในวงเล็บ [ ] ให้ตรงกับธุรกิจของคุณ</p>
+<p>ออกแบบ AI Tool Concept conceptualize AI tool ตั้งแต่ idea ถึง spec</p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>ออกแบบ AI tool concept ไอเดีย: [AI ทำอะไร — อธิบายคร่าวๆ]</strong></p>
+<p><strong>กลุ่มเป้าหมาย: [ใคร] ปัญหาที่แก้: [pain point]</strong></p>
+<p><strong>ช่วย: 1. ชื่อ tool (3 ตัวเลือก)</strong></p>
+<ul>
+<li>Tagline</li>
+<li>Feature หลัก 5 อัน</li>
+<li>User flow (step-by-step)</li>
+<li>Input อะไร → Output อะไร</li>
+<li>ทำด้วย stack อะไรได้บ้าง</li>
+<li>MVP scope (ทำอะไรก่อน)</li>
+<li>Monetization (ขายยังไง) เขียน System Prompt</li>
+</ul>
+<p><strong>เขียน system prompt สำหรับ AI agent/chatbot PROMPT</strong></p>
+<p><strong>Copy เขียน system prompt</strong></p>
+<p><strong>AI ชื่อ: [ชื่อ] หน้าที่: [ทำอะไร]</strong></p>
+<p><strong>กลุ่มผู้ใช้: [ใคร] Tone: [professional / friendly / casual]</strong></p>
+<p>ภาษา: [ไทย / อังกฤษ / ทั้งคู่] ต้องมี:</p>
+<ul>
+<li>บทบาทของ AI (เป็นใคร)</li>
+<li>สิ่งที่ทำได้ (capabilities)</li>
+<li>สิ่งที่ห้ามทำ (boundaries)</li>
+<li>format การตอบ</li>
+<li>ตัวอย่างการตอบที่ดี 3 แบบ</li>
+<li>ตัวอย่างการตอบที่ไม่ดี 2 แบบ</li>
+<li>edge cases Prompt Chain Design</li>
+</ul>
+<p><strong>ออกแบบ chain of prompts ที่ทำงานต่อกัน PROMPT</strong></p>
+<p><strong>Copy ออกแบบ prompt chain</strong></p>
+<p><strong>เป้าหมาย: [ผลลัพธ์สุดท้ายที่ต้องการ] Input: [ข้อมูลตั้งต้น]</strong></p>
+<p><strong>ออกแบบ chain: Step 1: [Prompt อะไร → Output อะไร]</strong></p>
+<h3>Step 2: [เอา output step 1 → Prompt อะไร → Output อะไร]</h3>
+<h3>Step 3: [ต่อเนื่อง...]</h3>
+<p><strong>... Final: [ผลลัพธ์สุดท้าย]</strong></p>
+<p><strong>แต่ละ step: - Prompt template</strong></p>
+<ul>
+<li>- Expected output format</li>
+<li>- Validation (เช็คว่า output ถูกต้อง)</li>
+<li>- Fallback (ถ้าไม่ได้ผลลัพธ์ที่ต้องการ) Evaluation Criteria</li>
+</ul>
+<p><strong>สร้างเกณฑ์ประเมิน output ของ AI PROMPT</strong></p>
+<p><strong>Copy สร้างเกณฑ์ประเมิน AI output</strong></p>
+<p><strong>AI ทำอะไร: [task ที่ AI ทำ] Output: [ผลลัพธ์ที่ได้]</strong></p>
+<p><strong>สร้าง evaluation rubric: 1. Accuracy (ความถูกต้อง) — เกณฑ์</strong></p>
+<ul>
+<li>Relevance (ตรงประเด็น) — เกณฑ์</li>
+<li>Completeness (ครบถ้วน) — เกณฑ์</li>
+<li>Tone/Style (เหมาะสม) — เกณฑ์</li>
+<li>Actionability (นำไปใช้ได้) — เกณฑ์ Scoring: 1-5 แต่ละข้อ</li>
+</ul>
+<p>Pass threshold: [คะแนนต่ำสุดที่ยอมรับ] ตัวอย่าง output ที่ดี vs ไม่ดี</p>
+<p><strong>Use Case Documentation เขียน use case doc สำหรับ AI tool</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>เขียน use case documentation Tool: [ชื่อ AI tool]</strong></p>
+<p>เขียน 5 use cases: แต่ละ use case:</p>
+<ul>
+<li>ชื่อ use case</li>
+<li>Persona (ใครใช้)</li>
+<li>สถานการณ์ (context)</li>
+<li>ขั้นตอนการใช้ (step-by-step)</li>
+<li>Input ตัวอย่าง</li>
+<li>Output ตัวอย่าง</li>
+<li>ผลลัพธ์ที่ได้ (before/after)</li>
+<li>เวลาที่ประหยัดได้ Onboarding Guide</li>
+</ul>
+<p><strong>เขียน guide สอนใช้ AI tool PROMPT</strong></p>
+<p><strong>Copy เขียน onboarding guide</strong></p>
+<p><strong>Tool: [ชื่อ] กลุ่มผู้ใช้: [ใคร — tech level]</strong></p>
+<p><strong>สร้าง guide: 1. Welcome (tool ทำอะไรได้)</strong></p>
+<ul>
+<li>Quick Start (3 steps ใช้ครั้งแรก)</li>
+<li>Basic features (5 features + วิธีใช้)</li>
+<li>Tips &amp; tricks (5 ข้อ)</li>
+<li>FAQ (5 คำถาม)</li>
+<li>Troubleshooting (3 ปัญหาที่เจอบ่อย) Tone: ง่ายๆ ทำตามได้เลย</li>
+</ul>
+<p><strong>Format: step-by-step + screenshots description</strong></p>
+<p><strong>Pricing Model ออกแบบ pricing model สำหรับ AI product</strong></p>
+<p><strong>PROMPT Copy</strong></p>
+<p><strong>ออกแบบ pricing model Product: [ชื่อ AI tool]</strong></p>
+<p><strong>ต้นทุน API/เดือน: [ประมาณ] กลุ่มเป้าหมาย: [ใคร — กำลังซื้อ]</strong></p>
+<p>คู่แข่ง: [ชื่อ — ราคา] ออกแบบ:</p>
+<ul>
+<li>Free tier (มีอะไรบ้าง + limit)</li>
+<li>Pro tier (ราคา + features)</li>
+<li>Enterprise (ราคา + features) เพิ่มเติม:</li>
+<li>- Usage-based vs flat rate</li>
+<li>- Annual discount</li>
+<li>- Trial period</li>
+<li>- Revenue projection (100/500/1000 users) Competitive Analysis</li>
+</ul>
+<p><strong>วิเคราะห์คู่แข่งในตลาด AI tools PROMPT</strong></p>
+<p><strong>Copy วิเคราะห์คู่แข่ง AI tools</strong></p>
+<p>Tool ของเรา: [ชื่อ — ทำอะไร] คู่แข่ง:</p>
+<ul>
+<li>[ชื่อ tool 1]</li>
+<li>[ชื่อ tool 2]</li>
+<li>[ชื่อ tool 3] วิเคราะห์:</li>
+<li>- Feature comparison (ตาราง)</li>
+<li>- Pricing comparison</li>
+<li>- Target audience</li>
+<li>- จุดแข็ง-จุดอ่อนแต่ละตัว</li>
+<li>- Gap ที่เราเข้าได้</li>
+<li>- Positioning strategy</li>
+<li>- Differentiation (ทำไมต้องเลือกเรา) 🔒</li>
+</ul>
+<p><strong>AI Money Machine เปลี่ยน content เป็นเงินล้าน? สอนทุกขั้นตอน</strong></p>
+<p><strong>ดูเพิ่มเติมที่คลังแสง AI →</strong></p>
+</article>
+</main></div><script>
+const q=document.getElementById('search');
+q.addEventListener('input',()=>{
+ const v=q.value.toLowerCase().trim();
+ document.querySelectorAll('.article-card').forEach(el=>el.classList.toggle('hidden', v && !el.dataset.search.includes(v)));
+ document.querySelectorAll('.nav-link').forEach(el=>el.classList.toggle('hidden', v && !el.dataset.search.includes(v)));
+});
+</script></body></html>
